@@ -44,14 +44,18 @@ UBook, on the other hand, is specifically designed to do one thing and to do it 
 
 ### Highlights
 
-YOUR ANSWER GOES HERE ...
+What type of application do we want to make?
 
-Specify 3 - 5 key decisions and/or insights that came up during your meetings
-and/or collaborative process.
+Initially, we were leaning towards an installable application for Windows. However, there were many problems with this. First of all, a considerable percentage of students use MacOS. Since we want our application to be as accessible as possible, we would need to support both Windows and MacOS. This would make the product more difficult for our team to construct and add potential for bugs. Also, installable applications are inconvenient, since they must be downloaded and installed. This directly conflicted with one of our main aims, which is to make textbook exchange as quick and easy as possible. So, we decided to make a web application, since supporting different browsers is easier than supporting different operating systems and web applications are more easily accessible. We also considered adding mobile support for our application, since students are often on the move and using their phones as their primary devices. We decided against it due to the added complexity of mobile software development and because we felt it’s not necessary for our minimally viable product, as textbook exchange is not that time-sensitive and rarely requires immediate action.
 
- * Short (5 min' read max)
- * Decisions can be related to the product and/or the team process.
-    * Mention which alternatives you were considering.
-    * Present the arguments for each alternative.
-    * Explain why the option you decided on makes the most sense for your team/product/users.
- * Essentially, we want to understand how (and why) you ended up with your current product plan.
+Should our application be for all universities or just the University of Toronto?
+
+We first planned to make our application available to all universities, where each university would get a separate environment to buy and sell textbooks. This would make our application versatile and widen its scope from a single university to the entire world. However, this idea raised a lot of difficult questions: Would data be stored by university or all together? How would we deal with how different universities implement course codes? How could we accommodate a student transferring universities? Making our application available to all universities would mean adding a huge amount of corner cases that would inevitably lead to bugs. Also, our target audience for our application has always been ourselves, along with our peers: UofT students. So we decided that   for our minimally viable product, we would focus completely on getting UofT textbook exchange as optimized as possible, rather than on getting textbook exchange for all universities working, but not optimally.
+
+How much should we enforce the “completeness” of ads?
+
+This was a particularly difficult question, because it represented two of our main goals for UBook conflicting: access to information vs. ease of use. If we didn’t enforce that students put certain information in their postings, many postings would be incomplete. Buyers would be frustrated, but selling would be quick and easy, as is our goal. If we did enforce posting “completeness”, selling would become more arduous, but buyers would then have all the information needed to make their purchase. We decided to lean towards the latter, for two specific reasons. Firstly, we believe that part of the reason UBook will stand out from its competitors is its textbook-optimized advanced search capability. However, this functionality only works when postings contain the relevant information to search or filter by. Secondly, we believe that most of our users will buy and sell textbooks on our marketplace, since all students have to do both at some point. Thus, the ease of use one loses as the seller of a textbook will be balanced by the ease of use gained as the buyer of a textbook.
+
+Which features should be included in our minimally viable product?
+
+When brainstorming UBook, we came up with many ideas for features that would make our application stand out among competitors: textbook “bundles” that exist so multiple textbooks needed for a single course could be compiled into a single posting, links to the UofT bookstore and Amazon price for any textbook one is buying/selling, a simple instant messaging system where buyers and sellers can talk in real time, etc. Whether we decided to implement a feature as part of our minimally viable product depended on two variables. Firstly, is this feature necessary to achieve one of our three main goals? Secondly, how complex will this feature be for our team to implement? We decided to keep textbook “bundles” since it is relatively simple and we felt it was necessary for our application to be quick and easy to use. We decided to keep the links for the brand new textbook prices since it is also simple and necessary to ensure that users get the best possible deal. However, we decided to scrap the instant messaging idea because it's not necessary to any goal, as textbook exchange doesn’t have to happen in real time and texting/emailing are viable alternatives, but it would add a lot of complexity to the project.
