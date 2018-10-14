@@ -6,8 +6,8 @@
 
 ## Iteration 01
 
- * Start date: FILL IN THE DATE WHEN YOU HAD YOUR FIRST TEAM PLANNING MEETING
- * End date: FILL IN THE DATE WHEN YOU ARE PLANNING TO HAVE YOUR REVIEW MEETING
+ * Start date: October 4th 2018
+ * End date: October 12th 2018
 
 ## Process
 

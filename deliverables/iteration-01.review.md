@@ -1,14 +1,14 @@
-# YOUR PRODUCT/TEAM NAME
+# UBook
 
  > _Note:_ This document is meant to be written during (or shortly after) your review meeting, which should happen fairly close to the due date.      
  >      
  > _Suggestion:_ Have your review meeting a day or two before the due date. This way you will have some time to go over (and edit) this document, and all team members should have a chance to make their contribution.
 
 
-## Iteration XX - Review & Retrospect
+## Iteration 01 - Review & Retrospect
 
- * When: FILL IN THE DATE WHEN YOU ACTUALLY HAD YOUR REVIEW MEETING
- * Where: PHYSICAL LOCATION AND/OR ONLINE
+ * When: October 12th
+ * Where: ONLINE
 
 ## Process - Reflection
 
@@ -21,6 +21,17 @@ List process-related (i.e. team organization) decisions that, in retrospect, tur
  * Ordered from most to least important.
  * Explain why (i.e. give a supporting argument) you consider a decision to be successful.
  * Feel free to refer/link to process artifact(s).
+
+ Online meetings over Discord : Allowed us to collaborate and communicate even though not all team members are in
+ walking distance to campus
+
+ Utilization of Google Docs : Allowed us all to make contributions to our documents used for writing our planning and
+ review docs. Also allows each member to be able to access scrum artifacts such as backlogs and meeting schedules so
+ everyone is able to keep up to date.
+
+ Project Group Chat: Allowed for our team to have day to day conversations about tasks and allows us to be accessible to
+ each other in times of needed collaboration.
+
 
 #### Decisions that did not turn out as well as we hoped
 
@@ -46,6 +57,18 @@ List any process-related changes you are planning to make (if there are any)
  * From most to least important.
  * Refer/link to artifact(s) that show that a goal/task was met/completed.
  * If a goal/task was not part of the original iteration plan, please mention it.
+
+For this Iteration we focused on conducting research and having all members comfortable with accessing and contributing
+ to the backlogs and the required meetings documentation.
+
+CRC Cards : We were able to complete our CRC cards which allowed us to have a strong understanding on the different
+classes we need to implement as well as how they will work together within our application.
+
+Facebook Textbook Marketplace Analysis: This allowed us to get a insight on what are the basic features our users will
+expect as well as which features will differentiate our product from our main competitor.
+
+Scrum Artifacts: We were able to construct backlogs and schedules in order to help our team stay organized and have
+clear tasks set out for our project
 
 #### Goals and/or tasks that were planned but not met/completed:
 
