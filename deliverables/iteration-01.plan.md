@@ -99,6 +99,13 @@ _This entire section is mandatory._
  * Order the items from most to least important.
  * Feel free (but not obligated) to specify some/all tasks as user stories.
 
+For this iteration we will firstly get our scrum artifacts set up and have our design artifacts such as CRC diagrams ready. We also want to conduct research into our main competitor to understand our users better.
+
+As a Team Member I want to know the pros and cons of the pre-existing facebook textbook marketplace so that I know what features are beneficial and standard among our market and what features to add to make our product stand out. In order to do this we will analyze the Facebook Textbook Marketplace.
+
+As a Team Member I want to know the different classes we will implement, their responsibilities and how they collaborate together so that I can avoid getting into details which will be counterproductive and focus on the essentials of the classes. In order to do this we will complete CRC diagrams.
+
+
 #### Artifacts
 
 List/describe the artifacts you will produce in order to present your project idea.
