@@ -18,17 +18,21 @@ _This entire section is optional. Note that you will have to fill it out and mor
 Describe the different roles on the team and the responsibilities associated with each role.
 
 Devs:
+
     Front End:
      > Our Front End devs will be responsible for the operation and implementation of the user interface of our application.
      > They will be responsible for producing the views and designing them accordingly to fit our target users needs while remaining simple enough for ease of learning by novice users
+
     Back End:
      > Our Back End devs will be responsible for storing the data of our application
      > They will also be responsible for implementing methods to return appropriate (dependant on the request) data upon user request .
+
 Product Owner:
  > Responsible for maintaining the product backlog
  > Responsible for prioritizing features list for our application
  > To act as our lead user of our application in order to help translate a understanding of users and their needs to the development teams.
  > Motivate team with a clear and elevating goal
+
 Scrum Master:
  > Responsible for the removal and reduction of impediments and blockers of productivity
  > Facilitator of meetings
@@ -105,6 +109,7 @@ As a Team Member I want to know the pros and cons of the pre-existing facebook t
 
 As a Team Member I want to know the different classes we will implement, their responsibilities and how they collaborate together so that I can avoid getting into details which will be counterproductive and focus on the essentials of the classes. In order to do this we will complete CRC diagrams.
 
+As a Team Member I want to have a general idea of what our basic views will look like. This will help our front end developers have a general idea of what to aim towards when constructing views.
 
 #### Artifacts
 
@@ -118,7 +123,9 @@ List/describe the artifacts you will produce in order to present your project id
 The artifacts for this deliverable are in our repo within our deliverables folder.
 
 CRC (file name : CRC.pdf)
+
 Analyzation of Facebook Textbook exchange page (file name: facebook_problems.pdf)
+
 View Mocks (file name : view-mock.pdf)
 
 Scrum Artifacts (product backlog, sprint backlog, meeting schedule) - https://docs.google.com/spreadsheets/d/1kHT57hwY_5hdanTw9rLCbr0QdopAXCnvRaVo4S0Ht8E/edit?usp=sharing 

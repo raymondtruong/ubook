@@ -67,7 +67,8 @@ We will construct a role contract which will state the assigned roles and have e
  * If a goal/task was not part of the original iteration plan, please mention it.
 
 For this Iteration we focused on conducting research and having all members comfortable with accessing and contributing
- to the backlogs and the required meetings documentation.
+ to the backlogs and the required meetings documentation. The artifacts mentioned below can be found in our deliverables
+ folder.
 
 CRC Cards : We were able to complete our CRC cards which allowed us to have a strong understanding on the different
 classes we need to implement as well as how they will work together within our application.
