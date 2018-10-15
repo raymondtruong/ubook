@@ -49,6 +49,10 @@ List any process-related changes you are planning to make (if there are any)
  * Ordered from most to least important.
  * Explain why you are making a change.
 
+We decided that we will assign both the front-end and the back-end a “coordinator” who would will assign each member of the team tasks to complete for each sprint. The front-end and back-end work is mostly separate, but still requires a lot of cohesion within the sub-teams, which is why we decided to create these roles. These “coordinators” can also talk to one another to coordinate between sub-teams. This way, there is an agreed upon chain of communication between the sub-teams. 
+
+We will construct a role contract which will state the assigned roles and have each team member sign it so that we have a record of the agreed upon roles.
+
 
 ## Product - Review
 
@@ -75,6 +79,8 @@ clear tasks set out for our project
  * From most to least important.
  * For each goal/task, explain why it was not met/completed.      
    e.g. Did you change your mind, or did you just not get to it yet?
+
+We were not able to complete view mocks in actual HTML/CSS code. These were left uncompleted because of time constraints but we were still able to produce simple view mocks by hand so that we did not lose the benefits of doing this task.
 
 ## Meeting Highlights
 
