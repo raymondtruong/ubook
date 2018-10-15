@@ -85,3 +85,9 @@ Going into the next iteration, our main insights are:
  * High-level concepts that should guide your work for the next iteration.
  * These concepts should help you decide on where to focus your efforts.
  * Can be related to product and/or process.
+
+Going into the next iteration we will establish “coordinators” for our Front End and Back End development teams. These “coordinators” will act as a team leader ensuring that each subteam stays on course throughout the sprint. They will also have the responsibility of coordinating with the other subteam coordinators to allow for all our teams to stay synchronized with their tasks and to avoid implementation conflicts 
+
+Each sub team’s coordinator  will be responsible for collaborating with their teams prior to sprint planning to have a set of tasks (taken from product backlog) which will be their tasks to complete during that sprint. The selected tasks will contribute to the sprint backlog for that specific iteration as the selected tasks are a representation of what that subteam believes can be completed within that sprint.
+
+There are a number of available open source tools that can help use reduce development time. We will be conducting extensive research on which tools will provide the most benefit to our project, as well learn how to properly use them to aid in the development of our project.
