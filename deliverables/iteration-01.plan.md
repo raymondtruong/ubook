@@ -28,14 +28,21 @@ Devs:
      > They will also be responsible for implementing methods to return appropriate (dependant on the request) data upon user request .
 
 Product Owner:
+
  > Responsible for maintaining the product backlog
+
  > Responsible for prioritizing features list for our application
+
  > To act as our lead user of our application in order to help translate a understanding of users and their needs to the development teams.
+
  > Motivate team with a clear and elevating goal
 
 Scrum Master:
+
  > Responsible for the removal and reduction of impediments and blockers of productivity
+
  > Facilitator of meetings
+ 
  > Ensures the team is adhering to the sprint plan and backlog
 
 
