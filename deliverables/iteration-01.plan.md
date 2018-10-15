@@ -114,3 +114,11 @@ List/describe the artifacts you will produce in order to present your project id
  * Make sure to explain the purpose of each artifact (i.e. Why is it on your to-do list? Why is it useful for your team?)
  * Be concise, yet precise.         
    For example: "Build the website" is not precise at all, but "Build a static home page and upload it somewhere, so that it is publicly accessible" is much clearer.
+
+The artifacts for this deliverable are in our repo within our deliverables folder.
+
+CRC (file name : CRC.pdf)
+Analyzation of Facebook Textbook exchange page (file name: facebook_problems.pdf)
+View Mocks (file name : view-mock.pdf)
+
+Scrum Artifacts (product backlog, sprint backlog, meeting schedule) - https://docs.google.com/spreadsheets/d/1kHT57hwY_5hdanTw9rLCbr0QdopAXCnvRaVo4S0Ht8E/edit?usp=sharing 
