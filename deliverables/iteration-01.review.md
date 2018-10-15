@@ -7,7 +7,7 @@
 
 ## Iteration 01 - Review & Retrospect
 
- * When: October 12th
+ * When: October 14th
  * Where: ONLINE
 
 ## Process - Reflection
@@ -40,6 +40,10 @@ List process-related (i.e. team organization) decisions that, in retrospect, wer
  * 2 - 4 decisions.
  * Ordered from most to least important.
  * Feel free to refer/link to process artifact(s).
+
+Originally we thought that we would be able to coordinate in person meetings, however since we all have unique schedules this proved to be difficult.
+
+We still have no concrete agreed upon assignment of roles for our project. Even though we were able to divide ourselves into different development sub teams, we still had ambiguity in regards to what exactly each member was responsible for.
 
 
 #### Planned changes
