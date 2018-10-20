@@ -15,6 +15,7 @@ body {
     font-weight: bolder;
     font-size: 40px;
     margin-left: 10px;
+    cursor: default;
 }
 
 #navbar-button-container {
@@ -38,7 +39,7 @@ nav div {
     margin-left: 5px;
 }
 
-.navbar-button:hover, .dropdown-button:hover {
+.navbar-button:hover, #dropdown-content a:hover {
     text-decoration: underline;
     cursor: default;
 }
@@ -56,7 +57,7 @@ nav div {
     text-align: center;
 }
 
-#display-content a {
+#dropdown-content a {
     padding-top: 2px;
     padding-bottom: 2px;
     display: block;
