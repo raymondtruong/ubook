@@ -5,7 +5,7 @@
     left: 12%;
 }
 
-#info-container {
+#criteria-container {
     position: relative;
     top: 100px;
     width: 20%;
@@ -63,4 +63,70 @@
     margin: 8px;
     padding: 4px;
     border-bottom: 1px solid grey;
+}
+
+.criterion-container {
+    text-align: left;
+    padding-left: 25px;
+    font-size: 16px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-bottom: 1px solid grey;
+}
+
+.criterion-container h4 {
+    margin:0;
+    margin-bottom: 5px;
+}
+
+.criterion-container form button {
+    border: none;
+    color: #e5e5e5;
+    background-color: #002a5c;
+}
+
+#price-form input {
+    outline: none;
+    width: 30%;
+}
+
+#course-form input {
+    outline: none;
+    width: 73%;
+}
+
+#condition-slider {
+    -webkit-appearance: none;
+    opacity: 0.8;
+    width: 73%;
+    height: 15px;
+    border-radius: 25px;
+    background: #d3d3d3;
+    outline: none;
+    margin-bottom: 10px;
+}
+
+#condition-slider:hover {
+    opacity: 1;
+}
+
+#condition-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #002a5c;
+    cursor: pointer;
+}
+
+#condition-slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #002a5c;
+    cursor: pointer;
+}
+
+#condition-container span {
+    display: inline-block;
 }
