@@ -6,6 +6,7 @@
     <link rel="icon" href="resources/uoft_crest.png">
     <link href="https://fonts.googleapis.com/css?family=Chakra+Petch" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="styles/nav.css">
+    <link rel="stylesheet" type="text/css" href="styles/search.css">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="js/nav.js"></script>
   </head>
@@ -16,5 +17,25 @@
         $("#navbar").load("nav.html");
       });
     </script>
+
+    <div id="info-container" class="big-container">
+      <div class="top-bar">
+        <span>Advanced Search Criteria</span>
+      </div>
+      
+    </div>
+
+    <div id="search-container" class="big-container">
+      <div id="search-bar-container">
+        <div id="search-icon-container">
+          <img id="search-icon" src="resources/search.png">
+        </div>
+        <input id="search-bar" type="text" placeholder="Search for a textbook by name, course code, etc.">
+      </div>
+    </div>
+
+    <div id="results-container" class="big-container">
+        <div class="top-bar"> Results: </div>
+    </div>
   </body>
 </html>
