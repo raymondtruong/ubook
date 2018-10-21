@@ -20,7 +20,8 @@
     top: 160px;
     left: 32%;
     width: 50%;
-    height: 80%
+    height: 80%;
+    overflow: auto;
 }
 
 .big-container {
