@@ -60,7 +60,67 @@
     </div>
 
     <div id="results-container" class="big-container">
-        <div class="top-bar"> Results: </div>
+        <div class="top-bar">
+          <div style="float:left">
+          <span>Results:</span>
+          </div>
+          <div id="sort-container">
+            <span>Sort by:</span>
+            <select id="sort-select">
+              <option value="dateDescending">Newest first</option>
+              <option value="dateAscending">Oldest first</option>
+              <option value="priceDescending">Price: low to high</option>
+              <option value="priceAscending">Price: high to low</option>
+              <option value="condDescending">Condition: high to low</option>
+              <option value="condAscending">Condition: low to high</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="results">
+          <div class="result-container">
+            <div class="image-container">
+              <img src="resources/textbook-example1.jpg">
+            </div>
+            <div class="book-info-container">
+              <h5 class="book-title"> Perspectives from the Past, Volume 2 </h5>
+              <span class="book-authors"> By James Brophy, Joshua Cole, John Robertson</span>
+              <span class="book-courses"> Courses: HIS109 </span>
+              <span class="book-condition"> Condition: 7.5 </span>
+              <div class="book-description-container">
+                <span class="book-description">
+                    Overall in good condition, but there is minor water damage on the top.
+                    I can meet you anywhere on campus.
+                </span>
+              </div>
+            </div>
+            <div class="book-info-right-container">
+              <span class="book-price">$40</span>
+              <button class="contact-seller"> Contact seller </button>
+            </div>
+          </div>
+          <div class="result-container">
+            <div class="image-container">
+              <img src="resources/textbook-example2.jpg">
+            </div>
+            <div class="book-info-container">
+              <h5 class="book-title"> Linear Algebra and its Applications, 5th edition </h5>
+              <span class="book-authors"> By David Lay, Robert Lay, Judi Macdonald</span>
+              <span class="book-courses"> Courses: MAT223 </span>
+              <span class="book-condition"> Condition: 9.5 </span>
+              <div class="book-description-container">
+                <span class="book-description">
+                    I dropped the course, so this textbook is in perfect condition!
+                    Pick-up at St. George & Harbord.
+                </span>
+              </div>
+            </div>
+            <div class="book-info-right-container">
+              <span class="book-price">$100</span>
+              <button class="contact-seller"> Contact seller </button>
+            </div>
+          </div>
+        </div>
     </div>
 
     <script src="js/search.js"></script>
