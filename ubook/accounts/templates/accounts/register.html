@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>UBook | Register</title>
+    </head>
+
+    <body>
+        <h1>UBook | Register</h1>
+
+        {% if message %}
+            <p><strong>{{ message }}</strong></p>
+        {% endif %}
+        
+        <form method="post" action="/accounts/register/">
+            {% csrf_token %}
+
+            <div>
+                <label>Username: </label>
+                <input type="text" name="username" autofocus required>
+            </div>
+            <div>
+                <label>Email: </label>
+                <input type="text" name="email" autofocus required>
+            </div>
+            <div>
+                <label>Password: </label>
+                <input type="password" name="password" autofocus required>
+            </div>
+            <div>
+                <input type="submit" value="Register">
+            </div>
+        </form>
+
+    </body>
+</html>

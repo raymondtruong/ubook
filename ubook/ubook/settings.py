@@ -32,6 +32,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     "listings.apps.ListingsConfig",
+    "accounts.apps.AccountsConfig",
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -121,4 +123,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # redirect to main listings page after login
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/listings/'

@@ -6,6 +6,19 @@
 
     <body>
         <h1>UBook | Home</h1>
-        <a href="/listings/create">Create</a>
+
+        {% if user.is_authenticated %}
+            <p> Welcome, {{ user.get_username }}!<p>
+
+            <a href="/listings/create">Create listing</a><br>
+            <a href="/accounts/logout">Logout</a></li>
+
+        {% else %}
+            <p> You can't view this page, because you aren't signed in yet!<p>
+
+            <a href="/accounts/register">Register</a><br>
+            <a href="/accounts/login">Login</a>
+        {% endif %}
+
     </body>
 </html>
