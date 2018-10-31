@@ -238,7 +238,7 @@ body {
     width: 180px;
 }
 
-#modal-backdrop {
+.modal-backdrop {
     display: none;
     position: fixed;
     z-index: 1;
@@ -249,7 +249,7 @@ body {
     background-color: rgba(0,0,0,0.3);
 }
 
-#modal-content {
+.modal-content {
     background: white;
     border: 1px solid grey;
     border-radius: 25px;
@@ -259,7 +259,7 @@ body {
     width: 50%;
 }
 
-#modal-top-container {
+.modal-top-container {
     height: 10vh;
     vertical-align: center;
     display: table;
@@ -269,7 +269,7 @@ body {
     font-size: 20px;
 }
 
-#modal-top-container span {
+.modal-top-container span {
     display: table-cell;
     vertical-align: middle;
     white-space: nowrap;
@@ -294,4 +294,8 @@ body {
 .modal-contact-seller {
     margin-top: 20px;
     margin-left: 85%;
+}
+
+#seller-email-container, #seller-phone-container {
+    margin-left: 10px;
 }
