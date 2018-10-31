@@ -78,27 +78,25 @@
         </div>
 
         <div id="results">
-          <div class="result-container">
+          <div class="result-container bundle">
             <div class="image-container">
               <img src="resources/textbook-example1.jpg">
             </div>
             <div class="book-info-container">
-              <h5 class="book-title"> Perspectives from the Past, Volume 2 </h5>
-              <span class="book-authors"> By James Brophy, Joshua Cole, John Robertson</span>
-              <span class="book-courses"> Courses: HIS109 </span>
-              <span class="book-condition"> Condition: 7.5 </span>
+              <h5 class="book-title"> HIS109 Bundle (2 textbooks) </h5>
+              <button class="view-bundle"> View textbooks in bundle </button>
               <div class="book-description-container">
                 <span class="book-description">
-                    Overall in good condition, but there is minor water damage on the top.
                     I can meet you anywhere on campus.
                 </span>
               </div>
             </div>
             <div class="book-info-right-container">
-              <span class="book-price">$40</span>
-              <button class="contact-seller"> Contact seller </button>
+              <span class="book-price">$120</span>
+              <button class="contact-seller button"> Contact seller </button>
             </div>
           </div>
+
           <div class="result-container">
             <div class="image-container">
               <img src="resources/textbook-example2.jpg">
@@ -117,10 +115,56 @@
             </div>
             <div class="book-info-right-container">
               <span class="book-price">$100</span>
-              <button class="contact-seller"> Contact seller </button>
+              <button class="contact-seller button"> Contact seller </button>
             </div>
           </div>
+
         </div>
+    </div>
+
+    <div id="modal-backdrop">
+      <div id="modal-content">
+        <div id="modal-top-container">
+          <span id="modal-title" class="bold">HIS109 Bundle</span>
+          <span id="modal-price">$160</span>
+          <span class="close">&times;</span>
+        </div>
+        <div id="modal-results">
+          <div class="result-container">
+            <div class="image-container">
+              <img src="resources/textbook-example1.jpg">
+            </div>
+            <div class="book-info-container">
+              <h5 class="book-title"> Perspectives From The Past </h5>
+              <span class="book-authors"> By James Brophy, Joshua Cole</span>
+              <span class="book-courses"> Courses: HIS109 </span>
+              <span class="book-condition"> Condition: 6.5 </span>
+              <div class="book-description-container">
+                <span class="book-description">
+                    Some minor water damage on top and highlighter marks throughout.
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="result-container">
+            <div class="image-container">
+              <img src="resources/textbook-example1.jpg">
+            </div>
+            <div class="book-info-container">
+              <h5 class="book-title"> Western Civilizations: Their History and Their Culture </h5>
+              <span class="book-authors"> By Joshua Cole, Carol Symes</span>
+              <span class="book-courses"> Courses: HIS109 </span>
+              <span class="book-condition"> Condition: 9.2 </span>
+              <div class="book-description-container">
+                <span class="book-description">
+                    A couple of tiny rips on a few pages.
+                </span>
+              </div>
+            </div>
+          </div>
+          <button class="contact-seller modal-contact-seller button"> Contact seller </button>
+        </div>
+      </div>
     </div>
 
     <script src="js/search.js"></script>
