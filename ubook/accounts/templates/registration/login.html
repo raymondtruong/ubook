@@ -15,7 +15,7 @@
             <p><strong>{{ message }}</strong></p>
         {% endif %}
 
-        <form method="post" action="/accounts/login/">
+        <form method="post" action="/login/">
             {% csrf_token %}
 
             <div>
@@ -33,7 +33,7 @@
         </form>
 
         <br>
-        <a href="/accounts/register/">No account yet? Register here.</a>
+        <a href="/register/">No account yet? Register here.</a>
 
     </body>
 </html>
