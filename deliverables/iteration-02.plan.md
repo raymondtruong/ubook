@@ -76,14 +76,13 @@ For example, "we use pull-requests" is not a precise statement since it leaves t
 
  For our Git workflow we will be using pull requests for merges which cause or required logically implementation to our code
  base. This means that code/files such as view templates or starter code required for frameworks (django) can be merged directly
- to our code base. Though this may not be ideal as the code we are pushing initially won't change the current working system
- (we do not have one as of yet) then we have decided that this will actually be beneficial to getting our foundation set up
- and distributable as fast as possible. All code changes/uploads which may result in a change in functionality will have a
- pull requested submitted. The pull request will go from a team members local branch into our master project team branch.
- Ideally we will have other members of our back end and front end subteams to review their teams respective pull requests,
- however in the event that a subteam member is not able to we will allow other team memebers to approve them aswell. Once the
- pull request has been reviewed, the reviewer is responsible for closing the pull request and merging the branch into master.
- Files such as iteration plans and reviews will be pushed directly to master.
+ to our code base's master branch. Though this may not be ideal, as the code we are pushing initially won't change the current
+ working system (we do not have one as of yet) then we have decided that this will actually be beneficial to getting our
+ foundation set up and distributable as fast as possible. All code changes which may result in a change in functionality or
+ appearance will have a pull requested submitted. The pull request will go from a team members locally forked repos into our
+ master project team branch. Ideally we will have other members of our back end and front end subteams review their team's
+ respective pull requests, however in the event that a subteam member is not able to we will allow other team memebers to approve them aswell. Once the pull request has been reviewed, the reviewer is responsible for closing the pull request and merging the
+ branch into master. Files such as iteration plans and reviews will be pushed directly to master.
 
 
 
@@ -96,14 +95,17 @@ For example, "we use pull-requests" is not a precise statement since it leaves t
  * Feel free (but not obligated) to specify some/all tasks as user stories.
 
  For this deliverable we are aiming to have a full implementation of authentication and user sign in, aswell as have the
- front end views completed with hard coded postings and no functionality.
+ front end views completed with hard coded listings and no functionality.
 
- We will give the users an option of signing in or signing up.  When loging in our full vertical user authentication will
+ We will give the users an option of loging in or signing up.  When loging in our full vertical user authentication will
  consist of a front end login form and backend implementation to ensure that the entered credentials of the user are correct
  and the user is existent. When signing up in our full vertical user authentication will consist of a sign up form and a
  backend implementation in order to create a new user account with the entered credentials.
 
- For our completed front end views we will complete a posting search page, a login page, a sign up page, a postings page
+ The user story for our authentication implementation states : As Jean/Rachel I want to be able to create a account and log into my
+ prexisting account so that I am able to sell and buy textbooks.
+
+ For our completed front end views we will complete a listing search page, a login page, a sign up page, a listings page
  and a user info page. All besides our login and sign up pages will have no functionality. This is because we believe trying
  to implement functionality in all our views is too much to take on during this busy time in the semester. Instead our front
  end team will be working on creating the views without the need of worrying on allowing them to be compatible with the back end
@@ -121,7 +123,8 @@ List/describe the artifacts you will produce in order to present your project id
  * Be concise, yet precise.
    For example: "Build the website" is not precise at all, but "Build a static home page and upload it somewhere, so that it is publicly accessible" is much clearer.
 
--  Static pages (a posting search page, a postings page and a user info page)
+-  Static pages (a listing search page, a listings page and a user info page)
 -  Full Vertical implementation of user authentication, login and sign up
 -  Video displaying the static pages as well as demonstrating our working vertical authentication implementation.
+-  Updated scrum artifacts (product backlog, sprint backlog, meeting schedule): https://docs.google.com/spreadsheets/d/1kHT57hwY_5hdanTw9rLCbr0QdopAXCnvRaVo4S0Ht8E/edit?usp=sharing
 
