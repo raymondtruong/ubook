@@ -9,8 +9,13 @@ body {
 .button {
     border: none;
     color: #e5e5e5;
-    background-color: #002a5c;
+    background-color: #204B7F;
     outline: none;
+    border-radius: 12px;
+}
+
+.button:hover {
+    background-color: #002a5c;
 }
 
 #search-container {
@@ -226,9 +231,6 @@ body {
 }
 
 .view-bundle {
-    border: none;
-    color: #e5e5e5;
-    background-color: #002a5c;
     margin-top: 10px;
     margin-right: 15px;
     margin-bottom: 5px;
