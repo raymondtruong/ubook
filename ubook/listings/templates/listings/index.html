@@ -1,24 +1,136 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>UBook | Home</title>
-    </head>
+<html lang="en">
+  <head>
+ 	  <meta charset="utf-8">
+    <title>UBook</title>
+    <link rel="icon" href="/static/uoft_crest.png">
+    <link href="https://fonts.googleapis.com/css?family=Chakra+Petch" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/nav.css">
+    <link rel="stylesheet" type="text/css" href="/static/search.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="/static/nav.js"></script>
+  </head>
+  <body>
+    <div id="navbar"> </div>
+    <script>
+      $(function(){
+        $("#navbar").load("/static/nav.html");
+      });
+    </script>
 
-    <body>
-        <h1>UBook | Home</h1>
+    <div id="criteria-container" class="big-container">
+      <div class="top-bar">
+        <span>Advanced Search Criteria</span>
+      </div>
+      <div id="price-container" class="criterion-container">
+        <h4> Price: </h4>
+        <form id="price-form">
+          <span>$</span>
+          <input id="start-price" placeholder="from">
+          <span>- $</span>
+          <input id="end-price" placeholder="to">
+          <button type="submit"> Update </button>
+        </form>
+      </div>
+      <div id="course-container" class="criterion-container">
+        <h4> Course: </h4>
+        <form id="course-form">
+          <input id="course-input" placeholder="e.g. CSC301">
+          <button type="submit"> Update </button>
+        </form>
+      </div>
+      <div id="condition-container" class="criterion-container">
+        <h4> Condition: </h4>
+        <form id="condition-form">
+          <input id="condition-slider" type="range" min="0" max="100" value="1">
+          <button type="submit"> Update </button>
+          <span> <strong><span id="slider-value">0</span></strong> or higher </span>
+        </form>
+      </div>
+
+    </div>
+
+    <div id="search-container" class="big-container">
+      <div id="search-bar-container">
+        <div id="search-icon-container">
+          <img id="search-icon" src="/static/search.png">
+        </div>
+        <input id="search-bar" type="text" placeholder="Search for a textbook by name, course code, etc.">
+      </div>
+    </div>
+
+    <div id="results-container" class="big-container">
+        <div class="top-bar">
+          <div style="float:left">
+          <span>Results:</span>
+          </div>
+          <div id="sort-container">
+            <span>Sort by:</span>
+            <select id="sort-select">
+              <option value="dateDescending">Newest first</option>
+              <option value="dateAscending">Oldest first</option>
+              <option value="priceDescending">Price: low to high</option>
+              <option value="priceAscending">Price: high to low</option>
+              <option value="condDescending">Condition: high to low</option>
+              <option value="condAscending">Condition: low to high</option>
+            </select>
+          </div>
+        </div>
 
         {% if user.is_authenticated %}
-            <p> Welcome, {{ user.get_username }}!<p>
-
-            <a href="/listings/create">Create listing</a><br>
+            <p>Hello, {{ user.get_username }}!</p>
             <a href="/accounts/logout">Logout</a></li>
-
         {% else %}
-            <p> You can't view this page, because you aren't signed in yet!<p>
-
-            <a href="/accounts/register">Register</a><br>
-            <a href="/accounts/login">Login</a>
+            <p> There are no results yet, because you are not signed in yet!</p>
+            <a href="/accounts/login/">Login</a>
         {% endif %}
 
-    </body>
+        <div id="results">
+          <div class="result-container">
+            <div class="image-container">
+              <img src="/static/textbook-example1.jpg">
+            </div>
+            <div class="book-info-container">
+              <h5 class="book-title"> Perspectives from the Past, Volume 2 </h5>
+              <span class="book-authors"> By James Brophy, Joshua Cole, John Robertson</span>
+              <span class="book-courses"> Courses: HIS109 </span>
+              <span class="book-condition"> Condition: 7.5 </span>
+              <div class="book-description-container">
+                <span class="book-description">
+                    Overall in good condition, but there is minor water damage on the top.
+                    I can meet you anywhere on campus.
+                </span>
+              </div>
+            </div>
+            <div class="book-info-right-container">
+              <span class="book-price">$40</span>
+              <button class="contact-seller"> Contact seller </button>
+            </div>
+          </div>
+          <div class="result-container">
+            <div class="image-container">
+              <img src="/static/textbook-example2.jpg">
+            </div>
+            <div class="book-info-container">
+              <h5 class="book-title"> Linear Algebra and its Applications, 5th edition </h5>
+              <span class="book-authors"> By David Lay, Robert Lay, Judi Macdonald</span>
+              <span class="book-courses"> Courses: MAT223 </span>
+              <span class="book-condition"> Condition: 9.5 </span>
+              <div class="book-description-container">
+                <span class="book-description">
+                    I dropped the course, so this textbook is in perfect condition!
+                    Pick-up at St. George & Harbord.
+                </span>
+              </div>
+            </div>
+            <div class="book-info-right-container">
+              <span class="book-price">$100</span>
+              <button class="contact-seller"> Contact seller </button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <script src="/static/search.js"></script>
+  </body>
 </html>
