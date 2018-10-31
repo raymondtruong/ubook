@@ -3,6 +3,7 @@ from listings.models import *
 
 def index(request):
     if request.user.is_authenticated:
+        """
         t = Textbook(name="Textbook", edition="1", condition="9.5",
                      description="This is a textbook.", authors="Author 1",
                      courses="CSC123")
@@ -16,13 +17,7 @@ def index(request):
         l.save()
 
         listings = Listing.objects.all()
-        return render(request, "listings/index.html", {"listings": listings})
+        """
+        return render(request, "listings/listings.html")
     else:
-        return render(request, "listings/home.html")
-
-
-def create(request):
-    return render(request, "listings/create.html")
-
-def modify(request):
-    return render(request, "listings/modify.html")
+        return render(request, "listings/index.html")

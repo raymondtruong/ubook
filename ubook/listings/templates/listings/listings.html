@@ -3,19 +3,21 @@
   <head>
  	  <meta charset="utf-8">
     <title>UBook</title>
-    <link rel="icon" href="resources/uoft_crest.png">
+    <link rel="icon" href="/static/resources/uoft_crest.png">
     <link href="https://fonts.googleapis.com/css?family=Chakra+Petch" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="styles/nav.css">
-    <link rel="stylesheet" type="text/css" href="styles/search.css">
+    {%load static%}
+
+    <link rel="stylesheet" type="text/css" href="/static/styles/nav.css">
+    <link rel="stylesheet" type="text/css" href="/static/styles/listings.css">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="js/nav.js"></script>
+    <script src="/static/js/nav.js"></script>
   </head>
   <body>
     <!-- inject the navbar-->
     <div id="navbar"> </div>
     <script>
       $(function(){
-        $("#navbar").load("nav.html");
+        $("#navbar").load("{% static '/resources/nav.html' %}");
       });
     </script>
 
@@ -59,7 +61,7 @@
     <div id="search-container" class="big-container">
       <div id="search-bar-container">
         <div id="search-icon-container">
-          <img id="search-icon" src="resources/search.png">
+          <img id="search-icon" src="/static/resources/search.png">
         </div>
         <input id="search-bar" type="text" placeholder="Search for a textbook by name, course code, etc.">
       </div>
@@ -89,7 +91,7 @@
         <div id="results">
           <div class="result-container bundle">
             <div class="image-container">
-              <img src="resources/textbook-example1.jpg">
+              <img src="/static/resources/textbook-example1.jpg">
             </div>
             <div class="book-info-container">
               <h5 class="book-title"> HIS109 Bundle (2 textbooks) </h5>
@@ -108,7 +110,7 @@
 
           <div class="result-container">
             <div class="image-container">
-              <img src="resources/textbook-example2.jpg">
+              <img src="/static/resources/textbook-example2.jpg">
             </div>
             <div class="book-info-container">
               <h5 class="book-title"> Linear Algebra and its Applications, 5th edition </h5>
@@ -144,7 +146,7 @@
         <div id="bundle-results">
           <div class="result-container">
             <div class="image-container">
-              <img src="resources/textbook-example1.jpg">
+              <img src="/static/resources/textbook-example1.jpg">
             </div>
             <div class="book-info-container">
               <h5 class="book-title"> Perspectives From The Past </h5>
@@ -160,7 +162,7 @@
           </div>
           <div class="result-container">
             <div class="image-container">
-              <img src="resources/textbook-example1.jpg">
+              <img src="/static/resources/textbook-example1.jpg">
             </div>
             <div class="book-info-container">
               <h5 class="book-title"> Western Civilizations: Their History and Their Culture </h5>
@@ -205,6 +207,6 @@
       </div>
     </div>
 
-    <script src="js/search.js"></script>
+    <script src="/static/js/search.js"></script>
   </body>
 </html>

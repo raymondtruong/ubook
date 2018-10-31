@@ -10,8 +10,8 @@
         {% if message %}
             <p><strong>{{ message }}</strong></p>
         {% endif %}
-        
-        <form method="post" action="/accounts/register/">
+
+        <form method="post" action="/register/">
             {% csrf_token %}
 
             <div>
