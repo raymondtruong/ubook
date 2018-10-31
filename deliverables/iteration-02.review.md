@@ -1,14 +1,14 @@
-# YOUR PRODUCT/TEAM NAME
+# UBook
 
- > _Note:_ This document is meant to be written during (or shortly after) your review meeting, which should happen fairly close to the due date.      
- >      
+ > _Note:_ This document is meant to be written during (or shortly after) your review meeting, which should happen fairly close to the due date.
+ >
  > _Suggestion:_ Have your review meeting a day or two before the due date. This way you will have some time to go over (and edit) this document, and all team members should have a chance to make their contribution.
 
 
-## Iteration XX - Review & Retrospect
+## Iteration 02 - Review & Retrospect
 
- * When: FILL IN THE DATE WHEN YOU ACTUALLY HAD YOUR REVIEW MEETING
- * Where: PHYSICAL LOCATION AND/OR ONLINE
+ * When: November 1st 2018
+ * Where: Online via discord
 
 ## Process - Reflection
 
@@ -32,6 +32,8 @@ List process-related (i.e. team organization) decisions that, in retrospect, wer
  * Ordered from most to least important.
  * Feel free to refer/link to process artifact(s).
 
+ TODO: Elaborate about using branches over local forks -> Take advantage of a git's resources -> Explain why we use branch over fork
+
 
 #### Planned changes
 
@@ -52,7 +54,7 @@ List any process-related changes you are planning to make (if there are any)
 #### Goals and/or tasks that were planned but not met/completed:
 
  * From most to least important.
- * For each goal/task, explain why it was not met/completed.      
+ * For each goal/task, explain why it was not met/completed.
    e.g. Did you change your mind, or did you just not get to it yet?
 
 ## Meeting Highlights
