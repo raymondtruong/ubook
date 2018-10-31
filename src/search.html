@@ -11,6 +11,7 @@
     <script src="js/nav.js"></script>
   </head>
   <body>
+    <!-- inject the navbar-->
     <div id="navbar"> </div>
     <script>
       $(function(){
@@ -18,10 +19,12 @@
       });
     </script>
 
+    <!-- where users can add criteria to their search-->
     <div id="criteria-container" class="big-container">
       <div class="top-bar">
         <span>Advanced Search Criteria</span>
       </div>
+      <!-- where users can filter based on price-->
       <div id="price-container" class="criterion-container">
         <h4> Price: </h4>
         <form id="price-form">
@@ -32,6 +35,7 @@
           <button class="button" type="submit"> Update </button>
         </form>
       </div>
+      <!-- where users can filter based on course -->
       <div id="course-container" class="criterion-container">
         <h4> Course: </h4>
         <form id="course-form">
@@ -39,6 +43,7 @@
           <button class="button" type="submit"> Update </button>
         </form>
       </div>
+      <!-- where users can filter based on condition -->
       <div id="condition-container" class="criterion-container">
         <h4> Condition: </h4>
         <form id="condition-form">
@@ -50,6 +55,7 @@
 
     </div>
 
+    <!-- where the user enters their search query-->
     <div id="search-container" class="big-container">
       <div id="search-bar-container">
         <div id="search-icon-container">
@@ -59,11 +65,13 @@
       </div>
     </div>
 
+    <!-- where results from the search query are displyed -->
     <div id="results-container" class="big-container">
         <div class="top-bar">
           <div style="float:left">
           <span>Results:</span>
           </div>
+          <!-- sort-by selector -->
           <div id="sort-container">
             <span>Sort by:</span>
             <select id="sort-select">
@@ -76,7 +84,8 @@
             </select>
           </div>
         </div>
-
+        <!-- list of postings that match search criteria; note that
+             textbooks and bundles have slightly different structure -->
         <div id="results">
           <div class="result-container bundle">
             <div class="image-container">
@@ -118,17 +127,20 @@
               <button class="contact-seller button"> Contact seller </button>
             </div>
           </div>
-
         </div>
     </div>
 
+    <!-- bundle info pop-up modal -->
     <div id="bundle-backdrop" class="modal-backdrop">
       <div id="bundle-info" class="modal-content">
+        <!-- header, containing title, price, and close button -->
         <div class="modal-top-container">
           <span id="bundle-title" class="bold">HIS109 Bundle</span>
           <span id="bundle-price">$160</span>
           <span id="bundle-close" class="close">&times;</span>
         </div>
+        <!-- list of all textbooks within the bundle, in the same format
+             as textbooks in search results, except with no price -->
         <div id="bundle-results">
           <div class="result-container">
             <div class="image-container">
@@ -162,34 +174,34 @@
               </div>
             </div>
           </div>
-
+          <!-- seller information at the bottom of the modal -->
           <div id="bundle-seller-info-container">
             <div id=bundle-seller-email-container>
               <span class="bold"> Email: </span> <span  class="seller-email">geezus@gmail.com</span>
             </div>
             <div id=bundle-seller-phone-container>
-              <span class="bold"> Phone: </span> <span class="seller-email">416-614-4162</span>
+              <span class="bold"> Phone: </span> <span class="seller-phone">416-614-4162</span>
             </div>
           </div>
-
-
         </div>
       </div>
     </div>
 
+    <!-- seller info pop-up modal -->
     <div id="seller-backdrop" class="modal-backdrop">
       <div id="seller-info" class="modal-content">
+        <!-- header, containing title and the close button -->
         <div class="modal-top-container">
           <span id="seller-title" class="bold">Contact Seller</span>
           <span id="seller-close" class="close">&times;</span>
         </div>
+        <!-- seller info -->
         <div id="seller-email-container">
           <span class="bold"> Email: </span> <span  class="seller-email">geezus@gmail.com</span>
         </div>
         <div id="seller-phone-container">
-          <span class="bold"> Phone: </span> <span class="seller-email">416-614-4162</span>
+          <span class="bold"> Phone: </span> <span class="seller-phone">416-614-4162</span>
         </div>
-
       </div>
     </div>
 
