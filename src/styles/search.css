@@ -291,11 +291,11 @@ body {
     cursor: pointer;
 }
 
-.modal-contact-seller {
-    margin-top: 20px;
-    margin-left: 85%;
-}
-
 #seller-email-container, #seller-phone-container {
     margin-left: 10px;
+}
+
+#bundle-seller-info-container {
+    margin-top: 10px;
+    margin-left: 70%;
 }
