@@ -21,31 +21,45 @@
         <img id="crest" src="/static/resources/uoft_crest.png">
       </div>
 
-        <h1>UBook | Register</h1>
+      <div id="title-container-left" class="title-container">
+        <span class="grey title-text">U</span>
+      </div>
 
-        {% if message %}
-            <p><strong>{{ message }}</strong></p>
-        {% endif %}
+      <div id="title-container-right" class="title-container">
+        <span class="blue title-text">Book</span>
+      </div>
 
-        <form method="post" action="/register/">
-            {% csrf_token %}
+      <div id="subtitle-container-left">
+        <span class="grey subtitle-text subtitle-text-left">register</span>
+      </div>
 
-            <div>
-                <label>Username: </label>
-                <input type="text" name="username" autofocus required>
-            </div>
-            <div>
-                <label>Email: </label>
-                <input type="text" name="email" autofocus required>
-            </div>
-            <div>
-                <label>Password: </label>
-                <input type="password" name="password" autofocus required>
-            </div>
-            <div>
-                <input type="submit" value="Register">
-            </div>
-        </form>
+      <div id="subtitle-container-right">
+       <span class="blue subtitle-text subtitle-text-right">
+         {% if message %}
+             <p><strong>{{ message }}</strong></p>
+         {% endif %}
+
+         <form method="post" action="/register/">
+             {% csrf_token %}
+
+             <div>
+                 <label>Username: </label>
+                 <input type="text" name="username" autofocus required>
+             </div>
+             <div>
+                 <label>Email: </label>
+                 <input type="text" name="email" autofocus required>
+             </div>
+             <div>
+                 <label>Password: </label>
+                 <input type="password" name="password" autofocus required>
+             </div>
+             <div>
+                 <input type="submit" value="Register">
+             </div>
+         </form>
+       </span>
+      </div>
 
     </body>
 </html>
