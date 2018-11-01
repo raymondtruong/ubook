@@ -1,39 +1,72 @@
 <!DOCTYPE html>
 <html>
     <head>
+      <meta charset="utf-8">
         <title>UBook | Login</title>
+        {%load static%}
+
+        <link rel="icon" href="/static/resources/uoft_crest.png">
+        <link href="https://fonts.googleapis.com/css?family=Chakra+Petch" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{% static '/styles/index.css' %}">
+        <style>
+            body {
+                background-image: url({% static '/resources/login_background.png' %});
+            }
+        </style>
     </head>
 
     <body>
-        <h1>UBook | Login</h1>
 
+      <div id="image-container">
+        <img id="crest" src="/static/resources/uoft_crest.png">
+      </div>
+
+      <div id="title-container-left" class="title-container">
+        <span class="grey title-text">U</span>
+      </div>
+
+      <div id="title-container-right" class="title-container">
+        <span class="blue title-text">Book</span>
+      </div>
+
+      <div id="subtitle-container-right">
+       <span class="blue subtitle-text subtitle-text-right">login</span>
+      </div>
+
+      <div id="subtitle-container-left">
+        <span class="grey subtitle-text subtitle-text-left">
+          <form method="post" action="/login/">
+              {% csrf_token %}
+
+              <br>
+
+              <div>
+                  <td><label for="id_username">username:</label></td>
+                  <td><input type="text" name="username" id="id_username" autofocus required></td>
+              </div>
+              <div>
+                  <td><label for="id_password">password:</label></td>
+                  <td><input type="password" name="password" id="id_password" required></td>
+              </div>
+
+              <div id="button-container-left">
+                <a href="/login/">
+                    <button id="login" class="button button-left grey">log in</button>
+                </a>
+              </div>
+          </form>
+        </span>
+
+        <br>
+        <a href="/register/">No account yet? Register here.</a>
+      
         {% if form.errors %}
-            <p><strong>Your username and password didn't match. Please try again.</strong></p>
+            <p><strong> Your username and password didn't match. Please try again.</strong></p>
         {% endif %}
 
         {% if message %}
             <p><strong>{{ message }}</strong></p>
         {% endif %}
-
-        <form method="post" action="/login/">
-            {% csrf_token %}
-
-            <div>
-                <td><label for="id_username">Username:</label></td>
-                <td><input type="text" name="username" id="id_username" autofocus required></td>
-            </div>
-            <div>
-                <td><label for="id_password">Password:</label></td>
-                <td><input type="password" name="password" id="id_password" required></td>
-            </div>
-
-            <div>
-                <input type="submit" value="Login">
-            </div>
-        </form>
-
-        <br>
-        <a href="/register/">No account yet? Register here.</a>
-
+      </div>
     </body>
 </html>

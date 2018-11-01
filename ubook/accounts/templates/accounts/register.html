@@ -1,35 +1,75 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>UBook | Register</title>
+        <meta charset="utf-8">
+          <title>UBook | Register</title>
+          {%load static%}
+
+          <link rel="icon" href="/static/resources/uoft_crest.png">
+          <link href="https://fonts.googleapis.com/css?family=Chakra+Petch" rel="stylesheet">
+          <link rel="stylesheet" type="text/css" href="{% static '/styles/index.css' %}">
+          <style>
+              body {
+                  background-image: url({% static '/resources/login_background.png' %});
+              }
+          </style>
     </head>
 
     <body>
-        <h1>UBook | Register</h1>
 
-        {% if message %}
-            <p><strong>{{ message }}</strong></p>
-        {% endif %}
+      <div id="image-container">
+        <img id="crest" src="/static/resources/uoft_crest.png">
+      </div>
 
-        <form method="post" action="/register/">
-            {% csrf_token %}
+      <div id="title-container-left" class="title-container">
+        <span class="grey title-text">U</span>
+      </div>
 
-            <div>
-                <label>Username: </label>
-                <input type="text" name="username" autofocus required>
-            </div>
-            <div>
-                <label>Email: </label>
-                <input type="text" name="email" autofocus required>
-            </div>
-            <div>
-                <label>Password: </label>
-                <input type="password" name="password" autofocus required>
-            </div>
-            <div>
-                <input type="submit" value="Register">
-            </div>
-        </form>
+      <div id="title-container-right" class="title-container">
+        <span class="blue title-text">Book</span>
+      </div>
+
+      <div id="subtitle-container-left">
+        <span class="grey subtitle-text subtitle-text-left">register</span>
+      </div>
+
+      <div id="subtitle-container-right">
+       <span class="blue subtitle-text subtitle-text-right">
+         {% if message %}
+             <p><strong>{{ message }}</strong></p>
+         {% endif %}
+
+         <form method="post" action="/register/">
+             {% csrf_token %}
+
+             <div>
+                 <label>username: </label>
+                 <input type="text" name="username" autofocus required>
+             </div>
+             <div>
+                 <label>email: </label>
+                 <input type="text" name="email" autofocus required>
+             </div>
+             <div>
+                 <label>phone number: </label>
+                 <input type="text" name="phone" autofocus required>
+             </div>
+             <div>
+                 <label>password: </label>
+                 <input type="password" name="password" autofocus required>
+             </div>
+             <div>
+                 <label>confirm password: </label>
+                 <input type="text" name="password2" autofocus required>
+             </div>
+             <div id="button-container-right">
+               <a href="/register/">
+                   <button id="signup" class="button button-right blue">register</button>
+               </a>
+             </div>
+         </form>
+       </span>
+      </div>
 
     </body>
 </html>
