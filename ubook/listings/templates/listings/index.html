@@ -3,14 +3,21 @@
  <head>
  	<meta charset="utf-8">
     <title>UBook</title>
-    <link rel="icon" href="resources/uoft_crest.png">
+    {%load static%}
+
+    <link rel="icon" href="/static/resources/uoft_crest.png">
     <link href="https://fonts.googleapis.com/css?family=Chakra+Petch" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="styles/index.css">
+    <link rel="stylesheet" type="text/css" href="{% static '/styles/index.css' %}">
+    <style>
+        body {
+            background-image: url({% static '/resources/login_background.png' %});
+        }
+    </style>
  </head>
 
 
   <div id="image-container">
-    <img id="crest" src="resources/uoft_crest.png">
+    <img id="crest" src="/static/resources/uoft_crest.png">
   </div>
 
   <div id="title-container-left" class="title-container">
@@ -30,11 +37,15 @@
   </div>
 
   <div id="button-container-left">
-    <button id="login" class="button button-left grey">log in</button>
+    <a href="/login/">
+        <button id="login" class="button button-left grey">log in</button>
+    </a>
   </div>
 
   <div id="button-container-right">
-    <button id="signup" class="button button-right blue">sign up</button>
+    <a href="/register/">
+        <button id="signup" class="button button-right blue">sign up</button>
+    </a>
   </div>
 
 </body>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+ 	  <meta charset="utf-8">
+    <title>UBook</title>
+    <link rel="icon" href="/static/resources/uoft_crest.png">
+    <link href="https://fonts.googleapis.com/css?family=Chakra+Petch" rel="stylesheet">
+    {%load static%}
+
+    <link rel="stylesheet" type="text/css" href="/static/styles/nav.css">
+    <link rel="stylesheet" type="text/css" href="/static/styles/listings.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="/static/js/nav.js"></script>
+  </head>
+  <body>
+    <!-- inject the navbar-->
+    <div id="navbar"> </div>
+    <script>
+      $(function(){
+        $("#navbar").load("{% static '/resources/nav.html' %}");
+      });
+    </script>
+
+    <!-- where users can add criteria to their search-->
+    <div id="criteria-container" class="big-container">
+      <div class="top-bar">
+        <span>Advanced Search Criteria</span>
+      </div>
+      <!-- where users can filter based on price-->
+      <div id="price-container" class="criterion-container">
+        <h4> Price: </h4>
+        <form id="price-form">
+          <span>$</span>
+          <input id="start-price" placeholder="from">
+          <span>- $</span>
+          <input id="end-price" placeholder="to">
+          <button class="button" type="submit"> Update </button>
+        </form>
+      </div>
+      <!-- where users can filter based on course -->
+      <div id="course-container" class="criterion-container">
+        <h4> Course: </h4>
+        <form id="course-form">
+          <input id="course-input" placeholder="e.g. CSC301">
+          <button class="button" type="submit"> Update </button>
+        </form>
+      </div>
+      <!-- where users can filter based on condition -->
+      <div id="condition-container" class="criterion-container">
+        <h4> Condition: </h4>
+        <form id="condition-form">
+          <input id="condition-slider" type="range" min="0" max="100" value="1">
+          <button class="button" type="submit"> Update </button>
+          <span> <strong><span id="slider-value">0</span></strong> or higher </span>
+        </form>
+      </div>
+
+    </div>
+
+    <!-- where the user enters their search query-->
+    <div id="search-container" class="big-container">
+      <div id="search-bar-container">
+        <div id="search-icon-container">
+          <img id="search-icon" src="/static/resources/search.png">
+        </div>
+        <input id="search-bar" type="text" placeholder="Search for a textbook by name, course code, etc.">
+      </div>
+    </div>
+
+    <!-- where results from the search query are displyed -->
+    <div id="results-container" class="big-container">
+        <div class="top-bar">
+          <div style="float:left">
+          <span>Results:</span>
+          </div>
+          <!-- sort-by selector -->
+          <div id="sort-container">
+            <span>Sort by:</span>
+            <select id="sort-select">
+              <option value="dateDescending">Newest first</option>
+              <option value="dateAscending">Oldest first</option>
+              <option value="priceDescending">Price: low to high</option>
+              <option value="priceAscending">Price: high to low</option>
+              <option value="condDescending">Condition: high to low</option>
+              <option value="condAscending">Condition: low to high</option>
+            </select>
+          </div>
+        </div>
+        <!-- list of postings that match search criteria; note that
+             textbooks and bundles have slightly different structure -->
+        <div id="results">
+          <div class="result-container bundle">
+            <div class="image-container">
+              <img src="/static/resources/textbook-example1.jpg">
+            </div>
+            <div class="book-info-container">
+              <h5 class="book-title"> HIS109 Bundle (2 textbooks) </h5>
+              <button class="view-bundle button"> View textbooks in bundle </button>
+              <div class="book-description-container">
+                <span class="book-description">
+                    I can meet you anywhere on campus.
+                </span>
+              </div>
+            </div>
+            <div class="book-info-right-container">
+              <span class="book-price">$120</span>
+              <button class="contact-seller button"> Contact seller </button>
+            </div>
+          </div>
+
+          <div class="result-container">
+            <div class="image-container">
+              <img src="/static/resources/textbook-example2.jpg">
+            </div>
+            <div class="book-info-container">
+              <h5 class="book-title"> Linear Algebra and its Applications, 5th edition </h5>
+              <span class="book-authors"> By David Lay, Robert Lay, Judi Macdonald</span>
+              <span class="book-courses"> Courses: MAT223 </span>
+              <span class="book-condition"> Condition: 9.5 </span>
+              <div class="book-description-container">
+                <span class="book-description">
+                    I dropped the course, so this textbook is in perfect condition!
+                    Pick-up at St. George & Harbord.
+                </span>
+              </div>
+            </div>
+            <div class="book-info-right-container">
+              <span class="book-price">$100</span>
+              <button class="contact-seller button"> Contact seller </button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <!-- bundle info pop-up modal -->
+    <div id="bundle-backdrop" class="modal-backdrop">
+      <div id="bundle-info" class="modal-content">
+        <!-- header, containing title, price, and close button -->
+        <div class="modal-top-container">
+          <span id="bundle-title" class="bold">HIS109 Bundle</span>
+          <span id="bundle-price">$160</span>
+          <span id="bundle-close" class="close">&times;</span>
+        </div>
+        <!-- list of all textbooks within the bundle, in the same format
+             as textbooks in search results, except with no price -->
+        <div id="bundle-results">
+          <div class="result-container">
+            <div class="image-container">
+              <img src="/static/resources/textbook-example1.jpg">
+            </div>
+            <div class="book-info-container">
+              <h5 class="book-title"> Perspectives From The Past </h5>
+              <span class="book-authors"> By James Brophy, Joshua Cole</span>
+              <span class="book-courses"> Courses: HIS109 </span>
+              <span class="book-condition"> Condition: 6.5 </span>
+              <div class="book-description-container">
+                <span class="book-description">
+                    Some minor water damage on top and highlighter marks throughout.
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="result-container">
+            <div class="image-container">
+              <img src="/static/resources/textbook-example1.jpg">
+            </div>
+            <div class="book-info-container">
+              <h5 class="book-title"> Western Civilizations: Their History and Their Culture </h5>
+              <span class="book-authors"> By Joshua Cole, Carol Symes</span>
+              <span class="book-courses"> Courses: HIS109 </span>
+              <span class="book-condition"> Condition: 9.2 </span>
+              <div class="book-description-container">
+                <span class="book-description">
+                    A couple of tiny rips on a few pages.
+                </span>
+              </div>
+            </div>
+          </div>
+          <!-- seller information at the bottom of the modal -->
+          <div id="bundle-seller-info-container">
+            <div id=bundle-seller-email-container>
+              <span class="bold"> Email: </span> <span  class="seller-email">geezus@gmail.com</span>
+            </div>
+            <div id=bundle-seller-phone-container>
+              <span class="bold"> Phone: </span> <span class="seller-phone">416-614-4162</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- seller info pop-up modal -->
+    <div id="seller-backdrop" class="modal-backdrop">
+      <div id="seller-info" class="modal-content">
+        <!-- header, containing title and the close button -->
+        <div class="modal-top-container">
+          <span id="seller-title" class="bold">Contact Seller</span>
+          <span id="seller-close" class="close">&times;</span>
+        </div>
+        <!-- seller info -->
+        <div id="seller-email-container">
+          <span class="bold"> Email: </span> <span  class="seller-email">geezus@gmail.com</span>
+        </div>
+        <div id="seller-phone-container">
+          <span class="bold"> Phone: </span> <span class="seller-phone">416-614-4162</span>
+        </div>
+      </div>
+    </div>
+
+    <script src="/static/js/search.js"></script>
+  </body>
+</html>
