@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>UBook | Register</title>
+        <meta charset="utf-8">
+          <title>UBook | Register</title>
+          {%load static%}
+
+          <link rel="icon" href="/static/resources/uoft_crest.png">
+          <link href="https://fonts.googleapis.com/css?family=Chakra+Petch" rel="stylesheet">
+          <link rel="stylesheet" type="text/css" href="{% static '/styles/index.css' %}">
+          <style>
+              body {
+                  background-image: url({% static '/resources/login_background.png' %});
+              }
+          </style>
     </head>
 
     <body>
+
+      <div id="image-container">
+        <img id="crest" src="/static/resources/uoft_crest.png">
+      </div>
+
         <h1>UBook | Register</h1>
 
         {% if message %}
