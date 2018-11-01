@@ -21,7 +21,33 @@
         <img id="crest" src="/static/resources/uoft_crest.png">
       </div>
 
-        <h1>UBook | Login</h1>
+      <div id="title-container-left" class="title-container">
+        <span class="grey title-text">U</span>
+      </div>
+
+      <div id="title-container-right" class="title-container">
+        <span class="blue title-text">Book</span>
+      </div>
+
+      <div id="subtitle-container-left">
+        <span class="grey subtitle-text subtitle-text-left">
+          <form method="post" action="/login/">
+              {% csrf_token %}
+
+              <div>
+                  <td><label for="id_username">Username:</label></td>
+                  <td><input type="text" name="username" id="id_username" autofocus required></td>
+              </div>
+              <div>
+                  <td><label for="id_password">Password:</label></td>
+                  <td><input type="password" name="password" id="id_password" required></td>
+              </div>
+
+              <div>
+                  <input type="submit" value="Login">
+              </div>
+          </form>
+        </span>
 
         {% if form.errors %}
             <p><strong>Your username and password didn't match. Please try again.</strong></p>
@@ -31,25 +57,13 @@
             <p><strong>{{ message }}</strong></p>
         {% endif %}
 
-        <form method="post" action="/login/">
-            {% csrf_token %}
-
-            <div>
-                <td><label for="id_username">Username:</label></td>
-                <td><input type="text" name="username" id="id_username" autofocus required></td>
-            </div>
-            <div>
-                <td><label for="id_password">Password:</label></td>
-                <td><input type="password" name="password" id="id_password" required></td>
-            </div>
-
-            <div>
-                <input type="submit" value="Login">
-            </div>
-        </form>
-
         <br>
         <a href="/register/">No account yet? Register here.</a>
+      </div>
+
+      <div id="subtitle-container-right">
+       <span class="blue subtitle-text subtitle-text-right">login</span>
+      </div>
 
     </body>
 </html>
