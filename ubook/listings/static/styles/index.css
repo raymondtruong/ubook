@@ -102,3 +102,7 @@ body {
 .button:hover {
     text-decoration: underline;
 }
+
+.error {
+    color: #D8000C;
+}
