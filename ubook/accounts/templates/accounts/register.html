@@ -43,16 +43,24 @@
              {% csrf_token %}
 
              <div>
-                 <label>Username: </label>
+                 <label>username: </label>
                  <input type="text" name="username" autofocus required>
              </div>
              <div>
-                 <label>Email: </label>
+                 <label>email: </label>
                  <input type="text" name="email" autofocus required>
              </div>
              <div>
-                 <label>Password: </label>
+                 <label>phone number: </label>
+                 <input type="text" name="phone" autofocus required>
+             </div>
+             <div>
+                 <label>password: </label>
                  <input type="password" name="password" autofocus required>
+             </div>
+             <div>
+                 <label>confirm password: </label>
+                 <input type="text" name="password2" autofocus required>
              </div>
              <div id="button-container-right">
                <a href="/register/">
