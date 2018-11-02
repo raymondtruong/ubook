@@ -17,22 +17,27 @@
 
     <body>
 
+      <!--- UofT Crest at top of page. --->
       <div id="image-container">
         <img id="crest" src="/static/resources/uoft_crest.png">
       </div>
 
+      <!--- First part of title. --->
       <div id="title-container-left" class="title-container">
         <span class="grey title-text">U</span>
       </div>
 
+      <!--- Last part of title. --->
       <div id="title-container-right" class="title-container">
         <span class="blue title-text">Book</span>
       </div>
 
+      <!--- Login subtitle. --->
       <div id="subtitle-container-right">
        <span class="blue subtitle-text subtitle-text-right">login</span>
       </div>
 
+      <!--- Login page text and boxes. --->
       <div id="subtitle-container-left">
         <span class="grey subtitle-text subtitle-text-left">
           <form method="post" action="/login/">
@@ -58,16 +63,13 @@
         </span>
 
         <br>
-<<<<<<< HEAD
 
+        <!--- Reegister button. --->
         <a href="/register/">
           <button id="register" class="button button-left grey">No account yet? Register here.</button>
         </a>
 
-=======
-        <a href="/register/">No account yet? Register here.</a>
-      
->>>>>>> 40070bf66a3bca3a2a7feaf2e115e6798a6550c9
+        <!--- Error messages. --->
         {% if form.errors %}
             <p><strong> Your username and password didn't match. Please try again.</strong></p>
         {% endif %}
@@ -76,5 +78,6 @@
             <p><strong>{{ message }}</strong></p>
         {% endif %}
       </div>
+
     </body>
 </html>
