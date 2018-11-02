@@ -37,6 +37,8 @@ nav div {
     padding-right: 5px;
     margin-right: 5px;
     margin-left: 5px;
+    text-decoration: none;
+    color: inherit;
 }
 
 .navbar-button:hover, #dropdown-content a:hover {
@@ -62,4 +64,5 @@ nav div {
     padding-bottom: 2px;
     display: block;
     color: #E5E5E5;
+    text-decoration: none;
 }
