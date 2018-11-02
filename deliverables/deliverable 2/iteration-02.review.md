@@ -38,12 +38,12 @@ In order to fix the issues we encountered with communication between the sub tea
 We were able to complete a basic, and functional user authentication vertical. Users can now sign up by creating a account for our application as well as login with existing accounts. Users are denied access and are displayed an error message if they have entered incorrect credentials.
 
 We have completed the html views for the following pages of our application:
-> The launch page
-> The listings search page
-	> The login page
-	> The registration page
-	> Individual listing details sub window
-	> Bundle listing details sub window
+- The launch page
+- The listings search page
+- The login page
+- The registration page
+- Individual listing details sub window
+- Bundle listing details sub window
 
 Evidence for completion of these goals will be displayed during the deliverable video
 
