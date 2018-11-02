@@ -71,11 +71,11 @@
 
         <!--- Error messages. --->
         {% if form.errors %}
-            <p><strong> Your username and password didn't match. Please try again.</strong></p>
+            <p class="error"><strong> Your username and password didn't match. Please try again.</strong></p>
         {% endif %}
 
         {% if message %}
-            <p><strong>{{ message }}</strong></p>
+            <p class="grey"><strong>{{ message }}</strong></p>
         {% endif %}
       </div>
 
