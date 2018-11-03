@@ -4,7 +4,7 @@
 UBook is a textbook marketplace website where University of Toronto students can buy and sell used textbooks quickly, easily, and effectively. Created by Team 23 (see below) as the final team project for CSC301H1 in Fall 2018.
 
 ## Live Demo
-(https://youtu.be/DU1HA7S3_lg)
+https://youtu.be/DU1HA7S3_lg
 
 
 ## Usage
