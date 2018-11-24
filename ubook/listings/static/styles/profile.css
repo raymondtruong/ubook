@@ -11,6 +11,7 @@ body {
     background-color: #204B7F;
     outline: none;
     border-radius: 12px;
+    font-size: 20px;
 }
 .button:hover {
     background-color: #002a5c;
@@ -25,6 +26,15 @@ body {
 #nav-container {
     position: relative;
     top: 100px;
+    width: 20%;
+    left: 12%;
+    text-align: center;
+    font-size: 20px;
+    overflow: auto;
+}
+#create-container {
+    position: absolute;
+    top: 240px;
     width: 20%;
     left: 12%;
     text-align: center;
