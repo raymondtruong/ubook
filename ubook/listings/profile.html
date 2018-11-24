@@ -32,11 +32,12 @@
       </div>
     </nav>
 
+    <!-- navigation menu container -->
     <div id="nav-container" class="big-container">
       <ul>
         <li> Your Profile </li>
-        <li> Your Active Postings </li>
-        <li> Your Inactive Postings </li>
+        <li> Your Active Listings </li>
+        <li> Your Sold Listings </li>
       </ul>
     </div>
 
@@ -46,106 +47,8 @@
 
     <div id="main-container" class="big-container">
       <div id="title-container">
-        Your Postings
+        Your Profile
       </div>
 
-      <div id="results">
-        <div class="result-container bundle">
-          <div class="image-container">
-            <img src="static/resources/textbook-example1.jpg">
-          </div>
-          <div class="book-info-container">
-            <h5 class="book-title"> HIS109 Bundle (2 textbooks) </h5>
-            <button class="view-bundle button"> View textbooks in bundle </button>
-            <div class="book-description-container">
-              <span class="book-description">
-                  I can meet you anywhere on campus.
-              </span>
-            </div>
-          </div>
-          <div class="book-info-right-container">
-            <span class="book-price">$120</span>
-            <button class="mark-sold-posting posting-action button"> Mark as sold </button>
-            <button class="edit-posting posting-action button"> Edit </button>
-            <button class="remove-posting posting-action button"> Remove </button>
-          </div>
-        </div>
-
-        <div class="result-container">
-          <div class="image-container">
-            <img src="static/resources/textbook-example2.jpg">
-          </div>
-          <div class="book-info-container">
-            <h5 class="book-title"> Linear Algebra and its Applications, 5th edition </h5>
-            <span class="book-authors"> By David Lay, Robert Lay, Judi Macdonald</span>
-            <span class="book-courses"> Courses: MAT223 </span>
-            <span class="book-condition"> Condition: 9.5 </span>
-            <div class="book-description-container">
-              <span class="book-description">
-                  I dropped the course, so this textbook is in perfect condition!
-                  Pick-up at St. George & Harbord.
-              </span>
-            </div>
-          </div>
-          <div class="book-info-right-container">
-            <span class="book-price">$100</span>
-            <button class="mark-sold-posting posting-action button"> Mark as sold </button>
-            <button class="edit-posting posting-action button"> Edit </button>
-            <button class="remove-posting posting-action button"> Remove </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- bundle info pop-up modal -->
-    <div id="bundle-backdrop" class="modal-backdrop">
-      <div id="bundle-info" class="modal-content">
-        <!-- header, containing title, price, and close button -->
-        <div class="modal-top-container">
-          <span id="bundle-title" class="bold">HIS109 Bundle</span>
-          <span id="bundle-price">$160</span>
-          <span id="bundle-close" class="close">&times;</span>
-        </div>
-        <!-- list of all textbooks within the bundle, in the same format
-             as textbooks in search results, except with no price -->
-        <div id="bundle-results">
-          <div class="result-container">
-            <div class="image-container">
-              <img src="static/resources/textbook-example1.jpg">
-            </div>
-            <div class="book-info-container">
-              <h5 class="book-title"> Perspectives From The Past </h5>
-              <span class="book-authors"> By James Brophy, Joshua Cole</span>
-              <span class="book-courses"> Courses: HIS109 </span>
-              <span class="book-condition"> Condition: 6.5 </span>
-              <div class="book-description-container">
-                <span class="book-description">
-                    Some minor water damage on top and highlighter marks throughout.
-                </span>
-              </div>
-            </div>
-          </div>
-          <div class="result-container">
-            <div class="image-container">
-              <img src="static/resources/textbook-example1.jpg">
-            </div>
-            <div class="book-info-container">
-              <h5 class="book-title"> Western Civilizations: Their History and Their Culture </h5>
-              <span class="book-authors"> By Joshua Cole, Carol Symes</span>
-              <span class="book-courses"> Courses: HIS109 </span>
-              <span class="book-condition"> Condition: 9.2 </span>
-              <div class="book-description-container">
-                <span class="book-description">
-                    A couple of tiny rips on a few pages.
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <script src="static/js/profile.js"></script>
   </body>
 </html>
