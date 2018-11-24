@@ -54,6 +54,11 @@ body {
     font-size: 32px;
     text-align: center;
 }
+/* Removes default styling from links */
+a {
+    color: inherit;
+    text-decoration: none;
+}
 ul {
     padding: 0;
     /* Removes default styling from all lists on page */
