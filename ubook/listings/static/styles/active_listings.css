@@ -1,0 +1,24 @@
+/* Styling for the action buttons on each posting */
+.listing-action {
+    display: block;
+    margin: 5px auto;
+    width: 70%;
+}
+.mark-sold-listing {
+    background-color: #37992d;
+}
+.mark-sold-listing:hover {
+    background-color: #1a6812;
+}
+.edit-listing {
+    background-color: #bac128;
+}
+.edit-listing:hover {
+    background-color: #959b0f;
+}
+.remove-listing {
+    background-color: #c43333;
+}
+.remove-listing:hover {
+    background-color: #962222;
+}
