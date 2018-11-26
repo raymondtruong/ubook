@@ -26,7 +26,7 @@
         <div id="user-dropdown">
           <a id="user-dropdown-button"class="navbar-button" onclick="dropDown()">{{ user.username }} ▾</a>
           <div id="dropdown-content">
-            <a href="/">my postings</a>
+            <a href="active_listings.html">my postings</a>
             <a href="/">edit profile</a>
             <a href="/logout/">log out</a>
           </div>
@@ -110,7 +110,7 @@
           <span id="bundle-close" class="close">&times;</span>
         </div>
         <!-- list of all textbooks within the bundle, in the same format
-             as textbooks in search results, except with no price -->
+             as textbooks in search bundle-results, except with no price -->
         <div id="bundle-results">
           <div class="result-container">
             <div class="image-container">
@@ -145,10 +145,8 @@
             </div>
           </div>
         </div>
-      </div>
+      </div>  
     </div>
-
-
-    <script src="static/js/listings.js"></script>
+    <script type="text/javascript" src="static/js/active_listings.js"></script>
   </body>
 </html>
