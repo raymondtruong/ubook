@@ -21,3 +21,19 @@ def index(request):
         return render(request, "listings/listings.html")
     else:
         return render(request, "listings/index.html")
+
+
+def profile(request):
+    return render(request, "listings/profile.html")
+
+
+def active_listings(request):
+    return render(request, "listings/active_listings.html")
+
+
+def inactive_listings(request):
+    return render(request, "listings/inactive_listings.html")
+
+
+def new_listing(request):
+    return render(request, "listings/new_listing.html")
