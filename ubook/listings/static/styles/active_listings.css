@@ -22,3 +22,70 @@
 .remove-listing:hover {
     background-color: #962222;
 }
+/* the actual content of the modal */
+.modal-content {
+    background: white;
+    border: 1px solid grey;
+    border-radius: 25px;
+    margin: 5% auto;
+    padding: 20px;
+    padding-top: 0;
+    width: 50%;
+    font-size: 20px;
+}
+.title{
+    height: 10vh;
+    vertical-align: center;
+    display: table; /* so elements can be aligned vertically */
+    width: 100%;
+    border-spacing: 10px;
+    border-bottom: 0;
+    font-size: 20px;
+}
+
+.author{
+    height: 10vh;
+    vertical-align: center;
+    display: table; /* so elements can be aligned vertically */
+    width: 100%;
+    border-spacing: 10px;
+    border-bottom: 0;
+    font-size: 20px;
+}
+.course{
+    height: 10vh;
+    vertical-align: center;
+    display: table; /* so elements can be aligned vertically */
+    width: 100%;
+    border-spacing: 10px;
+    border-bottom: 0;
+    font-size: 20px;
+}
+.condition{
+    height: 10vh;
+    vertical-align: center;
+    display: table; /* so elements can be aligned vertically */
+    width: 100%;
+    border-spacing: 10px;
+    border-bottom: 0;
+    font-size: 20px;
+}
+.image{
+    height: 10vh;
+    vertical-align: center;
+    display: table; /* so elements can be aligned vertically */
+    width: 100%;
+    border-spacing: 10px;
+    border-bottom: 0;
+    font-size: 20px;
+}
+.description{
+    height: 10vh;
+    vertical-align: center;
+    display: table; /* so elements can be aligned vertically */
+    width: 100%;
+    border-spacing: 10px;
+    border-bottom: 0;
+    font-size: 20px;
+}
+
