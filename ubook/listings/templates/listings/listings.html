@@ -131,6 +131,8 @@
               </div>
               <div class="book-info-right-container">
                 <span class="book-price">${{ listing.price }}</span>
+                <span style="display:none" class="seller-email">{{ listing.owner.email }}</span>
+                <span style="display:none" class="seller-phone">{{ listing.owner.profile.phone }}</span>
                 <button class="contact-seller button"> Contact seller </button>
               </div>
             </div>
@@ -154,6 +156,8 @@
             </div>
             <div class="book-info-right-container">
               <span class="book-price">${{ listing.price }}</span>
+              <span style="display:none" class="seller-email">{{ listing.owner.email }}</span>
+              <span style="display:none" class="seller-phone">{{ listing.owner.profile.phone }}</span>
               <button class="contact-seller button"> Contact seller </button>
             </div>
           </div>
@@ -231,10 +235,10 @@
         </div>
         <!-- seller info -->
         <div id="seller-email-container">
-          <span class="bold"> Email: </span> <span  class="seller-email">geezus@gmail.com</span>
+          <span class="bold"> Email: </span> <span id="seller-backdrop-email" class="seller-email">geezus@gmail.com</span>
         </div>
         <div id="seller-phone-container">
-          <span class="bold"> Phone: </span> <span class="seller-phone">416-614-4162</span>
+          <span class="bold"> Phone: </span> <span id="seller-backdrop-phone" class="seller-phone">416-614-4162</span>
         </div>
       </div>
     </div>
