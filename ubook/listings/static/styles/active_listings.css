@@ -88,4 +88,26 @@
     border-bottom: 0;
     font-size: 20px;
 }
+.price{
+    height: 10vh;
+    vertical-align: center;
+    display: table; /* so elements can be aligned vertically */
+    width: 100%;
+    border-spacing: 10px;
+    border-bottom: 0;
+    font-size: 20px;
+}
+.input{
+    display: block;
+}
+
+.submit{
+    height: 10vh;
+    vertical-align: center;
+    display: table; /* so elements can be aligned vertically */
+    width: 100%;
+    border-spacing: 10px;
+    border-bottom: 0;
+    font-size: 20px;
+}
 
