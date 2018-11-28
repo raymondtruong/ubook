@@ -1,24 +1,62 @@
 from django.shortcuts import render
 from listings.models import *
+from itertools import chain
+
 
 def index(request):
     if request.user.is_authenticated:
+
         """
-        t = Textbook(name="Textbook", edition="1", condition="9.5",
-                     description="This is a textbook.", authors="Author 1",
-                     courses="CSC123")
+        # hard code textbook
+        t = Textbook(name="Test Textbook, 1st edition",
+                     authors="Author 1, Author 2",
+                     courses="CSC301, CSC302",
+                     condition="9.5",
+                     description="This is a textbook.",
+                     photo="https://banner2.kisspng.com/20180105/prq/book-clip-art-5a5019c8436fc6.28019198151519892027624341.jpg")
         t.save()
 
-        l = Listing(title="Listing", price="123.45", owner=request.user,
-                    photo="https://banner2.kisspng.com/20180105/prq/book-clip-art-5a5019c8436fc6.28019198151519892027624341.jpg")
-
-        l.save()
-        l.textbooks.add(t)
+        # hard code individual listing
+        l = IndividualListing(owner=request.user, textbook=t, price=133.37)
         l.save()
 
-        listings = Listing.objects.all()
+        # hard code bundle listing
+        b = BundleListing(owner=request.user, title="Test Bundle ()", description="This is a bundle.", price=133.38)
+        b.save()
+        b.textbooks.add(t)
+        b.photo = t.photo
+        b.save()
         """
-        return render(request, "listings/listings.html")
+
+        # combine individual listings and bundle listings
+        listings = list(chain(IndividualListing.objects.all(), BundleListing.objects.all()))
+
+        # if advanced search criteria is used:
+        if request.method == "POST":
+
+            # price criteria
+            if request.POST.get("price_update"):
+                start_price = request.POST.get("start-price")
+                end_price = request.POST.get("end-price")
+
+                individual_listings = IndividualListing.objects.all().filter(price__gte=start_price).filter(price__lte=end_price)
+                bundle_listings = BundleListing.objects.all().filter(price__gte=start_price).filter(price__lte=end_price)
+                listings = list(chain(individual_listings, bundle_listings))
+
+            # course criteria
+            elif request.POST.get("course_update"):
+                course = request.POST.get("course-input")
+
+                # TODO
+
+            # condition criteria
+            elif request.POST.get("condition_update"):
+                condition = request.POST.get("condition-slider")
+
+                # TODO
+
+        return render(request, "listings/listings.html", {"listings": listings})
+
     else:
         return render(request, "listings/index.html")
 
@@ -28,11 +66,31 @@ def profile(request):
 
 
 def active_listings(request):
-    return render(request, "listings/active_listings.html")
+    if request.user.is_authenticated:
+
+        individual_listings = IndividualListing.objects.all().filter(owner=request.user).filter(is_sold=False)
+        bundle_listings = BundleListing.objects.all().filter(owner=request.user).filter(is_sold=False)
+
+        # return all active listings owned by the currently authenticated user
+        listings = list(chain(individual_listings, bundle_listings))
+        return render(request, "listings/active_listings.html", {"listings": listings})
+
+    else:
+        return render(request, "listings/index.html")
 
 
 def inactive_listings(request):
-    return render(request, "listings/inactive_listings.html")
+    if request.user.is_authenticated:
+
+        individual_listings = IndividualListing.objects.all().filter(owner=request.user).filter(is_sold=True)
+        bundle_listings = BundleListing.objects.all().filter(owner=request.user).filter(is_sold=True)
+
+        # return all inactive listings owned by the currently authenticated user
+        listings = list(chain(individual_listings, bundle_listings))
+        return render(request, "listings/inactive_listings.html", {"listings": listings})
+
+    else:
+        return render(request, "listings/index.html")
 
 
 def new_listing(request):

@@ -43,28 +43,35 @@
       <!-- where users can filter based on price-->
       <div id="price-container" class="criterion-container">
         <h4> Price: </h4>
-        <form id="price-form">
+        <form id="price-form" action="/listings/" method="post">
+            {% csrf_token %}
           <span>$</span>
-          <input id="start-price" placeholder="from">
+          <input id="start-price" name="start-price" placeholder="from">
           <span>- $</span>
-          <input id="end-price" placeholder="to">
-          <button class="button" type="submit"> Update </button>
+          <input id="end-price" name="end-price" placeholder="to">
+          <button class="button" name="price_update" value="price_update" type="submit"> Update </button>
         </form>
       </div>
+
+
+
       <!-- where users can filter based on course -->
       <div id="course-container" class="criterion-container">
         <h4> Course: </h4>
-        <form id="course-form">
-          <input id="course-input" placeholder="e.g. CSC301">
-          <button class="button" type="submit"> Update </button>
+        <form id="course-form" action="/listings/" method="post">
+            {% csrf_token %}
+          <input id="course-input" name="course-input" placeholder="e.g. CSC301">
+          <button class="button" name="course_update" value="course_update" type="submit"> Update </button>
         </form>
       </div>
+
       <!-- where users can filter based on condition -->
       <div id="condition-container" class="criterion-container">
         <h4> Condition: </h4>
-        <form id="condition-form">
-          <input id="condition-slider" type="range" min="0" max="100" value="1">
-          <button class="button" type="submit"> Update </button>
+        <form id="condition-form" action="/listings/" method="post">
+            {% csrf_token %}
+          <input id="condition-slider" name="condition-slider" type="range" min="0" max="100" value="1">
+          <button class="button" name="condition_update" value="condition_update" type="submit"> Update </button>
           <span> <strong><span id="slider-value">0</span></strong> or higher </span>
         </form>
       </div>
@@ -80,6 +87,7 @@
         <input id="search-bar" type="text" placeholder="Search for a textbook by name, course code, etc.">
       </div>
     </div>
+
 
     <!-- where results from the search query are displyed -->
     <div id="results-container" class="big-container">
@@ -103,46 +111,56 @@
         <!-- list of postings that match search criteria; note that
              textbooks and bundles have slightly different structure -->
         <div id="results">
-          <div class="result-container bundle">
+
+
+          {% for listing in listings %}
+          {% if listing.is_bundle %}
+
+            <div class="result-container bundle">
+              <div class="image-container">
+                <img src="{{ listing.photo }}">
+              </div>
+              <div class="book-info-container">
+                <h5 class="book-title">{{ listing.title }} </h5>
+                <button class="view-bundle button"> View textbooks in bundle </button>
+                <div class="book-description-container">
+                  <span class="book-description">
+                      {{ listing.description }}
+                  </span>
+                </div>
+              </div>
+              <div class="book-info-right-container">
+                <span class="book-price">${{ listing.price }}</span>
+                <button class="contact-seller button"> Contact seller </button>
+              </div>
+            </div>
+
+          {% else %}
+
+          <div class="result-container">
             <div class="image-container">
-              <img src="/static/resources/textbook-example1.jpg">
+              <img src="{{ listing.textbook.photo }}">
             </div>
             <div class="book-info-container">
-              <h5 class="book-title"> HIS109 Bundle (2 textbooks) </h5>
-              <button class="view-bundle button"> View textbooks in bundle </button>
+              <h5 class="book-title">{{ listing.textbook.name }}</h5>
+              <span class="book-authors">By {{ listing.textbook.authors }}</span>
+              <span class="book-courses">Courses: {{ listing.textbook.courses}}</span>
+              <span class="book-condition">Condition: {{ listing.textbook.condition }}</span>
               <div class="book-description-container">
                 <span class="book-description">
-                    I can meet you anywhere on campus.
+                    {{ listing.textbook.description }}
                 </span>
               </div>
             </div>
             <div class="book-info-right-container">
-              <span class="book-price">$120</span>
+              <span class="book-price">${{ listing.price }}</span>
               <button class="contact-seller button"> Contact seller </button>
             </div>
           </div>
 
-          <div class="result-container">
-            <div class="image-container">
-              <img src="/static/resources/textbook-example2.jpg">
-            </div>
-            <div class="book-info-container">
-              <h5 class="book-title"> Linear Algebra and its Applications, 5th edition </h5>
-              <span class="book-authors"> By David Lay, Robert Lay, Judi Macdonald</span>
-              <span class="book-courses"> Courses: MAT223 </span>
-              <span class="book-condition"> Condition: 9.5 </span>
-              <div class="book-description-container">
-                <span class="book-description">
-                    I dropped the course, so this textbook is in perfect condition!
-                    Pick-up at St. George & Harbord.
-                </span>
-              </div>
-            </div>
-            <div class="book-info-right-container">
-              <span class="book-price">$100</span>
-              <button class="contact-seller button"> Contact seller </button>
-            </div>
-          </div>
+          {% endif %}
+          {% endfor %}
+
         </div>
     </div>
 
@@ -152,7 +170,7 @@
         <!-- header, containing title, price, and close button -->
         <div class="modal-top-container">
           <span id="bundle-title" class="bold">HIS109 Bundle</span>
-          <span id="bundle-price">$120</span>
+          <span id="bundle-price">$160</span>
           <span id="bundle-close" class="close">&times;</span>
         </div>
         <!-- list of all textbooks within the bundle, in the same format
@@ -188,6 +206,15 @@
                     A couple of tiny rips on a few pages.
                 </span>
               </div>
+            </div>
+          </div>
+          <!-- seller information at the bottom of the modal -->
+          <div id="bundle-seller-info-container">
+            <div id=bundle-seller-email-container>
+              <span class="bold"> Email: </span> <span  class="seller-email">geezus@gmail.com</span>
+            </div>
+            <div id=bundle-seller-phone-container>
+              <span class="bold"> Phone: </span> <span class="seller-phone">416-614-4162</span>
             </div>
           </div>
         </div>
