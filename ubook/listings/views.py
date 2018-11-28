@@ -64,9 +64,27 @@ def index(request):
 def profile(request):
     return render(request, "listings/profile.html")
 
+def set_is_sold_to_value(listing, sold_value):
+    if ("Individual" in listing):
+        for l in IndividualListing.objects.all():
+            if str(l) == listing:
+                print("FOUND")
+                l.is_sold = sold_value
+                l.save()
+    else:
+        for l in BundleListing.objects.all():
+            if str(l) == listing:
+                print("FOUND")
+                l.is_sold = sold_value
+                l.save()
 
 def active_listings(request):
     if request.user.is_authenticated:
+        # If we are requested to mark a listing as sold, set it as sold
+        if (request.method == "POST"):
+            if (request.POST.get("mark_as_sold")):
+                listing = request.POST.get("listing_to_mark")
+                set_is_sold_to_value(listing, True)
 
         individual_listings = IndividualListing.objects.all().filter(owner=request.user).filter(is_sold=False)
         bundle_listings = BundleListing.objects.all().filter(owner=request.user).filter(is_sold=False)
@@ -74,13 +92,17 @@ def active_listings(request):
         # return all active listings owned by the currently authenticated user
         listings = list(chain(individual_listings, bundle_listings))
         return render(request, "listings/active_listings.html", {"listings": listings})
-
     else:
         return render(request, "listings/index.html")
 
 
+
 def inactive_listings(request):
     if request.user.is_authenticated:
+        if (request.method == "POST"):
+            if (request.POST.get("reactivate")):
+                listing = request.POST.get("listing_to_reactivate")
+                set_is_sold_to_value(listing, False)
 
         individual_listings = IndividualListing.objects.all().filter(owner=request.user).filter(is_sold=True)
         bundle_listings = BundleListing.objects.all().filter(owner=request.user).filter(is_sold=True)
