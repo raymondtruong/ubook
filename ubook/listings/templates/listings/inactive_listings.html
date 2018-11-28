@@ -74,7 +74,11 @@
               </div>
               <div class="book-info-right-container">
                 <span class="book-price">${{ listing.price }}</span>
-                <button class="reactivate-listing button"> Reactivate </button>
+                <form action="/inactive_listings/" method="POST">
+                   {% csrf_token %}
+                   <input type="hidden" value="{{ listing }}" name="listing_to_reactivate">
+                   <button class="reactivate-listing button" type="submit" name="reactivate" value="reactivate"> Reactivate </button>
+                 </form>
                 <button class="remove-listing button"> Remove </button>
               </div>
             </div>

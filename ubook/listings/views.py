@@ -65,11 +65,18 @@ def profile(request):
     return render(request, "listings/profile.html")
 
 def set_is_sold_to_value(listing, sold_value):
-    for l in IndividualListing.objects.all():
-        if str(l) == listing:
-            print("FOUND")
-            l.is_sold = sold_value
-            l.save()
+    if ("Individual" in listing):
+        for l in IndividualListing.objects.all():
+            if str(l) == listing:
+                print("FOUND")
+                l.is_sold = sold_value
+                l.save()
+    else:
+        for l in BundleListing.objects.all():
+            if str(l) == listing:
+                print("FOUND")
+                l.is_sold = sold_value
+                l.save()
 
 def active_listings(request):
     if request.user.is_authenticated:
