@@ -18,9 +18,13 @@ def register(request):
         username = request.POST["username"]
         email = request.POST["email"]
         password = request.POST["password"]
+        phone = request.POST["phone"]
+        # here we get the value of the new attribute
 
         try:
             user = User.objects.create_user(username, email, password)
+            user.profile.phone = phone
+            # assign the attribute value to the user.profile.attribute
             user.save()
         except IntegrityError as e:
             # try again
