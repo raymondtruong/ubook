@@ -3,7 +3,7 @@ const slider = document.querySelector("#condition-slider");
 const sliderValue = document.querySelector("#slider-value");
 
 slider.oninput = function() {
-    sliderValue.innerHTML = this.value / 10;
+    sliderValue.innerHTML = this.value / 2;
 }
 
 // Configure bundle pop-up modal

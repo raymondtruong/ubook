@@ -51,9 +51,13 @@ def index(request):
 
             # condition criteria
             elif request.POST.get("condition_update"):
-                condition = request.POST.get("condition-slider")
+                condition = int(request.POST.get("condition-slider"))/2
 
-                # TODO
+                individual_listings = IndividualListing.objects.all().filter(textbook__condition__gte=condition)
+                bundle_listings = BundleListing.objects.all().filter(textbooks__condition__gte=condition)
+                listings = list(chain(individual_listings, bundle_listings))
+
+
 
         return render(request, "listings/listings.html", {"listings": listings})
 
