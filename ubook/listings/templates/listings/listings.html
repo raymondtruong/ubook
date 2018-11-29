@@ -70,7 +70,7 @@
         <h4> Condition: </h4>
         <form id="condition-form" action="/listings/" method="post">
             {% csrf_token %}
-          <input id="condition-slider" name="condition-slider" type="range" min="0" max="100" value="1">
+          <input id="condition-slider" name="condition-slider" type="range" min="0" max="20" value="0">
           <button class="button" name="condition_update" value="condition_update" type="submit"> Update </button>
           <span> <strong><span id="slider-value">0</span></strong> or higher </span>
         </form>
