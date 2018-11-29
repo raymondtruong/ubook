@@ -68,15 +68,23 @@ def set_is_sold_to_value(listing, sold_value):
     if ("Individual" in listing):
         for l in IndividualListing.objects.all():
             if str(l) == listing:
-                print("FOUND")
                 l.is_sold = sold_value
                 l.save()
     else:
         for l in BundleListing.objects.all():
             if str(l) == listing:
-                print("FOUND")
                 l.is_sold = sold_value
                 l.save()
+
+def remove_listing(listing):
+    if ("Individual" in listing):
+        for l in IndividualListing.objects.all():
+            if str(l) == listing:
+                l.delete()
+    else:
+        for l in BundleListing.objects.all():
+            if str(l) == listing:
+                l.delete()
 
 def active_listings(request):
     if request.user.is_authenticated:
@@ -85,6 +93,9 @@ def active_listings(request):
             if (request.POST.get("mark_as_sold")):
                 listing = request.POST.get("listing_to_mark")
                 set_is_sold_to_value(listing, True)
+            if (request.POST.get("remove")):
+                listing = request.POST.get("listing_to_remove")
+                remove_listing(listing)
 
         individual_listings = IndividualListing.objects.all().filter(owner=request.user).filter(is_sold=False)
         bundle_listings = BundleListing.objects.all().filter(owner=request.user).filter(is_sold=False)
@@ -103,6 +114,9 @@ def inactive_listings(request):
             if (request.POST.get("reactivate")):
                 listing = request.POST.get("listing_to_reactivate")
                 set_is_sold_to_value(listing, False)
+            if (request.POST.get("remove")):
+                listing = request.POST.get("listing_to_remove")
+                remove_listing(listing)
 
         individual_listings = IndividualListing.objects.all().filter(owner=request.user).filter(is_sold=True)
         bundle_listings = BundleListing.objects.all().filter(owner=request.user).filter(is_sold=True)

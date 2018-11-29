@@ -79,7 +79,11 @@
                    <input type="hidden" value="{{ listing }}" name="listing_to_reactivate">
                    <button class="reactivate-listing button" type="submit" name="reactivate" value="reactivate"> Reactivate </button>
                  </form>
-                <button class="remove-listing button"> Remove </button>
+                <form action="/inactive_listings/" method="POST">
+                   {% csrf_token %}
+                   <input type="hidden" value="{{ listing }}" name="listing_to_remove">
+                   <button class="remove-listing button" type="submit" name="remove" value="remove"> Remove </button>
+                 </form>
               </div>
             </div>
 
@@ -107,8 +111,12 @@
                  <input type="hidden" value="{{ listing }}" name="listing_to_reactivate">
                  <button class="reactivate-listing button" type="submit" name="reactivate" value="reactivate"> Reactivate </button>
                </form>
-              <!--<button class="reactivate-listing button"> Reactivate </button>-->
-              <button class="remove-listing button"> Remove </button>
+
+              <form action="/inactive_listings/" method="POST">
+                 {% csrf_token %}
+                 <input type="hidden" value="{{ listing }}" name="listing_to_remove">
+                 <button class="remove-listing button" type="submit" name="remove" value="remove"> Remove </button>
+               </form>
             </div>
           </div>
 
