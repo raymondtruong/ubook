@@ -54,10 +54,8 @@ def index(request):
                 condition = int(request.POST.get("condition-slider"))/2
 
                 individual_listings = IndividualListing.objects.all().filter(textbook__condition__gte=condition)
-                #bundle_listings = BundleListing.objects.all().filter(textbooks.condition__gte=condition)
-                #Possibly need to sort condition of multiple textbook?
-                #listings = list(chain(individual_listings, bundle_listings))
-                listings = list(chain(individual_listings))
+                bundle_listings = BundleListing.objects.all().filter(textbooks__condition__gte=condition)
+                listings = list(chain(individual_listings, bundle_listings))
 
 
 
