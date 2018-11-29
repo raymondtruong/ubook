@@ -39,6 +39,8 @@ def index(request):
                 start_price = request.POST.get("start-price")
                 end_price = request.POST.get("end-price")
 
+
+                # filter prices of bundle and individual listings
                 individual_listings = IndividualListing.objects.all().filter(price__gte=start_price).filter(price__lte=end_price)
                 bundle_listings = BundleListing.objects.all().filter(price__gte=start_price).filter(price__lte=end_price)
                 listings = list(chain(individual_listings, bundle_listings))
@@ -46,14 +48,22 @@ def index(request):
             # course criteria
             elif request.POST.get("course_update"):
                 course = request.POST.get("course-input")
-
-                # TODO
+                
+                # filter courses of bundle and individual listings
+                individual_listings = IndividualListing.objects.all().filter(textbook__courses__contains=course)
+                bundle_listings = BundleListing.objects.all().filter(textbooks__courses__contains=course)
+                listings = list(chain(individual_listings, bundle_listings))
 
             # condition criteria
             elif request.POST.get("condition_update"):
-                condition = request.POST.get("condition-slider")
+                condition = int(request.POST.get("condition-slider"))/2
 
-                # TODO
+                # filter condition of bundle and individual listings
+                individual_listings = IndividualListing.objects.all().filter(textbook__condition__gte=condition)
+                bundle_listings = BundleListing.objects.all().filter(textbooks__condition__gte=condition)
+                listings = list(chain(individual_listings, bundle_listings))
+
+
 
         return render(request, "listings/listings.html", {"listings": listings})
 
