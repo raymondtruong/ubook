@@ -101,7 +101,7 @@ body {
 
 #price-form input {
     outline: none;
-    width: 29%;
+    width: 30%;
 }
 
 #course-form input {
@@ -281,13 +281,4 @@ body {
     color: black;
     text-decoration: none;
     cursor: pointer;
-}
-/* alignment of seller info in seller modal */
-#seller-email-container, #seller-phone-container {
-    margin-left: 10px;
-}
-/* alignment of seller info in bundle modal */
-#bundle-seller-info-container {
-    margin-top: 10px;
-    margin-left: 70%;
 }

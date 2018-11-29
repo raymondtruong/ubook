@@ -18,13 +18,13 @@
 
       <!-- navbar-->
       <nav id="navbar">
-        <div id="logo">UBook</div>
+        <a href="/listings/"> <div id="logo">UBook</div> </a>
         <div id="navbar-button-container">
           <div>
             <a class="navbar-button" href="/listings/">find textbooks</a>
           </div>
           <div>
-            <a class="navbar-button" href="/new_listing">post an ad</a>
+            <a class="navbar-button" href="/new_listing">create a listing</a>
           </div>
           <div id="user-dropdown">
             <a id="user-dropdown-button"class="navbar-button" onclick="dropDown()">{{ user.username }} ▾</a>
@@ -57,52 +57,81 @@
       </div>
 
       <div id="results">
-        <div class="result-container bundle">
-          <div class="image-container">
-            <img src="static/resources/textbook-example1.jpg">
-          </div>
-          <div class="book-info-container">
-            <h5 class="book-title"> HIS109 Bundle (2 textbooks) </h5>
-            <button class="view-bundle button"> View textbooks in bundle </button>
-            <div class="book-description-container">
-              <span class="book-description">
-                  I can meet you anywhere on campus.
-              </span>
-            </div>
-          </div>
-          <div class="book-info-right-container">
-            <span class="book-price">$120</span>
-            <button class="mark-sold-listing listing-action button"> Mark as sold </button>
-            <button class="edit-listing listing-action button"> Edit </button>
-            <button class="remove-listing listing-action button"> Remove </button>
-          </div>
-        </div>
+         {% for listing in listings %}
+         {% if listing.is_bundle %}
 
-        <div class="result-container">
-          <div class="image-container">
-            <img src="static/resources/textbook-example2.jpg">
-          </div>
-          <div class="book-info-container">
-            <h5 class="book-title"> Linear Algebra and its Applications, 5th edition </h5>
-            <span class="book-authors"> By David Lay, Robert Lay, Judi Macdonald</span>
-            <span class="book-courses"> Courses: MAT223 </span>
-            <span class="book-condition"> Condition: 9.5 </span>
-            <div class="book-description-container">
-              <span class="book-description">
-                  I dropped the course, so this textbook is in perfect condition!
-                  Pick-up at St. George & Harbord.
-              </span>
-            </div>
-          </div>
-          <div class="book-info-right-container">
-            <span class="book-price">$100</span>
-            <button class="mark-sold-listing listing-action button"> Mark as sold </button>
-            <button class="edit-listing listing-action button"> Edit </button>
-            <button class="remove-listing listing-action button"> Remove </button>
-          </div>
-        </div>
+           <div class="result-container bundle">
+             <div class="image-container">
+               <img src="{{ listing.photo }}">
+             </div>
+             <div class="book-info-container">
+               <h5 class="book-title">{{ listing.title }} </h5>
+               <button class="view-bundle button"> View textbooks in bundle </button>
+               <div class="book-description-container">
+                 <span class="book-description">
+                     {{ listing.description }}
+                 </span>
+               </div>
+             </div>
+             <div class="book-info-right-container">
+               <span class="book-price">${{ listing.price }}</span>
+               <!--<button class="mark-sold-listing listing-action button"> Mark as sold </button>-->
+               <form action="/active_listings/" method="POST">
+                 {% csrf_token %}
+                 <input type="hidden" value="{{ listing }}" name="listing_to_mark">
+                 <button class="mark-sold-listing listing-action button" type="submit" name="mark_as_sold" value="mark_as_sold"> Mark as sold </button>
+               </form>
+
+               <button class="edit-listing listing-action button"> Edit </button>
+               <form action="/active_listings/" method="POST">
+                 {% csrf_token %}
+                 <input type="hidden" value="{{ listing }}" name="listing_to_remove">
+                 <button class="remove-listing listing-action button" type="submit" name="remove" value="remove"> Remove </button>
+               </form>
+               <!--<button class="remove-listing listing-action button"> Remove </button>-->
+             </div>
+           </div>
+
+         {% else %}
+
+         <div class="result-container">
+           <div class="image-container">
+             <img src="{{ listing.textbook.photo }}">
+           </div>
+           <div class="book-info-container">
+             <h5 class="book-title">{{ listing.textbook.name }}</h5>
+             <span class="book-authors">By {{ listing.textbook.authors }}</span>
+             <span class="book-courses">Courses: {{ listing.textbook.courses}}</span>
+             <span class="book-condition">Condition: {{ listing.textbook.condition }}</span>
+             <div class="book-description-container">
+               <span class="book-description">
+                   {{ listing.textbook.description }}
+               </span>
+             </div>
+           </div>
+           <div class="book-info-right-container">
+             <span class="book-price">${{ listing.price }}</span>
+             <form action="/active_listings/" method="POST">
+               {% csrf_token %}
+               <input type="hidden" value="{{ listing }}" name="listing_to_mark">
+               <button class="mark-sold-listing listing-action button" type="submit" name="mark_as_sold" value="mark_as_sold"> Mark as sold </button>
+             </form>
+             <button class="edit-listing listing-action button"> Edit </button>
+              <form action="/active_listings/" method="POST">
+                 {% csrf_token %}
+                 <input type="hidden" value="{{ listing }}" name="listing_to_remove">
+                 <button class="remove-listing listing-action button" type="submit" name="remove" value="remove"> Remove </button>
+               </form>
+             <!--<button class="remove-listing listing-action button"> Remove </button>-->
+           </div>
+         </div>
+
+         {% endif %}
+         {% endfor %}
+
       </div>
     </div>
+
 
     <!-- bundle info pop-up modal -->
     <div id="bundle-backdrop" class="modal-backdrop">
@@ -118,7 +147,7 @@
         <div id="bundle-results">
           <div class="result-container">
             <div class="image-container">
-              <img src="static/resources/textbook-example1.jpg">
+              <img src="/static/resources/textbook-example1.jpg">
             </div>
             <div class="book-info-container">
               <h5 class="book-title"> Perspectives From The Past </h5>
@@ -134,7 +163,7 @@
           </div>
           <div class="result-container">
             <div class="image-container">
-              <img src="static/resources/textbook-example1.jpg">
+              <img src="/static/resources/textbook-example1.jpg">
             </div>
             <div class="book-info-container">
               <h5 class="book-title"> Western Civilizations: Their History and Their Culture </h5>
@@ -153,6 +182,6 @@
     </div>
 
 
-    <script src="static/js/listings.js"></script>
+    <script src="/static/js/listings.js"></script>
   </body>
 </html>
