@@ -83,7 +83,12 @@
                </form>
 
                <button class="edit-listing listing-action button"> Edit </button>
-               <button class="remove-listing listing-action button"> Remove </button>
+               <form action="/active_listings/" method="POST">
+                 {% csrf_token %}
+                 <input type="hidden" value="{{ listing }}" name="listing_to_remove">
+                 <button class="remove-listing listing-action button" type="submit" name="remove" value="remove"> Remove </button>
+               </form>
+               <!--<button class="remove-listing listing-action button"> Remove </button>-->
              </div>
            </div>
 
@@ -112,7 +117,12 @@
                <button class="mark-sold-listing listing-action button" type="submit" name="mark_as_sold" value="mark_as_sold"> Mark as sold </button>
              </form>
              <button class="edit-listing listing-action button"> Edit </button>
-             <button class="remove-listing listing-action button"> Remove </button>
+              <form action="/active_listings/" method="POST">
+                 {% csrf_token %}
+                 <input type="hidden" value="{{ listing }}" name="listing_to_remove">
+                 <button class="remove-listing listing-action button" type="submit" name="remove" value="remove"> Remove </button>
+               </form>
+             <!--<button class="remove-listing listing-action button"> Remove </button>-->
            </div>
          </div>
 
