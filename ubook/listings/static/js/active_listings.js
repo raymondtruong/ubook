@@ -297,14 +297,19 @@ let initialeditModal = editModalBody.cloneNode(true)
 let listingToBeEdited;
 //listings.addEventListener('click', remove_listings)
 
+const all_listings = document.querySelectorAll(".listing_holder_span")
+
 const editListingButtons = document.querySelectorAll(".edit-listing");
+
 if (editListingButtons != null){
     for (let i = 0; i< editListingButtons.length ; i++){
           editListingButtons[i].onclick = edit_listings
+
+
     }
 }
 //listings.addEventListener('click', edit_listings)
-editlisting.addEventListener('click', submit_edited_listings)
+//editlisting.addEventListener('click', submit_edited_listings)
 
 for (let i = 0 ; i < editCloseButtons.length;i++){
      editCloseButtons[i].onclick = function() {
@@ -317,6 +322,7 @@ for (let i = 0 ; i < editCloseButtons.length;i++){
 }
 
 function edit_listings(e){
+    console.log(e.target)
 	e.preventDefault()
 	initialeditModal = editModalBody.cloneNode(true)
 	if (e.target.classList.contains('edit-listing')) {
@@ -500,19 +506,72 @@ function edit_listings(e){
 	              priceinput.classList.add('input')
 	        price.appendChild(priceSpan)
 	        price.appendChild(priceinput)
+
+//	        <form action="/active_listings/" method="POST">
+//               {% csrf_token %}
+//               <input type="hidden" value="{{ listing }}" name="listing_to_mark">
+//               <button class="mark-sold-listing listing-action button" type="submit" name="mark_as_sold" value="mark_as_sold"> Mark as sold </button>
+//             </form>
+
+
+	        const formWrapper = document.createElement("form")
+	        formWrapper.action = "/active_listings/"
+	        formWrapper.method = "POST"
+	        formWrapper.setAttribute("class", "editForm")
+//	        formWrapper.style.display = "none"
+	        const formPriceInput = document.createElement('input')
+	              formPriceInput.classList.add("edit-price-input")
+	              formPriceInput.setAttribute("name", "formPrice")
+	              formPriceInput.setAttribute("type", "text")
+	              formPriceInput.classList.add('input')
+	        const formButton = document.createElement("button")
+	        formButton.type = "submit"
+	        formButton.name = "editSubmit"
+	        formButton.value = "editSubmit"
+	        formButton.classList.add("form-edit-submit")
+//            formWrapper.appendChild(formPriceInput)
+//            formWrapper.appendChild(formButton)
+
+
+
+
 	        const button = document.createElement('button')
 	        button.classList.add("submit-edit-listing")
 	        button.classList.add("listing-action")
 	        button.classList.add("button")
+	        button.type = "submit"
 	        button.textContent = "Submit"
+	        button.name = "editSubmit"
+	        button.value = "editSubmit"
 
-	        const priceInput = document.createElement("input")
-	        priceInput.style.display = "none"
-	        priceInput.name = "priceInput"
-	        priceInput.value = "priceInput"
+//	        <input type="hidden" value="{{ listing }}" name="listing_to_mark">
+	        const listing_to_edit = document.createElement("input")
+//	        console.log(listing_i)
+//	        console.log(all_listings)
+	        listing_to_edit.value = e.target.id
+	        listing_to_edit.name = "listing_to_edit"
 
-	        editModalBody.appendChild(price)
-	        editModalBody.appendChild(button)
+
+
+
+
+
+//	        const priceInput = document.createElement("input")
+//	        priceInput.style.display = "none"
+//	        priceInput.name = "priceInput"
+//	        priceInput.value = "priceInput"
+
+//            formWrapper.appendChild(priceinp)
+
+//	        editModalBody.appendChild(price)
+//	        editModalBody.appendChild(button)
+            const authToken = document.getElementsByClassName("authToken")[0]
+            console.log(authToken)
+            formWrapper.appendChild(price)
+            formWrapper.appendChild(button)
+            formWrapper.appendChild(listing_to_edit)
+            formWrapper.appendChild(authToken)
+	        editModalBody.appendChild(formWrapper)
 		 }
  	     editModal.style.display = "block";
 	     listingToBeEdited = e.target.parentElement.parentElement
@@ -558,6 +617,14 @@ function submit_edited_listings(e){
 	     listingToBeEdited.getElementsByClassName("book-condition")[0].textContent = editfields.getElementsByClassName("edit-condition-input")[0].value
 	     listingToBeEdited.getElementsByClassName("book-description")[0].textContent = editfields.getElementsByClassName("edit-description-input")[0].value
 	     listingToBeEdited.getElementsByClassName("book-price")[0].textContent = editfields.getElementsByClassName("edit-price-input")[0].value
+	     const form = editfields.getElementsByClassName("editForm")[0]
+
+//	     form.getElementsByClassName("edit-price-input")[0].value = editfields.getElementsByClassName("edit-price-input")[0].value
+//	     form.getElementsByClassName("form-edit-submit")[0].onclick = function(){console.log("boom")}
+//	     form.getElementsByClassName("form-edit-submit")[0].click()
+
+//	     console.log(form.getElementsByClassName("edit-price-input")[0].value)
+
 		}
 
 	     editModal.removeChild(editModalBody)

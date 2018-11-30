@@ -159,8 +159,8 @@
                <input type="hidden" value="{{ listing }}" name="listing_to_mark">
                <button class="mark-sold-listing listing-action button" type="submit" name="mark_as_sold" value="mark_as_sold"> Mark as sold </button>
              </form>
-
-             <button class="edit-listing listing-action button"> Edit </button>
+             <!--<span style="display:none" class="listing_holder_span">{{listing}}</span>-->
+             <button class="edit-listing listing-action button" id="{{listing}}"> Edit </button>
 
               <form action="/active_listings/" method="POST">
                  {% csrf_token %}
@@ -262,7 +262,7 @@
                <span class="bold edit-description">Description: </span>
                <input type="text" name="description" class = "input edit-description-input">
             </div>
-
+      <span class="authToken" style="display:none">{% csrf_token %}</span>
       </div>
 
         </div>

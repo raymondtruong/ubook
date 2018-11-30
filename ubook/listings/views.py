@@ -132,7 +132,20 @@ def remove_listing(listing):
             if str(l) == listing:
                 l.delete()
 
+def edit_listing(listing, price):
+    if ("Individual" in listing):
+        for l in IndividualListing.objects.all():
+            if str(l) == listing:
+                l.price = price
+                l.save()
+    else:
+        for l in BundleListing.objects.all():
+            if str(l) == listing:
+                l.price = price
+                l.save()
+
 def active_listings(request):
+    # print("un authPOST")
     if request.user.is_authenticated:
         # If we are requested to mark a listing as sold, set it as sold
         if (request.method == "POST"):
@@ -143,8 +156,14 @@ def active_listings(request):
             if (request.POST.get("remove")):
                 listing = request.POST.get("listing_to_remove")
                 remove_listing(listing)
-            # if (request.POST.get("edit")):
-            #     print("POST EDIT")
+            if (request.POST.get("editSubmit")):
+                # print("POST EDIT")
+                new_price = request.POST.get("price")
+                listing_to_edit = request.POST.get("listing_to_edit")
+                edit_listing(listing_to_edit, new_price)
+                # print("l " + str(listing_to_edit))
+                # print(new_price)
+
 
 
         individual_listings = IndividualListing.objects.all().filter(owner=request.user).filter(is_sold=False)
