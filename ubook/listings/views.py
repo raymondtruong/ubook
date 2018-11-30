@@ -160,10 +160,37 @@ def new_listing(request):
             text1_image = request.POST.get("image1")
             text1_description = request.POST.get("description1")
             text1_textbook = create_textbook(text1_title, text1_author, text1_course, text1_condition,text1_image, text1_description)
+            text1_textbook.save()
 
-            if(text1_title != "test"):
-                text1_textbook.save()
+            i = 2
+            text_title = request.POST.get("title" + str(i))
+            texts_for_bundle = []
+            if(text_title == None):
                 l = IndividualListing(owner=request.user, textbook=text1_textbook, price=listing_price)
                 l.save()
+            else:
+                while text_title != None:
+                    text_title = request.POST.get("title" + str(i))
+                    text_author = request.POST.get("author" + str(i))
+                    text_course = request.POST.get("course" + str(i))
+                    text_condition = float(request.POST.get("condition" + str(i))) / 2
+                    text_image = request.POST.get("image" + str(i))
+                    text_description = request.POST.get("description" + str(i))
+                    text_textbook = create_textbook(text_title, text_author, text_course, text_condition,
+                                                     text_image, text_description)
+                    text_textbook.save()
+                    texts_for_bundle.append(text_textbook)
+                    i += 1
+                    text_title = request.POST.get("title" + str(i))
+                b = BundleListing(owner=request.user, title=listing_title, description=listing_desc,
+                                  price=listing_price)
+                b.save()
+                print(b.textbooks)
+
+                for t in texts_for_bundle:
+                    b.textbooks.add(t)
+                b.photo = text1_textbook.photo
+                b.save()
+                print(b.textbooks)
 
         return render(request, "listings/new_listing.html")
