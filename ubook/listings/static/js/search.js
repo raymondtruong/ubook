@@ -10,7 +10,6 @@ slider.oninput = function() {
 const bundleModals = document.querySelectorAll(".bundle-backdrop");
 const bundleModal = document.querySelector("#bundle-backdrop");
 const bundleBackdropTextbook = document.querySelector("#bundle-backdrop-textbooks");
-console.log(bundleModals);
 
 const bundleBackdropTitle = document.querySelector("#bundle-title");
 const bundleBackdropPrice = document.querySelector("#bundle-price");

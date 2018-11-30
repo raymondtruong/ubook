@@ -87,6 +87,51 @@
               </div>
             </div>
 
+        <div style="display:none">
+                <div class="bundle-backdrop modal-backdrop">
+                    <div id="bundle-info" class="modal-content">
+                      <!-- header, containing title, price, and close button -->
+                      <div class="modal-top-container">
+                        <span id="bundle-title" class="bold">{{listing.title}}</span>
+                        <span id="bundle-price">${{listing.price}}</span>
+                        <span class="bundle-close close">&times;</span>
+                      </div>
+                      <!-- list of all textbooks within the bundle, in the same format
+                           as textbooks in search results, except with no price -->
+                      <div id="bundle-results">
+                        {% for textbook in listing.textbooks.all %}
+                        <div class="result-container">
+                          <div class="image-container">
+                            <img src="{{textbook.photo}}">
+                          </div>
+                          <div class="book-info-container">
+                            <h5 class="book-title"> {{textbook.name}}</h5>
+                            <span class="book-authors"> By {{textbook.authors}}</span>
+                            <span class="book-courses"> Courses: {{textbook.courses}} </span>
+                            <span class="book-condition"> Condition: {{textbook.condition}} </span>
+                            <div class="book-description-container">
+                              <span class="book-description">
+                                  Description: {{textbook.description}}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                        {% endfor %}
+
+                        <div id="bundle-seller-info-container">
+                          <div id=bundle-seller-email-container>
+                            <span class="bold"> Email: </span> <span id="bundle-backdrop-email" class="seller-email">{{listing.owner.email}}</span>
+                          </div>
+                          <div id=bundle-seller-phone-container>
+                            <span class="bold"> Phone: </span> <span id="bundle-backdrop-phone" class="seller-phone">{{listing.owner.profile.phone}}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+
+
           {% else %}
 
           <div class="result-container">

@@ -1,7 +1,9 @@
-"use strict"; 
+"use strict";
 const bundleModal = document.querySelector("#bundle-backdrop");
 const editModal = document.querySelector("#edit-backdrop");
-const bundleOpenButton = document.querySelector(".view-bundle");
+//const bundleOpenButton = document.querySelector(".view-bundle");
+//const bundleOpenButtons = document.querySelectorAll(".view-bundle");
+
 const bundleCloseButton = document.querySelector("#bundle-close");
 const editCloseButton = document.querySelector("#edit-close");
 const listings = document.querySelector('#results');
@@ -15,14 +17,17 @@ listings.addEventListener('click', remove_listings)
 listings.addEventListener('click', edit_listings)
 editlisting.addEventListener('click', submit_edited_listings)
 
+//const bundleModals = document.querySelectorAll(".bundle-backdrop");
 
-bundleOpenButton.onclick = function() {
-    bundleModal.style.display = "block";
-}
 
-bundleCloseButton.onclick = function() {
-    bundleModal.style.display = "none";
-}
+
+//bundleOpenButton.onclick = function() {
+//    bundleModal.style.display = "block";
+//}
+//
+//bundleCloseButton.onclick = function() {
+//    bundleModal.style.display = "none";
+//}
 
 editCloseButton.onclick = function() {
     editModal.style.display = "none";
@@ -72,7 +77,7 @@ function edit_listings(e){
                   bundleinfo.appendChild(bundeldescr)
                   bundleinfo.appendChild(bundeldescrinput)
                   editModalBody.getElementsByClassName("modal-top-container")[0].appendChild(bundleinfo)
-	              
+
 
 			editlisting.getElementsByClassName("edit-title-input")[0].value
 			= bundleModal.getElementsByClassName("book-info-container")[0].getElementsByClassName("book-title")[0].textContent
@@ -82,7 +87,7 @@ function edit_listings(e){
 			= bundleModal.getElementsByClassName("book-info-container")[0].getElementsByClassName("book-courses")[0].textContent
 			editlisting.getElementsByClassName("edit-condition-input")[0].value
 			= bundleModal.getElementsByClassName("book-info-container")[0].getElementsByClassName("book-condition")[0].textContent
-			editlisting.getElementsByClassName("edit-description-input")[0].value 
+			editlisting.getElementsByClassName("edit-description-input")[0].value
 			= bundleModal.getElementsByClassName("book-info-container")[0].getElementsByClassName("book-description")[0].textContent.trim()
 			for (let i = 1; i < bundleModal.getElementsByClassName("book-info-container").length; i++) {
                  const edit = document.createElement('div')
@@ -178,17 +183,17 @@ function edit_listings(e){
 	              edit.appendChild(description)
 	              editModalBody.appendChild(edit)
 	              editlisting = document.querySelector('#edit-backdrop');
-	              editlisting.getElementsByClassName("edit-title-input")[i].value 
+	              editlisting.getElementsByClassName("edit-title-input")[i].value
 			= bundleModal.getElementsByClassName("book-info-container")[i].getElementsByClassName("book-title")[0].textContent
 			editlisting.getElementsByClassName("edit-author-input")[i].value
 			= bundleModal.getElementsByClassName("book-info-container")[i].getElementsByClassName("book-authors")[0].textContent
-			editlisting.getElementsByClassName("edit-course-input")[i].value 
+			editlisting.getElementsByClassName("edit-course-input")[i].value
 			= bundleModal.getElementsByClassName("book-info-container")[i].getElementsByClassName("book-courses")[0].textContent
 			editlisting.getElementsByClassName("edit-condition-input")[i].value
 			= bundleModal.getElementsByClassName("book-info-container")[i].getElementsByClassName("book-condition")[0].textContent
 			editlisting.getElementsByClassName("edit-description-input")[i].value
 			= bundleModal.getElementsByClassName("book-info-container")[i].getElementsByClassName("book-description")[0].textContent.trim()
-     
+
                }
                const price = document.createElement('div')
 		 	price.classList.add("price")
@@ -240,7 +245,7 @@ function edit_listings(e){
 	     editModal.style.display = "block";
 	     listingToBeEdited = e.target.parentElement.parentElement
 	}
-	
+
 }
 function submit_edited_listings(e){
 	e.preventDefault()
@@ -248,23 +253,23 @@ function submit_edited_listings(e){
 	if (e.target.classList.contains('submit-edit-listing')) {
 		if (bundleEditing){
 			for (let i = 0; i < bundleModal.getElementsByClassName("book-info-container").length; i++) {
-				 bundleModal.getElementsByClassName("book-title")[i].textContent = editlisting.getElementsByClassName("edit-title-input")[i].value 
-	             bundleModal.getElementsByClassName("book-authors")[i].textContent = editlisting.getElementsByClassName("edit-author-input")[i].value 
-	             bundleModal.getElementsByClassName("book-courses")[i].textContent = editlisting.getElementsByClassName("edit-course-input")[i].value 
-	             bundleModal.getElementsByClassName("book-condition")[i].textContent = editlisting.getElementsByClassName("edit-condition-input")[i].value 
-	             bundleModal.getElementsByClassName("book-description")[i].textContent = editlisting.getElementsByClassName("edit-description-input")[i].value 
+				 bundleModal.getElementsByClassName("book-title")[i].textContent = editlisting.getElementsByClassName("edit-title-input")[i].value
+	             bundleModal.getElementsByClassName("book-authors")[i].textContent = editlisting.getElementsByClassName("edit-author-input")[i].value
+	             bundleModal.getElementsByClassName("book-courses")[i].textContent = editlisting.getElementsByClassName("edit-course-input")[i].value
+	             bundleModal.getElementsByClassName("book-condition")[i].textContent = editlisting.getElementsByClassName("edit-condition-input")[i].value
+	             bundleModal.getElementsByClassName("book-description")[i].textContent = editlisting.getElementsByClassName("edit-description-input")[i].value
 
 			}
 			listingToBeEdited.getElementsByClassName("book-title")[0].textContent = editfields.getElementsByClassName("edit-bundeltitle-input")[0].value
-			listingToBeEdited.getElementsByClassName("book-description")[0].textContent = editfields.getElementsByClassName("edit-bundeldescr-input")[0].value	
+			listingToBeEdited.getElementsByClassName("book-description")[0].textContent = editfields.getElementsByClassName("edit-bundeldescr-input")[0].value
 			listingToBeEdited.getElementsByClassName("book-price")[0].textContent = editfields.getElementsByClassName("edit-price-input")[0].value
             bundleModal.querySelector("#bundle-title").textContent = editfields.getElementsByClassName("edit-bundeltitle-input")[0].value
-            bundleModal.querySelector("#bundle-price").textContent = editfields.getElementsByClassName("edit-bundeldescr-input")[0].value	
+            bundleModal.querySelector("#bundle-price").textContent = editfields.getElementsByClassName("edit-bundeldescr-input")[0].value
             bundleEditing = false
 		}
 
 		else{
-			
+
 	     listingToBeEdited.getElementsByClassName("book-title")[0].textContent = editfields.getElementsByClassName("edit-title-input")[0].value
 	     listingToBeEdited.getElementsByClassName("book-authors")[0].textContent = editfields.getElementsByClassName("edit-author-input")[0].value
 	     listingToBeEdited.getElementsByClassName("book-courses")[0].textContent = editfields.getElementsByClassName("edit-course-input")[0].value
@@ -272,7 +277,7 @@ function submit_edited_listings(e){
 	     listingToBeEdited.getElementsByClassName("book-description")[0].textContent = editfields.getElementsByClassName("edit-description-input")[0].value
 	     listingToBeEdited.getElementsByClassName("book-price")[0].textContent = editfields.getElementsByClassName("edit-price-input")[0].value
 		}
-	     
+
 	     editModal.removeChild(editModalBody)
 	     editModal.appendChild(initialeditModal)
 	     editModalBody = editlisting.getElementsByClassName("modal-content")[0]
