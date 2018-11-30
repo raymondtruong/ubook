@@ -308,8 +308,7 @@ if (editListingButtons != null){
 
     }
 }
-//listings.addEventListener('click', edit_listings)
-//editlisting.addEventListener('click', submit_edited_listings)
+
 
 for (let i = 0 ; i < editCloseButtons.length;i++){
      editCloseButtons[i].onclick = function() {
@@ -328,6 +327,12 @@ function edit_listings(e){
 	if (e.target.classList.contains('edit-listing')) {
 		if (e.target.parentElement.parentElement.classList.contains('bundle')){
             bundleEditing = true
+
+            const formWrapper = document.createElement("form")
+	        formWrapper.action = "/active_listings/"
+	        formWrapper.method = "POST"
+	        formWrapper.setAttribute("class", "editForm")
+
 			editlisting.querySelector("#bundle-title").textContent = "Edit your bundle"
 			const bundleinfo = document.createElement('div')
             bundleinfo.classList.add('bundleinfo')
@@ -335,6 +340,7 @@ function edit_listings(e){
 	             bundeltitle.classList.add('bold')
 	             bundeltitle.classList.add('edit-bundeltitle')
 	             bundeltitle.textContent = "Bundle Title:"
+
 	              const bundeltitleinput = document.createElement('input')
 	              bundeltitleinput.classList.add('edit-bundeltitle-input')
 	              bundeltitleinput.setAttribute("name", "bundeltitle")
@@ -342,10 +348,22 @@ function edit_listings(e){
 	              bundeltitleinput.classList.add('input')
 	              bundleinfo.appendChild(bundeltitle)
 	              bundleinfo.appendChild(bundeltitleinput)
+
+
+
+                  const authToken = document.getElementsByClassName("authToken")[0]
+	              const formBundleTitle = document.createElement("input")
+                        formBundleTitle.name = "bundleTitle"
+
+
+
+
+
 	              const bundeldescr = document.createElement('span')
                  bundeldescr.classList.add('bold')
                  bundeldescr.classList.add('edit-bundeldescr')
                  bundeldescr.textContent = "Bundle Description:"
+
                   const bundeldescrinput = document.createElement('input')
                   bundeldescrinput.classList.add('edit-bundeldescr-input')
                   bundeldescrinput.setAttribute("name", "bundeldescr")
@@ -353,6 +371,7 @@ function edit_listings(e){
                   bundeldescrinput.classList.add('input')
                   bundleinfo.appendChild(bundeldescr)
                   bundleinfo.appendChild(bundeldescrinput)
+
                   editModalBody.getElementsByClassName("modal-top-container")[0].appendChild(bundleinfo)
 
  			editlisting.getElementsByClassName("edit-title-input")[0].value
@@ -484,13 +503,42 @@ function edit_listings(e){
 	              priceinput.classList.add('input')
 	        price.appendChild(priceSpan)
 	        price.appendChild(priceinput)
+
 	        const button = document.createElement('button')
 	        button.classList.add("submit-edit-listing")
 	        button.classList.add("listing-action")
 	        button.classList.add("button")
+	        button.type = "submit"
 	        button.textContent = "Submit"
-	        editModalBody.appendChild(price)
-	        editModalBody.appendChild(button)
+	        button.name = "editSubmit"
+	        button.value = "editSubmit"
+
+	        const listing_to_edit = document.createElement("input")
+	        listing_to_edit.value = e.target.id
+	        listing_to_edit.name = "listing_to_edit"
+
+
+	        button.onclick = function(){
+//                const editfields = e.target.parentElement.parentElement
+//                console.log(editModalBody.getElementsByClassName("edit-title-input")[0].value)
+                  formBundleTitle.value = bundeltitleinput.value
+//                  formAuthor.value = editModalBody.getElementsByClassName("edit-author-input")[0].value
+//                  formCourse.value = editModalBody.getElementsByClassName("edit-course-input")[0].value
+//                  formCondition.value = editModalBody.getElementsByClassName("edit-condition-input")[0].value
+//                  formDescription.value = editModalBody.getElementsByClassName("edit-description-input")[0].value
+//                  formImage.value = editModalBody.getElementsByClassName("edit-image-input")[0].value
+
+            }
+            formWrapper.appendChild(authToken)
+            formWrapper.appendChild(listing_to_edit)
+
+            formWrapper.appendChild(formBundleTitle)
+            formWrapper.appendChild(button)
+
+
+//	        editModalBody.appendChild(price)
+	        editModalBody.appendChild(formWrapper)
+//	        editModalBody.appendChild(button)
 		}
  		 else{
 		 	const price = document.createElement('div')
@@ -507,18 +555,11 @@ function edit_listings(e){
 	        price.appendChild(priceSpan)
 	        price.appendChild(priceinput)
 
-//	        <form action="/active_listings/" method="POST">
-//               {% csrf_token %}
-//               <input type="hidden" value="{{ listing }}" name="listing_to_mark">
-//               <button class="mark-sold-listing listing-action button" type="submit" name="mark_as_sold" value="mark_as_sold"> Mark as sold </button>
-//             </form>
-
 
 	        const formWrapper = document.createElement("form")
 	        formWrapper.action = "/active_listings/"
 	        formWrapper.method = "POST"
 	        formWrapper.setAttribute("class", "editForm")
-//	        formWrapper.style.display = "none"
 	        const formPriceInput = document.createElement('input')
 	              formPriceInput.classList.add("edit-price-input")
 	              formPriceInput.setAttribute("name", "formPrice")
@@ -529,11 +570,6 @@ function edit_listings(e){
 	        formButton.name = "editSubmit"
 	        formButton.value = "editSubmit"
 	        formButton.classList.add("form-edit-submit")
-//            formWrapper.appendChild(formPriceInput)
-//            formWrapper.appendChild(formButton)
-
-
-
 
 	        const button = document.createElement('button')
 	        button.classList.add("submit-edit-listing")
@@ -544,25 +580,11 @@ function edit_listings(e){
 	        button.name = "editSubmit"
 	        button.value = "editSubmit"
 
-//	        <input type="hidden" value="{{ listing }}" name="listing_to_mark">
 	        const listing_to_edit = document.createElement("input")
-//	        console.log(listing_i)
-//	        console.log(all_listings)
+//	        console.log("LTE " + listing_to_edit)
+
 	        listing_to_edit.value = e.target.id
 	        listing_to_edit.name = "listing_to_edit"
-
-
-
-
-//	        const priceInput = document.createElement("input")
-//	        priceInput.style.display = "none"
-//	        priceInput.name = "priceInput"
-//	        priceInput.value = "priceInput"
-
-//            formWrapper.appendChild(priceinp)
-
-//	        editModalBody.appendChild(price)
-//	        editModalBody.appendChild(button)
 
             const formTitle = document.createElement("input")
             formTitle.name = "title"

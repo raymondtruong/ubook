@@ -151,6 +151,12 @@ def edit_listing(listing, title, author, condition, course, description, image, 
                 l.price = price
                 l.save()
 
+def edit_bundle_listing(listing, bundleTitle):
+    for l in BundleListing.objects.all():
+        if str(l) == listing:
+            l.title = bundleTitle
+            l.save()
+
 def active_listings(request):
     # print("un authPOST")
     if request.user.is_authenticated:
@@ -164,16 +170,26 @@ def active_listings(request):
                 listing = request.POST.get("listing_to_remove")
                 remove_listing(listing)
             if (request.POST.get("editSubmit")):
-                # print("POST EDIT")
-                new_price = request.POST.get("price")
+                print("POST EDIT")
                 listing_to_edit = request.POST.get("listing_to_edit")
-                new_title = request.POST.get("title")
-                new_author = request.POST.get("author")
-                new_condition = request.POST.get("condition")
-                new_course = request.POST.get("course")
-                new_description = request.POST.get("description")
-                new_image = request.POST.get("image")
-                edit_listing(listing_to_edit, new_title, new_author, new_condition, new_course, new_description, new_image, new_price)
+                print(listing_to_edit)
+                if ("Individual" in listing_to_edit):
+                    new_price = request.POST.get("price")
+                    new_title = request.POST.get("title")
+                    new_author = request.POST.get("author")
+                    new_condition = request.POST.get("condition")
+                    new_course = request.POST.get("course")
+                    new_description = request.POST.get("description")
+                    new_image = request.POST.get("image")
+                    edit_listing(listing_to_edit, new_title, new_author, new_condition, new_course, new_description, new_image, new_price)
+                else:
+                    # new_price = request.POST.get("price")
+                    # print(new_price)
+                    bundleTitle = request.POST.get("bundleTitle")
+                    # print(bundleTitle)
+                    edit_bundle_listing(listing_to_edit, bundleTitle)
+
+
 
 
 
