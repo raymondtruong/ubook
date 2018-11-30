@@ -71,7 +71,7 @@
              </div>
       </div>
       <div class="edit">
-          <span class="bold textbook" >TextBook 1: </span>
+          <strong><u><span class="bold textbook" >TextBook 1: </span></u></strong>
           <div class="title">
                <span  class="bold edit-title" >Title: </span>
                <input  type="text" name="title1" class = "input edit-title-input">
@@ -86,7 +86,6 @@
             </div>
             <div class="condition">
                <span  class="bold edit-condition">Condition: </span>
-               <!--<input id="condition1" type="text" name="condition1" class = "input edit-condition-input">-->
               <input id="condition-slider1" name="condition1" type="range" min="0" max="20" value="0">
               <strong><span id="slider-value1">0</span></strong>
             </div>
@@ -99,20 +98,10 @@
                <input id="description1" type="text" name="description1" class = "input edit-description-input">
             </div>
              </div>
-             <!--<div class="price">-->
-               <!--<span class="bold edit-price">Price: </span>-->
-               <!--<input id="price1" type="text" name="price1" class = "input edit-price-input">-->
-             <!--</div>-->
+
                <div class = "buttons">
-
-                 <!--<form action="/new_listing/" method="POST">-->
-                   <!--{% csrf_token %}-->
                    <input type="hidden" value="peanut" name="listing_to_mark">
-                   <button class="mark-sold-listing listing-action button" type="submit" name="mark_as_sold" value="mark_as_sold"> Submit </button>
-                 <!--</form>-->
-
-                <!--<button class="submit-listing listing-action button"> Submit-->
-               <!--</button>-->
+                   <button class="mark-sold-listing listing-action button" type="submit"> Submit </button>
                <button id="add_textbook_button" class="add-book listing-action button" type="button"> Add another book
                </button>
 

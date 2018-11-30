@@ -17,11 +17,22 @@ function add_textbook(e){
 		 mainContainer.removeChild(mainContainer.getElementsByClassName("buttons")[0])
 		 const edit = document.createElement('div')
                  edit.classList.add('edit')
+
+                 const textbookStrongWrapper = document.createElement("strong")
+                 const textbookUnderlineWrapper = document.createElement("u")
+
                  const textbook = document.createElement('span')
 	             textbook.classList.add('bold')
 	             textbook.classList.add('textbook')
 	             textbook.textContent = "Textbook" + " " + i
-	             edit.appendChild(textbook)
+
+
+	             textbookUnderlineWrapper.appendChild(textbook)
+	            textbookStrongWrapper.appendChild(textbookUnderlineWrapper)
+
+                 const spacer = document.createElement("hr")
+                 edit.appendChild(spacer)
+	             edit.appendChild(textbookStrongWrapper)
                  const title = document.createElement('div')
                  title.classList.add('title')
                  const titleSpan = document.createElement('span')
