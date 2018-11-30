@@ -31,7 +31,6 @@ const sellerPhones = document.querySelectorAll(".seller-phone");
 //
 
 const sellerCloseButton = document.querySelector("#seller-close");
-console.log(sellerOpenButtons)
 
 
 for (let i = 0; i < sellerOpenButtons.length; i++) {

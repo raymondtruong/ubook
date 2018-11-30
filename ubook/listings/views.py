@@ -48,7 +48,7 @@ def index(request):
             # course criteria
             elif request.POST.get("course_update"):
                 course = request.POST.get("course-input")
-                
+
                 # filter courses of bundle and individual listings
                 individual_listings = IndividualListing.objects.all().filter(textbook__courses__contains=course)
                 bundle_listings = BundleListing.objects.all().filter(textbooks__courses__contains=course)
@@ -138,6 +138,59 @@ def inactive_listings(request):
     else:
         return render(request, "listings/index.html")
 
+def create_textbook(title, author, course, cond, img, desc):
+    return Textbook(name=title,
+                     authors=author,
+                     courses=course,
+                     condition=cond,
+                     description=desc,
+                     photo=img)
 
 def new_listing(request):
-    return render(request, "listings/new_listing.html")
+    if request.user.is_authenticated:
+        if (request.method == "POST"):
+            listing_title = request.POST.get("listing_title")
+            listing_desc = request.POST.get("listing_desc")
+            listing_price = float(request.POST.get("listing_price"))
+
+            text1_title = request.POST.get("title1")
+            text1_author = request.POST.get("author1")
+            text1_course = request.POST.get("course1")
+            text1_condition = float(request.POST.get("condition1")) / 2
+            text1_image = request.POST.get("image1")
+            text1_description = request.POST.get("description1")
+            text1_textbook = create_textbook(text1_title, text1_author, text1_course, text1_condition,text1_image, text1_description)
+            text1_textbook.save()
+
+            i = 2
+            text_title = request.POST.get("title" + str(i))
+            texts_for_bundle = []
+            if(text_title == None):
+                l = IndividualListing(owner=request.user, textbook=text1_textbook, price=listing_price)
+                l.save()
+            else:
+                while text_title != None:
+                    text_title = request.POST.get("title" + str(i))
+                    text_author = request.POST.get("author" + str(i))
+                    text_course = request.POST.get("course" + str(i))
+                    text_condition = float(request.POST.get("condition" + str(i))) / 2
+                    text_image = request.POST.get("image" + str(i))
+                    text_description = request.POST.get("description" + str(i))
+                    text_textbook = create_textbook(text_title, text_author, text_course, text_condition,
+                                                     text_image, text_description)
+                    text_textbook.save()
+                    texts_for_bundle.append(text_textbook)
+                    i += 1
+                    text_title = request.POST.get("title" + str(i))
+                b = BundleListing(owner=request.user, title=listing_title, description=listing_desc,
+                                  price=listing_price)
+                b.save()
+                print(b.textbooks)
+
+                for t in texts_for_bundle:
+                    b.textbooks.add(t)
+                b.photo = text1_textbook.photo
+                b.save()
+                print(b.textbooks)
+
+        return render(request, "listings/new_listing.html")

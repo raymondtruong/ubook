@@ -49,7 +49,8 @@
       <a href="/new_listing"> <button id="create-button" class="button"> Create A New Listing </button> </a>
     </div>
 
-
+ <form action="/new_listing/" method="POST">
+  {% csrf_token %}
   <div id="main-container" class="big-container">
       <div id="title-container">
         Create A New Listing
@@ -57,54 +58,68 @@
 
       <div class = "bundle">
         <div class="bundletitle">
-               <span  class="bold edit-bundletitle" >Bundle Title: </span>
-               <input  type="text" name="bundletitle" class = "input edit-bundletitle-input">
+               <span  class="bold edit-bundletitle" >Listing Title: </span>
+               <input id="listing_title" type="text" name="listing_title" class = "input edit-bundletitle-input">
             </div>
             <div class="bundledescription">
-               <span  class="bold edit-bundledescription">Bundle Description: </span>
-               <input  type="text" name="bundledescription" class = "input edit-bundledescription-input">
+               <span  class="bold edit-bundledescription">Listing Description: </span>
+               <input id="listing_desc"  type="text" name="listing_desc" class = "input edit-bundledescription-input">
             </div>
+             <div class="price">
+               <span class="bold edit-price">Listing Price: </span>
+               <input type="text" name="listing_price" class = "input edit-price-input">
+             </div>
       </div>
       <div class="edit">
           <span class="bold textbook" >TextBook 1: </span>
           <div class="title">
                <span  class="bold edit-title" >Title: </span>
-               <input  type="text" name="title" class = "input edit-title-input">
+               <input  type="text" name="title1" class = "input edit-title-input">
             </div>
             <div class="author">
                <span  class="bold edit-author">Author: </span>
-               <input  type="text" name="author" class = "input edit-author-input">
+               <input id="author1" type="text" name="author1" class = "input edit-author-input">
             </div>
             <div class="course">
                <span  class="bold edit-course">Course: </span>
-               <input  type="text" name="course" class = "input edit-course-input">
+               <input id="class1" type="text" name="course1" class = "input edit-course-input">
             </div>
             <div class="condition">
                <span  class="bold edit-condition">Condition: </span>
-               <input  type="text" name="condition" class = "input edit-condition-input">
+               <!--<input id="condition1" type="text" name="condition1" class = "input edit-condition-input">-->
+              <input id="condition-slider1" name="condition1" type="range" min="0" max="20" value="0">
+              <strong><span id="slider-value1">0</span></strong>
             </div>
             <div class="image">
                <span  class="bold edit-image">Image: </span>
-               <input type="text" name="image" class = "input edit-image-input">
+               <input id="image1" type="text" name="image1" class = "input edit-image-input">
             </div>
             <div class="description">
                <span class="bold edit-description">Description: </span>
-               <input type="text" name="description" class = "input edit-description-input">
+               <input id="description1" type="text" name="description1" class = "input edit-description-input">
             </div>
              </div>
-             <div class="price">
-               <span class="bold edit-price">Price: </span>
-               <input type="text" name="description" class = "input edit-price-input">
-             </div>
+             <!--<div class="price">-->
+               <!--<span class="bold edit-price">Price: </span>-->
+               <!--<input id="price1" type="text" name="price1" class = "input edit-price-input">-->
+             <!--</div>-->
                <div class = "buttons">
-                <button class="submit-listing listing-action button"> Submit
-               </button>
-               <button class="add-book listing-action button"> Add another book
+
+                 <!--<form action="/new_listing/" method="POST">-->
+                   <!--{% csrf_token %}-->
+                   <input type="hidden" value="peanut" name="listing_to_mark">
+                   <button class="mark-sold-listing listing-action button" type="submit" name="mark_as_sold" value="mark_as_sold"> Submit </button>
+                 <!--</form>-->
+
+                <!--<button class="submit-listing listing-action button"> Submit-->
+               <!--</button>-->
+               <button id="add_textbook_button" class="add-book listing-action button" type="button"> Add another book
                </button>
 
                </div>
 
            </div>
+   </form>
 
        <script src="/static/js/new_listing.js"></script>
 
