@@ -159,7 +159,9 @@
                <input type="hidden" value="{{ listing }}" name="listing_to_mark">
                <button class="mark-sold-listing listing-action button" type="submit" name="mark_as_sold" value="mark_as_sold"> Mark as sold </button>
              </form>
+
              <button class="edit-listing listing-action button"> Edit </button>
+
               <form action="/active_listings/" method="POST">
                  {% csrf_token %}
                  <input type="hidden" value="{{ listing }}" name="listing_to_remove">
@@ -225,6 +227,51 @@
     </div>
 
 
+
+      <!---->
+      <div id="edit-backdrop" class="modal-backdrop">
+      <div id="bundle-info" class="modal-content">
+        <!-- header, containing title, price, and close button -->
+      <div class="modal-top-container">
+         <span id="bundle-title" class="bold">Edit your listing:</span>
+         <span id="edit-close" class="close">&times;</span>
+      </div>
+      <div class="edit">
+      	  <span class="bold textbook" >TextBook1: </span>
+          <div class="title">
+               <span  class="bold edit-title" >Title: </span>
+               <input  type="text" name="title" class = "input edit-title-input">
+            </div>
+            <div class="author">
+               <span  class="bold edit-author">Author: </span>
+               <input  type="text" name="author" class = "input edit-author-input">
+            </div>
+        <div class="course">
+               <span  class="bold edit-course">Course: </span>
+               <input  type="text" name="course" class = "input edit-course-input">
+            </div>
+        <div class="condition">
+               <span  class="bold edit-condition">Condition: </span>
+               <input  type="text" name="condition" class = "input edit-condition-input">
+            </div>
+        <div class="image">
+               <span  class="bold edit-image">Image: </span>
+               <input type="text" name="image" class = "input edit-image-input">
+            </div>
+        <div class="description">
+               <span class="bold edit-description">Description: </span>
+               <input type="text" name="description" class = "input edit-description-input">
+            </div>
+
+      </div>
+
+        </div>
+    </div>
+      <!---->
+
+
+
     <script src="/static/js/listings.js"></script>
+    <script src="/static/js/active_listings.js"></script>
   </body>
 </html>

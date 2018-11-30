@@ -2,19 +2,11 @@
 const bundleModal = document.querySelector("#bundle-backdrop");
 const bundleModals = document.querySelectorAll(".bundle-backdrop");
 
-//const bundleOpenButton = document.querySelector(".view-bundle");
-//const bundleCloseButton = document.querySelector("#bundle-close");
-
-//bundleOpenButton.onclick = function() {
-//    bundleModal.style.display = "block";
-//}
-//
-//bundleCloseButton.onclick = function() {
-//    bundleModal.style.display = "none";
-//}
 const bundleOpenButtons = document.querySelectorAll(".view-bundle");
-
 const bundleCloseButtons = document.querySelectorAll(".bundle-close");
+
+//const editListingButtons = document.querySelectorAll(".edit-listing");
+
 if (bundleOpenButtons != null){
     for(let i = 0; i < bundleOpenButtons.length; i++){
         bundleOpenButtons[i].onclick = function() {
@@ -29,4 +21,12 @@ if (bundleOpenButtons != null){
         }
     }
 }
+
+//if (editListingButtons != null){
+//    for (let i = 0; i< editListingButtons.length ; i++){
+//        editListingButtons[i].onclick = function(){
+//            console.log("edit");
+//        }
+//    }
+//}
 

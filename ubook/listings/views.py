@@ -53,16 +53,16 @@ def index(request):
             elif request.POST.get("price_update"):
                 start_price = request.POST.get("start-price")
                 end_price = request.POST.get("end-price")
-            
+
 
                 # if only max price provided
                 if start_price == "" and end_price != "":
                     individual_listings = IndividualListing.objects.all().filter(price__lte=end_price)
                     bundle_listings = BundleListing.objects.all().filter(price__lte=end_price)
-                    
+
                     # filtered list of listings
                     listings = list(chain(individual_listings, bundle_listings))
-                
+
                 # if only min price provided
                 elif start_price != "" and end_price == "":
                     individual_listings = IndividualListing.objects.all().filter(price__gte=start_price)
@@ -75,11 +75,11 @@ def index(request):
                 elif start_price != "" and end_price != "":
                     individual_listings = IndividualListing.objects.all().filter(price__gte=start_price).filter(price__lte=end_price)
                     bundle_listings = BundleListing.objects.all().filter(price__gte=start_price).filter(price__lte=end_price)
-                
+
                     # filtered list of listings
                     listings = list(chain(individual_listings, bundle_listings))
-        
-            
+
+
 
             # course criteria
             elif request.POST.get("course_update"):
@@ -136,12 +136,16 @@ def active_listings(request):
     if request.user.is_authenticated:
         # If we are requested to mark a listing as sold, set it as sold
         if (request.method == "POST"):
+            print("POST")
             if (request.POST.get("mark_as_sold")):
                 listing = request.POST.get("listing_to_mark")
                 set_is_sold_to_value(listing, True)
             if (request.POST.get("remove")):
                 listing = request.POST.get("listing_to_remove")
                 remove_listing(listing)
+            # if (request.POST.get("edit")):
+            #     print("POST EDIT")
+
 
         individual_listings = IndividualListing.objects.all().filter(owner=request.user).filter(is_sold=False)
         bundle_listings = BundleListing.objects.all().filter(owner=request.user).filter(is_sold=False)
