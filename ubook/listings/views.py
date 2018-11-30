@@ -34,8 +34,23 @@ def index(request):
         # if advanced search criteria is used:
         if request.method == "POST":
 
+            # search name
+            if request.POST.get("general_search_update"):
+                # search bar contents
+                search = request.POST.get("search-bar")
+
+                # first filter textbook names
+                individual_listings = IndividualListing.objects.all().filter(textbook__name__contains=search)
+                bundle_listings = BundleListing.objects.all().filter(textbooks__name__contains=search)
+
+                listings = list(chain(individual_listings, bundle_listings))
+
+                #TODO organize search by other categories
+
+
+
             # price criteria
-            if request.POST.get("price_update"):
+            elif request.POST.get("price_update"):
                 start_price = request.POST.get("start-price")
                 end_price = request.POST.get("end-price")
             
