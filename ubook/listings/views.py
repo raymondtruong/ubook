@@ -132,11 +132,18 @@ def remove_listing(listing):
             if str(l) == listing:
                 l.delete()
 
-def edit_listing(listing, price):
+def edit_listing(listing, title, author, condition, course, description, image, price):
     if ("Individual" in listing):
         for l in IndividualListing.objects.all():
             if str(l) == listing:
+                l.textbook.name = title
+                l.textbook.author = author
                 l.price = price
+                l.textbook.condition = condition
+                l.textbook.description = description
+                l.textbook.courses = course
+                l.textbook.photo = image
+                l.textbook.save()
                 l.save()
     else:
         for l in BundleListing.objects.all():
@@ -160,9 +167,15 @@ def active_listings(request):
                 # print("POST EDIT")
                 new_price = request.POST.get("price")
                 listing_to_edit = request.POST.get("listing_to_edit")
-                edit_listing(listing_to_edit, new_price)
-                # print("l " + str(listing_to_edit))
-                # print(new_price)
+                new_title = request.POST.get("title")
+                new_author = request.POST.get("author")
+                new_condition = request.POST.get("condition")
+                new_course = request.POST.get("course")
+                new_description = request.POST.get("description")
+                new_image = request.POST.get("image")
+                edit_listing(listing_to_edit, new_title, new_author, new_condition, new_course, new_description, new_image, new_price)
+
+
 
 
 

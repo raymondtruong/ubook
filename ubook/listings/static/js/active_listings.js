@@ -554,8 +554,6 @@ function edit_listings(e){
 
 
 
-
-
 //	        const priceInput = document.createElement("input")
 //	        priceInput.style.display = "none"
 //	        priceInput.name = "priceInput"
@@ -565,9 +563,52 @@ function edit_listings(e){
 
 //	        editModalBody.appendChild(price)
 //	        editModalBody.appendChild(button)
+
+            const formTitle = document.createElement("input")
+            formTitle.name = "title"
+
+            const formAuthor = document.createElement("input")
+            formAuthor.name = "author"
+
+            const formCourse = document.createElement("input")
+            formCourse.name = "course"
+
+            const formCondition = document.createElement("input")
+            formCondition.name = "condition"
+
+            const formImage = document.createElement("input")
+            formImage.name = "image"
+
+            const formDescription = document.createElement("input")
+            formDescription.name = "description"
+
+            button.onclick = function(){
+//                const editfields = e.target.parentElement.parentElement
+//                console.log(editModalBody.getElementsByClassName("edit-title-input")[0].value)
+                  formTitle.value = editModalBody.getElementsByClassName("edit-title-input")[0].value
+                  formAuthor.value = editModalBody.getElementsByClassName("edit-author-input")[0].value
+                  formCourse.value = editModalBody.getElementsByClassName("edit-course-input")[0].value
+                  formCondition.value = editModalBody.getElementsByClassName("edit-condition-input")[0].value
+                  formDescription.value = editModalBody.getElementsByClassName("edit-description-input")[0].value
+                  formImage.value = editModalBody.getElementsByClassName("edit-image-input")[0].value
+
+            }
+
+
+
+
+
+
+
             const authToken = document.getElementsByClassName("authToken")[0]
             console.log(authToken)
             formWrapper.appendChild(price)
+            formWrapper.appendChild(formTitle)
+            formWrapper.appendChild(formAuthor)
+            formWrapper.appendChild(formCondition)
+            formWrapper.appendChild(formCourse)
+            formWrapper.appendChild(formDescription)
+            formWrapper.appendChild(formImage)
             formWrapper.appendChild(button)
             formWrapper.appendChild(listing_to_edit)
             formWrapper.appendChild(authToken)
