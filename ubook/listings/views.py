@@ -42,11 +42,18 @@ def index(request):
                 # first filter textbook names
                 individual_listings = IndividualListing.objects.all().filter(textbook__name__contains=search)
                 bundle_listings_textname = BundleListing.objects.all().filter(textbooks__name__contains=search)
+
+                # filter bundle names
                 bundle_listings_name = BundleListing.objects.all().filter(title__contains=search)
 
-                listings = list(chain(individual_listings, bundle_listings_textname, bundle_listings_name, bundle_listings_textname))
+                # filter authors
+                individual_listings_author = IndividualListing.objects.all().filter(textbook__authors__contains=search)
+                bundle_listings_author = BundleListing.objects.all().filter(textbooks__authors__contains=search)
 
-                #TODO organize search by other categories
+                # gets rid of duplicates from different query searches
+                unique_set = set(list(chain(individual_listings, bundle_listings_textname, bundle_listings_name, bundle_listings_textname, individual_listings_author, bundle_listings_author)))
+
+                listings = list(unique_set)
 
 
 
