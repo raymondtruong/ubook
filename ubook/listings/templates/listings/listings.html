@@ -79,12 +79,17 @@
     </div>
 
     <!-- where the user enters their search query-->
+    <!-- filter based on general search-->
     <div id="search-container" class="big-container">
       <div id="search-bar-container">
         <div id="search-icon-container">
           <img id="search-icon" src="/static/resources/search.png">
         </div>
-        <input id="search-bar" type="text" placeholder="Search for a textbook by name, course code, etc.">
+        <form id="general-search-form" action="/listings/" method="post">
+          {% csrf_token %}
+          <input id="search-bar" name="search-bar" placeholder="Search for a textbook by name, course code, etc.">
+          <input name="general_search_update" type="submit" style="display:none"/>
+        </form>
       </div>
     </div>
 
