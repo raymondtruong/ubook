@@ -387,6 +387,31 @@ function edit_listings(e){
 			= bundleModal.getElementsByClassName("book-info-container")[0].getElementsByClassName("book-condition")[0].textContent
 			editlisting.getElementsByClassName("edit-description-input")[0].value
 			= bundleModal.getElementsByClassName("book-info-container")[0].getElementsByClassName("book-description")[0].textContent.trim()
+
+            const formFirstTextbookTitle = document.createElement("input")
+            formFirstTextbookTitle.name = "textbookTitle"
+            const firstTextTitle = editModalBody.getElementsByClassName("edit-title-input")[0]
+
+            const formTexbookTitles = []
+            const textbookTitles = []
+
+            formTexbookTitles.push(formFirstTextbookTitle)
+            textbookTitles.push(firstTextTitle)
+
+
+
+            const formFirstTextbookAuthors = document.createElement("input")
+            formFirstTextbookAuthors.name = "textbookAuthors"
+            const firstTextAuthors = editModalBody.getElementsByClassName("edit-author-input")[0]
+
+            const formTexbookAuthors = []
+            const textbookAuthors = []
+
+            formTexbookAuthors.push(formFirstTextbookAuthors)
+            textbookAuthors.push(firstTextAuthors)
+
+
+
 			for (let i = 1; i < bundleModal.getElementsByClassName("book-info-container").length; i++) {
                  const edit = document.createElement('div')
                  edit.classList.add('edit')
@@ -401,6 +426,7 @@ function edit_listings(e){
 	             titleSpan.classList.add('bold')
 	             titleSpan.classList.add('edit-title')
 	             titleSpan.textContent = "Title:"
+
 	              const titleinput = document.createElement('input')
 	              titleinput.classList.add('edit-title-input')
 	              titleinput.setAttribute("name", "title")
@@ -409,6 +435,12 @@ function edit_listings(e){
 	              title.appendChild(titleSpan)
 	              title.appendChild(titleinput)
 	              edit.appendChild(title)
+
+                   textbookTitles.push(titleinput)
+	              const formTitleInput = document.createElement("input")
+	              formTitleInput.name = "textbookTitle"
+	              formTexbookTitles.push(formTitleInput)
+
 	               const author = document.createElement('div')
                  author.classList.add('author')
                  const authorSpan = document.createElement('span')
@@ -423,6 +455,12 @@ function edit_listings(e){
 	              author.appendChild(authorSpan)
 	              author.appendChild(authorinput)
 	              edit.appendChild(author)
+
+	              textbookAuthors.push(authorinput)
+	              const formAuthorInput = document.createElement("input")
+	              formAuthorInput.name = "textbookAuthors"
+	              formTexbookAuthors.push(formAuthorInput)
+
 	              const course = document.createElement('div')
                  course.classList.add('course')
                  const courseSpan = document.createElement('span')
@@ -526,11 +564,21 @@ function edit_listings(e){
 //                console.log(editModalBody.getElementsByClassName("edit-title-input")[0].value)
                   formBundleTitle.value = bundeltitleinput.value
                   formBundleDesc.value = bundeldescrinput.value
+                  for (let i = 0;i<formTexbookTitles.length;i++){
+                    formTexbookTitles[i].value = textbookTitles[i].value
+                    formTexbookAuthors[i].value = textbookAuthors[i].value
+//                    console.log(formTexbookTitles[i].value)
+                  }
 //                  formAuthor.value = editModalBody.getElementsByClassName("edit-author-input")[0].value
 //                  formCourse.value = editModalBody.getElementsByClassName("edit-course-input")[0].value
 //                  formCondition.value = editModalBody.getElementsByClassName("edit-condition-input")[0].value
 //                  formDescription.value = editModalBody.getElementsByClassName("edit-description-input")[0].value
 //                  formImage.value = editModalBody.getElementsByClassName("edit-image-input")[0].value
+                    console.log(formTexbookTitles.length)
+                    for (let i = 0;i<formTexbookTitles.length;i++){
+//                        formTexbookTitles[i].value = textbookTitles[i].value
+                        console.log(formTexbookTitles[i].value)
+                      }
 
             }
             formWrapper.appendChild(price)
@@ -543,6 +591,10 @@ function edit_listings(e){
             formWrapper.appendChild(price)
 
             formWrapper.appendChild(button)
+            for (let i = 0;i<formTexbookTitles.length;i++){
+                    formWrapper.appendChild(formTexbookTitles[i])
+                    formWrapper.appendChild(formTexbookAuthors[i])
+            }
 
 
 //	        editModalBody.appendChild(price)

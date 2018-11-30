@@ -191,8 +191,21 @@ def active_listings(request):
                     bundleDesc = request.POST.get("bundleDesc")
                     new_price = request.POST.get("price")
 
+                    textbookTitleList = ["didnt work"]
+                    textbookAuthorsList = ["didnt work"]
+                    for key, value in request.POST.lists():
+                        if key == "textbookTitle":
+                            textbookTitleList = value
+
+                        if key == "textbookAuthors":
+                            textbookAuthorsList = value
+                        # print(key, value)
+                    print(textbookTitleList)
+                    print(textbookAuthorsList)
+
+
                     # print("BD " + new_price)
-                    edit_bundle_listing(listing_to_edit, bundleTitle, bundleDesc, new_price)
+                    # edit_bundle_listing(listing_to_edit, bundleTitle, bundleDesc, new_price)
 
 
 
