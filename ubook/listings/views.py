@@ -38,12 +38,33 @@ def index(request):
             if request.POST.get("price_update"):
                 start_price = request.POST.get("start-price")
                 end_price = request.POST.get("end-price")
+            
 
+                # if only max price provided
+                if start_price == "" and end_price != "":
+                    individual_listings = IndividualListing.objects.all().filter(price__lte=end_price)
+                    bundle_listings = BundleListing.objects.all().filter(price__lte=end_price)
+                    
+                    # filtered list of listings
+                    listings = list(chain(individual_listings, bundle_listings))
+                
+                # if only min price provided
+                elif start_price != "" and end_price == "":
+                    individual_listings = IndividualListing.objects.all().filter(price__gte=start_price)
+                    bundle_listings = BundleListing.objects.all().filter(price__gte=start_price)
 
-                # filter prices of bundle and individual listings
-                individual_listings = IndividualListing.objects.all().filter(price__gte=start_price).filter(price__lte=end_price)
-                bundle_listings = BundleListing.objects.all().filter(price__gte=start_price).filter(price__lte=end_price)
-                listings = list(chain(individual_listings, bundle_listings))
+                    # filtered list of listings
+                    listings = list(chain(individual_listings, bundle_listings))
+
+                # filter prices of bundle and individual listings if both start and end price provided
+                elif start_price != "" and end_price != "":
+                    individual_listings = IndividualListing.objects.all().filter(price__gte=start_price).filter(price__lte=end_price)
+                    bundle_listings = BundleListing.objects.all().filter(price__gte=start_price).filter(price__lte=end_price)
+                
+                    # filtered list of listings
+                    listings = list(chain(individual_listings, bundle_listings))
+        
+            
 
             # course criteria
             elif request.POST.get("course_update"):
