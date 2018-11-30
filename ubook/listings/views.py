@@ -41,9 +41,10 @@ def index(request):
 
                 # first filter textbook names
                 individual_listings = IndividualListing.objects.all().filter(textbook__name__contains=search)
-                bundle_listings = BundleListing.objects.all().filter(textbooks__name__contains=search)
+                bundle_listings_textname = BundleListing.objects.all().filter(textbooks__name__contains=search)
+                bundle_listings_name = BundleListing.objects.all().filter(title__contains=search)
 
-                listings = list(chain(individual_listings, bundle_listings))
+                listings = list(chain(individual_listings, bundle_listings_textname, bundle_listings_name, bundle_listings_textname))
 
                 #TODO organize search by other categories
 
