@@ -48,7 +48,7 @@ def index(request):
             # course criteria
             elif request.POST.get("course_update"):
                 course = request.POST.get("course-input")
-                
+
                 # filter courses of bundle and individual listings
                 individual_listings = IndividualListing.objects.all().filter(textbook__courses__contains=course)
                 bundle_listings = BundleListing.objects.all().filter(textbooks__courses__contains=course)
@@ -73,6 +73,9 @@ def index(request):
 
 def profile(request):
     return render(request, "listings/profile.html")
+
+def change_info(request):
+    return render(request, "listings/change_info.html")
 
 def set_is_sold_to_value(listing, sold_value):
     if ("Individual" in listing):
