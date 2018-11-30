@@ -131,10 +131,60 @@
               </div>
               <div class="book-info-right-container">
                 <span class="book-price">${{ listing.price }}</span>
+
                 <span style="display:none" class="seller-email">{{ listing.owner.email }}</span>
-                <span style="display:none" class="seller-phone">{{ listing.owner.profile.phone }}</span>
+                <span style="display:none" class="seller-phone">{{ listing.owner.phone }}</span>
+
                 <button class="contact-seller button"> Contact seller </button>
               </div>
+
+                <div style="display:none">
+                <div class="bundle-backdrop modal-backdrop">
+                    <div id="bundle-info" class="modal-content">
+                      <!-- header, containing title, price, and close button -->
+                      <div class="modal-top-container">
+                        <span id="bundle-title" class="bold">{{listing.title}}</span>
+                        <span id="bundle-price">${{listing.price}}</span>
+                        <span class="bundle-close close">&times;</span>
+                      </div>
+                      <!-- list of all textbooks within the bundle, in the same format
+                           as textbooks in search results, except with no price -->
+                      <div id="bundle-results">
+                        {% for textbook in listing.textbooks.all %}
+                        <div class="result-container">
+                          <div class="image-container">
+                            <img src="{{textbook.photo}}">
+                          </div>
+                          <div class="book-info-container">
+                            <h5 class="book-title"> {{textbook.title}}</h5>
+                            <span class="book-authors"> By {{textbook.authors}}</span>
+                            <span class="book-courses"> Courses: {{textbook.courses}} </span>
+                            <span class="book-condition"> Condition: {{textbook.condition}} </span>
+                            <div class="book-description-container">
+                              <span class="book-description">
+                                  {{textbook.description}}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                        {% endfor %}
+
+                        <div id="bundle-seller-info-container">
+                          <div id=bundle-seller-email-container>
+                            <span class="bold"> Email: </span> <span id="bundle-backdrop-email" class="seller-email">{{listing.owner.email}}</span>
+                          </div>
+                          <div id=bundle-seller-phone-container>
+                            <span class="bold"> Phone: </span> <span id="bundle-backdrop-phone" class="seller-phone">{{listing.owner.profile.phone}}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+
+
+
+
             </div>
 
           {% elif not listing.is_sold%}
@@ -170,59 +220,6 @@
 
     <!-- bundle info pop-up modal -->
     <div id="bundle-backdrop" class="modal-backdrop">
-      <div id="bundle-info" class="modal-content">
-        <!-- header, containing title, price, and close button -->
-        <div class="modal-top-container">
-          <span id="bundle-title" class="bold">HIS109 Bundle</span>
-          <span id="bundle-price">$160</span>
-          <span id="bundle-close" class="close">&times;</span>
-        </div>
-        <!-- list of all textbooks within the bundle, in the same format
-             as textbooks in search results, except with no price -->
-        <div id="bundle-results">
-          <div class="result-container">
-            <div class="image-container">
-              <img src="/static/resources/textbook-example1.jpg">
-            </div>
-            <div class="book-info-container">
-              <h5 class="book-title"> Perspectives From The Past </h5>
-              <span class="book-authors"> By James Brophy, Joshua Cole</span>
-              <span class="book-courses"> Courses: HIS109 </span>
-              <span class="book-condition"> Condition: 6.5 </span>
-              <div class="book-description-container">
-                <span class="book-description">
-                    Some minor water damage on top and highlighter marks throughout.
-                </span>
-              </div>
-            </div>
-          </div>
-          <div class="result-container">
-            <div class="image-container">
-              <img src="/static/resources/textbook-example1.jpg">
-            </div>
-            <div class="book-info-container">
-              <h5 class="book-title"> Western Civilizations: Their History and Their Culture </h5>
-              <span class="book-authors"> By Joshua Cole, Carol Symes</span>
-              <span class="book-courses"> Courses: HIS109 </span>
-              <span class="book-condition"> Condition: 9.2 </span>
-              <div class="book-description-container">
-                <span class="book-description">
-                    A couple of tiny rips on a few pages.
-                </span>
-              </div>
-            </div>
-          </div>
-          <!-- seller information at the bottom of the modal -->
-          <div id="bundle-seller-info-container">
-            <div id=bundle-seller-email-container>
-              <span class="bold"> Email: </span> <span  class="seller-email">geezus@gmail.com</span>
-            </div>
-            <div id=bundle-seller-phone-container>
-              <span class="bold"> Phone: </span> <span class="seller-phone">416-614-4162</span>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- seller info pop-up modal -->
@@ -244,5 +241,6 @@
     </div>
 
     <script src="/static/js/search.js"></script>
+
   </body>
 </html>
