@@ -151,10 +151,11 @@ def edit_listing(listing, title, author, condition, course, description, image, 
                 l.price = price
                 l.save()
 
-def edit_bundle_listing(listing, bundleTitle):
+def edit_bundle_listing(listing, bundleTitle, bundleDesc):
     for l in BundleListing.objects.all():
         if str(l) == listing:
             l.title = bundleTitle
+            l.description = bundleDesc
             l.save()
 
 def active_listings(request):
@@ -186,8 +187,9 @@ def active_listings(request):
                     # new_price = request.POST.get("price")
                     # print(new_price)
                     bundleTitle = request.POST.get("bundleTitle")
-                    # print(bundleTitle)
-                    edit_bundle_listing(listing_to_edit, bundleTitle)
+                    bundleDesc = request.POST.get("bundleDesc")
+                    # print("BD " + bundleDesc)
+                    edit_bundle_listing(listing_to_edit, bundleTitle, bundleDesc)
 
 
 

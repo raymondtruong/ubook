@@ -355,6 +355,9 @@ function edit_listings(e){
 	              const formBundleTitle = document.createElement("input")
                         formBundleTitle.name = "bundleTitle"
 
+                const formBundleDesc = document.createElement("input")
+                        formBundleDesc.name = "bundleDesc"
+
 
 
 
@@ -522,6 +525,7 @@ function edit_listings(e){
 //                const editfields = e.target.parentElement.parentElement
 //                console.log(editModalBody.getElementsByClassName("edit-title-input")[0].value)
                   formBundleTitle.value = bundeltitleinput.value
+                  formBundleDesc.value = bundeldescrinput.value
 //                  formAuthor.value = editModalBody.getElementsByClassName("edit-author-input")[0].value
 //                  formCourse.value = editModalBody.getElementsByClassName("edit-course-input")[0].value
 //                  formCondition.value = editModalBody.getElementsByClassName("edit-condition-input")[0].value
@@ -533,6 +537,7 @@ function edit_listings(e){
             formWrapper.appendChild(listing_to_edit)
 
             formWrapper.appendChild(formBundleTitle)
+            formWrapper.appendChild(formBundleDesc)
             formWrapper.appendChild(button)
 
 
