@@ -493,7 +493,7 @@ function edit_listings(e){
 			= bundleModal.getElementsByClassName("book-info-container")[i].getElementsByClassName("book-description")[0].textContent.trim()
 
                }
-               const price = document.createElement('div')
+            const price = document.createElement('div')
 		 	price.classList.add("price")
 		 	const priceSpan = document.createElement('span')
  		 	priceSpan.classList.add("edit-price")
@@ -533,11 +533,15 @@ function edit_listings(e){
 //                  formImage.value = editModalBody.getElementsByClassName("edit-image-input")[0].value
 
             }
+            formWrapper.appendChild(price)
+
             formWrapper.appendChild(authToken)
             formWrapper.appendChild(listing_to_edit)
 
             formWrapper.appendChild(formBundleTitle)
             formWrapper.appendChild(formBundleDesc)
+            formWrapper.appendChild(price)
+
             formWrapper.appendChild(button)
 
 
