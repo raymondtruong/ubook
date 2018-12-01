@@ -86,9 +86,7 @@ def index(request):
                 bundle_listings = BundleListing.objects.all().filter(textbooks__condition__gte=condition)
                 listings = list(chain(individual_listings, bundle_listings))
 
-
-
-        return render(request, "listings/listings.html", {"listings": listings})
+        return render(request, "listings/listings.html", {"listings": listings, "num_listings": len(listings)})
 
     else:
         return render(request, "listings/index.html")
