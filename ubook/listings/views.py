@@ -6,27 +6,6 @@ from itertools import chain
 def index(request):
     if request.user.is_authenticated:
 
-        """
-        # hard code textbook
-        t = Textbook(name="Test Textbook, 1st edition",
-                     authors="Author 1, Author 2",
-                     courses="CSC301, CSC302",
-                     condition="9.5",
-                     description="This is a textbook.",
-                     photo="https://banner2.kisspng.com/20180105/prq/book-clip-art-5a5019c8436fc6.28019198151519892027624341.jpg")
-        t.save()
-
-        # hard code individual listing
-        l = IndividualListing(owner=request.user, textbook=t, price=133.37)
-        l.save()
-
-        # hard code bundle listing
-        b = BundleListing(owner=request.user, title="Test Bundle ()", description="This is a bundle.", price=133.38)
-        b.save()
-        b.textbooks.add(t)
-        b.photo = t.photo
-        b.save()
-        """
 
         # combine individual listings and bundle listings
         listings = list(chain(IndividualListing.objects.all(), BundleListing.objects.all()))
@@ -61,16 +40,16 @@ def index(request):
             elif request.POST.get("price_update"):
                 start_price = request.POST.get("start-price")
                 end_price = request.POST.get("end-price")
-            
+
 
                 # if only max price provided
                 if start_price == "" and end_price != "":
                     individual_listings = IndividualListing.objects.all().filter(price__lte=end_price)
                     bundle_listings = BundleListing.objects.all().filter(price__lte=end_price)
-                    
+
                     # filtered list of listings
                     listings = list(chain(individual_listings, bundle_listings))
-                
+
                 # if only min price provided
                 elif start_price != "" and end_price == "":
                     individual_listings = IndividualListing.objects.all().filter(price__gte=start_price)
@@ -83,11 +62,11 @@ def index(request):
                 elif start_price != "" and end_price != "":
                     individual_listings = IndividualListing.objects.all().filter(price__gte=start_price).filter(price__lte=end_price)
                     bundle_listings = BundleListing.objects.all().filter(price__gte=start_price).filter(price__lte=end_price)
-                
+
                     # filtered list of listings
                     listings = list(chain(individual_listings, bundle_listings))
-        
-            
+
+
 
             # course criteria
             elif request.POST.get("course_update"):
@@ -116,10 +95,28 @@ def index(request):
 
 
 def profile(request):
-    return render(request, "listings/profile.html")
+    if request.user.is_authenticated:
+        if request.method == "POST":
+            if request.POST.get("submit"):
+                new_email = request.POST.get("email")
+                new_phone = request.POST.get("phone")
+
+                request.user.email = new_email
+                request.user.profile.phone = new_phone
+                request.user.save()
+
+        return render(request, "listings/profile.html")
+
+    else:
+        return render(request, "listings/index.html")
+
+
 
 def change_info(request):
-    return render(request, "listings/change_info.html")
+    if request.user.is_authenticated:
+        return render(request, "listings/change_info.html")
+    else:
+        return render(request, "listings/index.html")
 
 def set_is_sold_to_value(listing, sold_value):
     if ("Individual" in listing):
@@ -160,6 +157,7 @@ def active_listings(request):
         # return all active listings owned by the currently authenticated user
         listings = list(chain(individual_listings, bundle_listings))
         return render(request, "listings/active_listings.html", {"listings": listings})
+        
     else:
         return render(request, "listings/index.html")
 
@@ -241,3 +239,6 @@ def new_listing(request):
                 print(b.textbooks)
 
         return render(request, "listings/new_listing.html")
+
+    else:
+        return render(request, "listings/index.html")
