@@ -151,7 +151,7 @@ def edit_listing(listing, title, author, condition, course, description, image, 
                 l.price = price
                 l.save()
 
-def edit_bundle_textbooks(listing, textbookTitles, textbookAuthors, textbookDescription, textbookImage, textbookCourses):
+def edit_bundle_textbooks(listing, textbookTitles, textbookAuthors, textbookDescription, textbookImage, textbookCourses, textbookCondition):
     for l in BundleListing.objects.all():
         print(str(l))
         if str(l) == listing:
@@ -163,17 +163,18 @@ def edit_bundle_textbooks(listing, textbookTitles, textbookAuthors, textbookDesc
                 textbook.description = textbookDescription[i]
                 textbook.photo = textbookImage[i]
                 textbook.courses = textbookCourses[i]
+                textbook.condition = textbookCondition[i]
                 textbook.save()
                 i += 1
 
 def edit_bundle_listing(listing, bundleTitle, bundleDesc, bundlePrice, textbookTitles, textbookAuthors
-                        , textbookDescription, textbookImage, textbookCourses):
+                        , textbookDescription, textbookImage, textbookCourses, textbookCondition):
     for l in BundleListing.objects.all():
         if str(l) == listing:
             l.title = bundleTitle
             l.description = bundleDesc
             l.price = float(bundlePrice)
-            edit_bundle_textbooks(listing, textbookTitles, textbookAuthors, textbookDescription, textbookImage, textbookCourses)
+            edit_bundle_textbooks(listing, textbookTitles, textbookAuthors, textbookDescription, textbookImage, textbookCourses, textbookCondition)
             l.save()
 
 def active_listings(request):
@@ -213,6 +214,7 @@ def active_listings(request):
                     textbookCoursesList = ["didnt work"]
                     textbookDescriptionList = ["didnt work"]
                     textbookImageList = ["didnt work"]
+                    textbookConditionList = ["didnt work"]
                     for key, value in request.POST.lists():
                         if key == "textbookTitle":
                             textbookTitleList = value
@@ -224,6 +226,8 @@ def active_listings(request):
                             textbookDescriptionList = value
                         if key == "textbookImage":
                             textbookImageList = value
+                        if key == "textbookCondition":
+                            textbookConditionList = value
                         # print(key, value)
 
                     print(textbookTitleList)
@@ -235,7 +239,7 @@ def active_listings(request):
 
                     # print("BD " + new_price)
                     edit_bundle_listing(listing_to_edit, bundleTitle, bundleDesc, new_price, textbookTitleList, textbookAuthorsList,
-                                        textbookDescriptionList, textbookImageList, textbookCoursesList)
+                                        textbookDescriptionList, textbookImageList, textbookCoursesList, textbookConditionList)
 
 
 

@@ -11,7 +11,7 @@ if (bundleOpenButtons != null){
     for(let i = 0; i < bundleOpenButtons.length; i++){
         bundleOpenButtons[i].onclick = function() {
             bundleModal.innerHTML = bundleModals[i].innerHTML;
-            console.log(bundleModals[i].innerHTML)
+//            console.log(bundleModals[i].innerHTML)
             bundleModal.style.display = "block";
             const bundleCloseButtons = document.querySelectorAll(".bundle-close");
             for(let i = 0; i < bundleCloseButtons.length; i++){

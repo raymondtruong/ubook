@@ -23,6 +23,8 @@ if (editListingButtons != null){
 }
 
 
+
+
 for (let i = 0 ; i < editCloseButtons.length;i++){
      editCloseButtons[i].onclick = function() {
         editModal.style.display = "none";
@@ -75,7 +77,7 @@ function edit_listings(e){
 
 
 
-	              const bundeldescr = document.createElement('span')
+	             const bundeldescr = document.createElement('span')
                  bundeldescr.classList.add('bold')
                  bundeldescr.classList.add('edit-bundeldescr')
                  bundeldescr.textContent = "Bundle Description:"
@@ -157,6 +159,17 @@ function edit_listings(e){
 
             formTexbookDescription.push(formFirstTextbookDescription)
             textbookDescription.push(firstTextDescription)
+
+            // textbook condition
+            const formFirstTextbookCondition = document.createElement("input")
+            formFirstTextbookCondition.name = "textbookCondition"
+            const firstTextCondition = editModalBody.getElementsByClassName("edit-condition-input")[0]
+
+            const formTexbookCondition = []
+            const textbookCondition = []
+
+            formTexbookCondition.push(formFirstTextbookCondition)
+            textbookCondition.push(firstTextCondition)
 
 
 			for (let i = 1; i < bundleModal.getElementsByClassName("book-info-container").length; i++) {
@@ -242,6 +255,11 @@ function edit_listings(e){
 	              condition.appendChild(conditionSpan)
 	              condition.appendChild(conditioninput)
 	              edit.appendChild(condition)
+
+	               textbookCondition.push(conditioninput)
+	              const formConditionInput = document.createElement("input")
+	              formConditionInput.name = "textbookCondition"
+	              formTexbookCondition.push(formConditionInput)
 
 
 	              const image = document.createElement('div')
@@ -337,6 +355,7 @@ function edit_listings(e){
                     formTexbookCourses[i].value = textbookCourses[i].value
                     formTexbookDescription[i].value = textbookDescription[i].value
                     formTexbookImage[i].value = textbookImage[i].value
+                    formTexbookCondition[i].value = textbookCondition[i].value
 //                    console.log(formTexbookTitles[i].value)
                   }
 //                  formAuthor.value = editModalBody.getElementsByClassName("edit-author-input")[0].value
@@ -371,6 +390,7 @@ function edit_listings(e){
                     formWrapper.appendChild(formTexbookCourses[i])
                     formWrapper.appendChild(formTexbookDescription[i])
                     formWrapper.appendChild(formTexbookImage[i])
+                    formWrapper.appendChild(formTexbookCondition[i])
             }
 
 
@@ -379,6 +399,12 @@ function edit_listings(e){
 //	        editModalBody.appendChild(button)
 		}
  		 else{
+// 		    const slider = document.querySelector("#condition-slider");
+//            const sliderValue = document.querySelector("#slider-value");
+//            slider.oninput = function() {
+//                sliderValue.innerHTML = this.value / 2;
+//            }
+//            console.log(slider)
 		 	const price = document.createElement('div')
 		 	price.classList.add("price")
 		 	const priceSpan = document.createElement('span')
