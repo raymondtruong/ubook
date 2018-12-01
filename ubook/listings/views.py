@@ -144,8 +144,8 @@ def edit_listing(listing, title, author, condition, course, description, image, 
             if str(l) == listing:
                 l.textbook.name = title
                 l.textbook.author = author
-                l.price = price
-                l.textbook.condition = condition
+                l.price = float(price)
+                l.textbook.condition = float(condition)
                 l.textbook.description = description
                 l.textbook.courses = course
                 l.textbook.photo = image
@@ -169,7 +169,7 @@ def edit_bundle_textbooks(listing, textbookTitles, textbookAuthors, textbookDesc
                 textbook.description = textbookDescription[i]
                 textbook.photo = textbookImage[i]
                 textbook.courses = textbookCourses[i]
-                textbook.condition = textbookCondition[i]
+                textbook.condition = float(textbookCondition[i])
                 textbook.save()
                 i += 1
 

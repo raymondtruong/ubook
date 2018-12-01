@@ -342,6 +342,7 @@ function edit_listings(e){
 	        const listing_to_edit = document.createElement("input")
 	        listing_to_edit.value = e.target.id
 	        listing_to_edit.name = "listing_to_edit"
+	        listing_to_edit.style.display = "none"
 
 
 	        button.onclick = function(){
@@ -379,12 +380,21 @@ function edit_listings(e){
             formWrapper.appendChild(authToken)
             formWrapper.appendChild(listing_to_edit)
 
+            formBundleDesc.style.display = "none"
+            formBundleTitle.style.display = "none"
             formWrapper.appendChild(formBundleTitle)
             formWrapper.appendChild(formBundleDesc)
             formWrapper.appendChild(price)
 
             formWrapper.appendChild(button)
             for (let i = 0;i<formTexbookTitles.length;i++){
+                    formTexbookTitles[i].style.display = "none"
+                    formTexbookAuthors[i].style.display = "none"
+                    formTexbookCourses[i].style.display = "none"
+                    formTexbookDescription[i].style.display = "none"
+                    formTexbookImage[i].style.display = "none"
+                    formTexbookCondition[i].style.display = "none"
+
                     formWrapper.appendChild(formTexbookTitles[i])
                     formWrapper.appendChild(formTexbookAuthors[i])
                     formWrapper.appendChild(formTexbookCourses[i])
@@ -399,12 +409,7 @@ function edit_listings(e){
 //	        editModalBody.appendChild(button)
 		}
  		 else{
-// 		    const slider = document.querySelector("#condition-slider");
-//            const sliderValue = document.querySelector("#slider-value");
-//            slider.oninput = function() {
-//                sliderValue.innerHTML = this.value / 2;
-//            }
-//            console.log(slider)
+
 		 	const price = document.createElement('div')
 		 	price.classList.add("price")
 		 	const priceSpan = document.createElement('span')
@@ -445,10 +450,10 @@ function edit_listings(e){
 	        button.value = "editSubmit"
 
 	        const listing_to_edit = document.createElement("input")
-//	        console.log("LTE " + listing_to_edit)
 
 	        listing_to_edit.value = e.target.id
 	        listing_to_edit.name = "listing_to_edit"
+	        listing_to_edit.style.display = "none"
 
             const formTitle = document.createElement("input")
             formTitle.name = "title"
@@ -469,8 +474,7 @@ function edit_listings(e){
             formDescription.name = "description"
 
             button.onclick = function(){
-//                const editfields = e.target.parentElement.parentElement
-//                console.log(editModalBody.getElementsByClassName("edit-title-input")[0].value)
+
                   formTitle.value = editModalBody.getElementsByClassName("edit-title-input")[0].value
                   formAuthor.value = editModalBody.getElementsByClassName("edit-author-input")[0].value
                   formCourse.value = editModalBody.getElementsByClassName("edit-course-input")[0].value
@@ -480,14 +484,14 @@ function edit_listings(e){
 
             }
 
-
-
-
-
-
-
             const authToken = document.getElementsByClassName("authToken")[0]
-            console.log(authToken)
+            formTitle.style.display = "none"
+            formAuthor.style.display = "none"
+            formCondition.style.display = "none"
+            formCourse.style.display = "none"
+            formDescription.style.display = "none"
+            formImage.style.display = "none"
+
             formWrapper.appendChild(price)
             formWrapper.appendChild(formTitle)
             formWrapper.appendChild(formAuthor)
