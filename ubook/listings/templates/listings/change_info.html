@@ -53,18 +53,23 @@
         Change Contact Info
       </div>
 
-      <div>
-          <label>Email: </label>
-          <input type="text" name="email" autofocus required>
-      </div>
-      <div>
-          <label>Phone Number: </label>
-          <input type="text" name="phone" autofocus required>
-      </div>
+      <form action="/profile/" method="POST">
+          {% csrf_token %}
 
-      <a href="/profile/">
-        <button id="edit contact info" class="button button-right blue">Done</button>
-      </a>
+          <div>
+              <label>Username: {{ user.username }}</label>
+          </div>
+          <div>
+              <label>Email: </label>
+              <input type="text" name="email" autofocus required>
+          </div>
+          <div>
+              <label>Phone Number: </label>
+              <input type="text" name="phone" autofocus required>
+          </div>
 
+        <button id="edit contact info" value="submit" name="submit" class="button button-right blue">Done</button>
+
+      </form>
   </body>
 </html>
