@@ -83,5 +83,6 @@ We use branches and pull requests to ensure that all the non-trivial code presen
 - Static web pages (a create-a-listing page, an active listings page, an inactive listings page, a profile page), so the user has a clean, easy-to-use UI for accomplishing their goals on the website
 - Full integration of the database with the website, so users are able to view, interact with, and change the data (and have those changes persist)
 - Full vertical implementation of key features of our website like searching and filtering, so users are able to find the textbooks they need
-- Video displaying our web application, to demonstrate that our application works and meets the requirements of our users
+- Video displaying our web application, to demonstrate that our application works and meets the requirements of our users 
+ https://youtu.be/snyF9N0Gi14
 - Updated scrum artifacts (product backlog, sprint backlog, meeting schedule): https://docs.google.com/spreadsheets/d/1kHT57hwY_5hdanTw9rLCbr0QdopAXCnvRaVo4S0Ht8E/edit?usp=sharing

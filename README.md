@@ -19,7 +19,7 @@ The website can then be accessed at [127.0.0.1:8000/listings/]().
 
 
 ## Demo
-https://youtu.be/DU1HA7S3_lg
+https://youtu.be/snyF9N0Gi14
 
 
 ## Dependencies
