@@ -118,6 +118,9 @@ def index(request):
 def profile(request):
     return render(request, "listings/profile.html")
 
+def change_info(request):
+    return render(request, "listings/change_info.html")
+
 def set_is_sold_to_value(listing, sold_value):
     if ("Individual" in listing):
         for l in IndividualListing.objects.all():

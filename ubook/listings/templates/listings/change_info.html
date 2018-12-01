@@ -50,20 +50,20 @@
 
     <div id="main-container" class="big-container">
       <div id="title-container">
-        Your Profile
+        Change Contact Info
       </div>
 
-      <div id="title-container-left" class="title-container">
-        <span class="grey title-text">Username: {{ user.username }} </span>
+      <div>
+          <label>Email: </label>
+          <input type="text" name="email" autofocus required>
       </div>
-      <div id="title-container-left" class="title-container">
-        <span class="grey title-text">Email: {{ user.email }}</span>
+      <div>
+          <label>Phone Number: </label>
+          <input type="text" name="phone" autofocus required>
       </div>
-      <div id="title-container-left" class="title-container">
-        <span class="grey title-text">Phone Number: {{ user.profile.phone }}</span>
-      </div>
-      <a href="/change_info">
-        <button id="edit-info" class="button button-right blue">Change contact info</button>
+
+      <a href="/profile/">
+        <button id="edit contact info" class="button button-right blue">Done</button>
       </a>
 
   </body>
