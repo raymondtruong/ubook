@@ -138,16 +138,120 @@ def remove_listing(listing):
             if str(l) == listing:
                 l.delete()
 
+def edit_listing(listing, title, author, condition, course, description, image, price):
+    if ("Individual" in listing):
+        for l in IndividualListing.objects.all():
+            if str(l) == listing:
+                l.textbook.name = title
+                l.textbook.author = author
+                l.price = price
+                l.textbook.condition = condition
+                l.textbook.description = description
+                l.textbook.courses = course
+                l.textbook.photo = image
+                l.textbook.save()
+                l.save()
+    else:
+        for l in BundleListing.objects.all():
+            if str(l) == listing:
+                l.price = price
+                l.save()
+
+def edit_bundle_textbooks(listing, textbookTitles, textbookAuthors, textbookDescription, textbookImage, textbookCourses, textbookCondition):
+    for l in BundleListing.objects.all():
+        print(str(l))
+        if str(l) == listing:
+            i = 0
+            print(l.textbooks.all())
+            for textbook in l.textbooks.all():
+                textbook.name = textbookTitles[i]
+                textbook.authors = textbookAuthors[i]
+                textbook.description = textbookDescription[i]
+                textbook.photo = textbookImage[i]
+                textbook.courses = textbookCourses[i]
+                textbook.condition = textbookCondition[i]
+                textbook.save()
+                i += 1
+
+def edit_bundle_listing(listing, bundleTitle, bundleDesc, bundlePrice, textbookTitles, textbookAuthors
+                        , textbookDescription, textbookImage, textbookCourses, textbookCondition):
+    for l in BundleListing.objects.all():
+        if str(l) == listing:
+            l.title = bundleTitle
+            l.description = bundleDesc
+            l.price = float(bundlePrice)
+            edit_bundle_textbooks(listing, textbookTitles, textbookAuthors, textbookDescription, textbookImage, textbookCourses, textbookCondition)
+            l.save()
+
 def active_listings(request):
+    # print("un authPOST")
     if request.user.is_authenticated:
         # If we are requested to mark a listing as sold, set it as sold
         if (request.method == "POST"):
+            print("POST")
             if (request.POST.get("mark_as_sold")):
                 listing = request.POST.get("listing_to_mark")
                 set_is_sold_to_value(listing, True)
             if (request.POST.get("remove")):
                 listing = request.POST.get("listing_to_remove")
                 remove_listing(listing)
+            if (request.POST.get("editSubmit")):
+                print("POST EDIT")
+                listing_to_edit = request.POST.get("listing_to_edit")
+                print(listing_to_edit)
+                if ("Individual" in listing_to_edit):
+                    new_price = request.POST.get("price")
+                    new_title = request.POST.get("title")
+                    new_author = request.POST.get("author")
+                    new_condition = request.POST.get("condition")
+                    new_course = request.POST.get("course")
+                    new_description = request.POST.get("description")
+                    new_image = request.POST.get("image")
+                    edit_listing(listing_to_edit, new_title, new_author, new_condition, new_course, new_description, new_image, new_price)
+                else:
+                    # new_price = request.POST.get("price")
+                    # print(new_price)
+                    bundleTitle = request.POST.get("bundleTitle")
+                    bundleDesc = request.POST.get("bundleDesc")
+                    new_price = request.POST.get("price")
+
+                    textbookTitleList = ["didnt work"]
+                    textbookAuthorsList = ["didnt work"]
+                    textbookCoursesList = ["didnt work"]
+                    textbookDescriptionList = ["didnt work"]
+                    textbookImageList = ["didnt work"]
+                    textbookConditionList = ["didnt work"]
+                    for key, value in request.POST.lists():
+                        if key == "textbookTitle":
+                            textbookTitleList = value
+                        if key == "textbookAuthors":
+                            textbookAuthorsList = value
+                        if key == "textbookCourses":
+                            textbookCoursesList = value
+                        if key == "textbookDescription":
+                            textbookDescriptionList = value
+                        if key == "textbookImage":
+                            textbookImageList = value
+                        if key == "textbookCondition":
+                            textbookConditionList = value
+                        # print(key, value)
+
+                    print(textbookTitleList)
+                    print(textbookAuthorsList)
+                    print(textbookCoursesList)
+                    print(textbookDescriptionList)
+                    print(textbookImageList)
+
+
+                    # print("BD " + new_price)
+                    edit_bundle_listing(listing_to_edit, bundleTitle, bundleDesc, new_price, textbookTitleList, textbookAuthorsList,
+                                        textbookDescriptionList, textbookImageList, textbookCoursesList, textbookConditionList)
+
+
+
+
+
+
 
         individual_listings = IndividualListing.objects.all().filter(owner=request.user).filter(is_sold=False)
         bundle_listings = BundleListing.objects.all().filter(owner=request.user).filter(is_sold=False)
@@ -212,6 +316,7 @@ def new_listing(request):
                 l = IndividualListing(owner=request.user, textbook=text1_textbook, price=listing_price)
                 l.save()
             else:
+                texts_for_bundle.append(text1_textbook)
                 while text_title != None:
                     text_title = request.POST.get("title" + str(i))
                     text_author = request.POST.get("author" + str(i))
