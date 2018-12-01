@@ -283,3 +283,7 @@ body {
     cursor: pointer;
 }
 
+#general-search-form {
+    height: 100%;
+    width: 100%;
+}
