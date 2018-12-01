@@ -3,11 +3,12 @@
 ## About
 UBook is a textbook marketplace website where University of Toronto students can buy and sell used textbooks quickly, easily, and effectively. Created by Team 23 (see below) as the final team project for CSC301H1 in Fall 2018.
 
-## Live Demo
-https://youtu.be/DU1HA7S3_lg
+
+## Try It!
+https://ubook-csc301.herokuapp.com/
 
 
-## Usage
+## Run Locally
 ```
 $ git clone https://github.com/csc301-fall-2018/project-team-23.git
 $ cd project-team-23/ubook
@@ -15,6 +16,10 @@ $ python3 manage.py migrate
 $ python3 manage.py runserver
 ```
 The website can then be accessed at [127.0.0.1:8000/listings/]().
+
+
+## Demo
+https://youtu.be/DU1HA7S3_lg
 
 
 ## Dependencies
