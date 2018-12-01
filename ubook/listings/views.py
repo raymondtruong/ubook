@@ -157,7 +157,7 @@ def active_listings(request):
         # return all active listings owned by the currently authenticated user
         listings = list(chain(individual_listings, bundle_listings))
         return render(request, "listings/active_listings.html", {"listings": listings})
-        
+
     else:
         return render(request, "listings/index.html")
 
@@ -238,7 +238,13 @@ def new_listing(request):
                 b.save()
                 print(b.textbooks)
 
-        return render(request, "listings/new_listing.html")
+            # redirect to active listings after creating listing
+            individual_listings = IndividualListing.objects.all().filter(owner=request.user).filter(is_sold=False)
+            bundle_listings = BundleListing.objects.all().filter(owner=request.user).filter(is_sold=False)
+            listings = list(chain(individual_listings, bundle_listings))
+            return render(request, "listings/active_listings.html", {"listings": listings})
+        else:
+            return render(request, "listings/new_listing.html")
 
     else:
         return render(request, "listings/index.html")
