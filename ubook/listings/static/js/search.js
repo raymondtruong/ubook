@@ -59,6 +59,7 @@ for (let i = 0; i < sellerOpenButtons.length; i++) {
         sellerModal.style.display = "block";
         sellerEmailBackdrop.innerHTML = sellerEmails[i].innerHTML;
         sellerPhoneBackdrop.innerHTML = sellerPhones[i].innerHTML;
+        console.log(sellerPhoneBackdrop.innerHTML)
     }
 }
 
