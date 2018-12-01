@@ -95,20 +95,28 @@ def index(request):
 
 
 def profile(request):
-    if request.method == "POST":
-        if request.POST.get("submit"):
-            new_email = request.POST.get("email")
-            new_phone = request.POST.get("phone")
+    if request.user.is_authenticated:
+        if request.method == "POST":
+            if request.POST.get("submit"):
+                new_email = request.POST.get("email")
+                new_phone = request.POST.get("phone")
 
-            request.user.email = new_email
-            request.user.profile.phone = new_phone
-            request.user.save()
+                request.user.email = new_email
+                request.user.profile.phone = new_phone
+                request.user.save()
 
-    return render(request, "listings/profile.html")
+        return render(request, "listings/profile.html")
+
+    else:
+        return render(request, "listings/index.html")
+
 
 
 def change_info(request):
-    return render(request, "listings/change_info.html")
+    if request.user.is_authenticated:
+        return render(request, "listings/change_info.html")
+    else:
+        return render(request, "listings/index.html")
 
 def set_is_sold_to_value(listing, sold_value):
     if ("Individual" in listing):
@@ -149,6 +157,7 @@ def active_listings(request):
         # return all active listings owned by the currently authenticated user
         listings = list(chain(individual_listings, bundle_listings))
         return render(request, "listings/active_listings.html", {"listings": listings})
+        
     else:
         return render(request, "listings/index.html")
 
@@ -230,3 +239,6 @@ def new_listing(request):
                 print(b.textbooks)
 
         return render(request, "listings/new_listing.html")
+
+    else:
+        return render(request, "listings/index.html")
