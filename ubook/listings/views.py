@@ -151,12 +151,29 @@ def edit_listing(listing, title, author, condition, course, description, image, 
                 l.price = price
                 l.save()
 
-def edit_bundle_listing(listing, bundleTitle, bundleDesc, bundlePrice):
+def edit_bundle_textbooks(listing, textbookTitles, textbookAuthors, textbookDescription, textbookImage, textbookCourses):
+    for l in BundleListing.objects.all():
+        print(str(l))
+        if str(l) == listing:
+            i = 0
+            print(l.textbooks.all())
+            for textbook in l.textbooks.all():
+                textbook.name = textbookTitles[i]
+                textbook.authors = textbookAuthors[i]
+                textbook.description = textbookDescription[i]
+                textbook.photo = textbookImage[i]
+                textbook.courses = textbookCourses[i]
+                textbook.save()
+                i += 1
+
+def edit_bundle_listing(listing, bundleTitle, bundleDesc, bundlePrice, textbookTitles, textbookAuthors
+                        , textbookDescription, textbookImage, textbookCourses):
     for l in BundleListing.objects.all():
         if str(l) == listing:
             l.title = bundleTitle
             l.description = bundleDesc
-            l.price = bundlePrice
+            l.price = float(bundlePrice)
+            edit_bundle_textbooks(listing, textbookTitles, textbookAuthors, textbookDescription, textbookImage, textbookCourses)
             l.save()
 
 def active_listings(request):
@@ -193,19 +210,32 @@ def active_listings(request):
 
                     textbookTitleList = ["didnt work"]
                     textbookAuthorsList = ["didnt work"]
+                    textbookCoursesList = ["didnt work"]
+                    textbookDescriptionList = ["didnt work"]
+                    textbookImageList = ["didnt work"]
                     for key, value in request.POST.lists():
                         if key == "textbookTitle":
                             textbookTitleList = value
-
                         if key == "textbookAuthors":
                             textbookAuthorsList = value
+                        if key == "textbookCourses":
+                            textbookCoursesList = value
+                        if key == "textbookDescription":
+                            textbookDescriptionList = value
+                        if key == "textbookImage":
+                            textbookImageList = value
                         # print(key, value)
+
                     print(textbookTitleList)
                     print(textbookAuthorsList)
+                    print(textbookCoursesList)
+                    print(textbookDescriptionList)
+                    print(textbookImageList)
 
 
                     # print("BD " + new_price)
-                    # edit_bundle_listing(listing_to_edit, bundleTitle, bundleDesc, new_price)
+                    edit_bundle_listing(listing_to_edit, bundleTitle, bundleDesc, new_price, textbookTitleList, textbookAuthorsList,
+                                        textbookDescriptionList, textbookImageList, textbookCoursesList)
 
 
 
@@ -275,6 +305,7 @@ def new_listing(request):
                 l = IndividualListing(owner=request.user, textbook=text1_textbook, price=listing_price)
                 l.save()
             else:
+                texts_for_bundle.append(text1_textbook)
                 while text_title != None:
                     text_title = request.POST.get("title" + str(i))
                     text_author = request.POST.get("author" + str(i))
