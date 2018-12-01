@@ -38,7 +38,7 @@ function add_textbook(e){
                  const titleSpan = document.createElement('span')
 	             titleSpan.classList.add('bold')
 	             titleSpan.classList.add('edit-title')
-	             titleSpan.textContent = "Title:"
+	             titleSpan.textContent = "Title: "
 	              const titleinput = document.createElement('input')
 	              titleinput.classList.add('edit-title-input')
 	              titleinput.setAttribute("name", "title" + i)
@@ -52,7 +52,7 @@ function add_textbook(e){
                  const authorSpan = document.createElement('span')
 	             authorSpan.classList.add('bold')
 	             authorSpan.classList.add('edit-author')
-	             authorSpan.textContent = "Author:"
+	             authorSpan.textContent = "Author: "
 	              const authorinput = document.createElement('input')
 	              authorinput.classList.add('edit-author-input')
 	              authorinput.setAttribute("name", "author"+i)
@@ -66,7 +66,7 @@ function add_textbook(e){
                  const courseSpan = document.createElement('span')
 	             courseSpan.classList.add('bold')
 	             courseSpan.classList.add('edit-course')
-	             courseSpan.textContent = "Course:"
+	             courseSpan.textContent = "Course: "
 	              const courseinput = document.createElement('input')
 	              courseinput.classList.add('edit-course-input')
 	              courseinput.setAttribute("name", "course"+i)
@@ -83,7 +83,7 @@ function add_textbook(e){
                  const conditionSpan = document.createElement('span')
 	             conditionSpan.classList.add('bold')
 	             conditionSpan.classList.add('edit-condition')
-	             conditionSpan.textContent = "Condition:"
+	             conditionSpan.textContent = "Condition: "
 
 	              const conditioninput = document.createElement('input')
 	              conditioninput.setAttribute("name", "condition"+i)
@@ -111,7 +111,7 @@ function add_textbook(e){
                  const imageSpan = document.createElement('span')
 	             imageSpan.classList.add('bold')
 	             imageSpan.classList.add('edit-image')
-	             imageSpan.textContent = "Image:"
+	             imageSpan.textContent = "Image URL: "
 	              const imageinput = document.createElement('input')
 	              imageinput.classList.add('edit-image-input')
 	              imageinput.setAttribute("name", "image"+i)
@@ -125,7 +125,7 @@ function add_textbook(e){
                  const descriptionSpan = document.createElement('span')
 	             descriptionSpan.classList.add('bold')
 	             descriptionSpan.classList.add('edit-description')
-	             descriptionSpan.textContent = "Description:"
+	             descriptionSpan.textContent = "Description: "
 	              const descriptioninput = document.createElement('input')
 	              descriptioninput.classList.add('edit-description-input')
 	              descriptioninput.setAttribute("name", "description"+i)
