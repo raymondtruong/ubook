@@ -73,7 +73,7 @@
                 </div>
               </div>
               <div class="book-info-right-container">
-                <span class="book-price">${{ listing.price }}</span>
+                <span class="book-price">${{ listing.price|floatformat:2 }}</span>
                 <form action="/inactive_listings/" method="POST">
                    {% csrf_token %}
                    <input type="hidden" value="{{ listing }}" name="listing_to_reactivate">
@@ -93,7 +93,7 @@
                       <!-- header, containing title, price, and close button -->
                       <div class="modal-top-container">
                         <span id="bundle-title" class="bold">{{listing.title}}</span>
-                        <span id="bundle-price">${{listing.price}}</span>
+                        <span id="bundle-price">${{ listing.price|floatformat:2 }}</span>
                         <span class="bundle-close close">&times;</span>
                       </div>
                       <!-- list of all textbooks within the bundle, in the same format
@@ -150,7 +150,7 @@
               </div>
             </div>
             <div class="book-info-right-container">
-              <span class="book-price">${{ listing.price }}</span>
+              <span class="book-price">${{ listing.price|floatformat:2 }}</span>
               <form action="/inactive_listings/" method="POST">
                  {% csrf_token %}
                  <input type="hidden" value="{{ listing }}" name="listing_to_reactivate">

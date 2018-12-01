@@ -74,7 +74,7 @@
                </div>
              </div>
              <div class="book-info-right-container">
-               <span class="book-price">${{ listing.price }}</span>
+               <span class="book-price">${{ listing.price|floatformat:2 }}</span>
                <form action="/active_listings/" method="POST">
                  {% csrf_token %}
                  <input type="hidden" value="{{ listing }}" name="listing_to_mark">
@@ -153,7 +153,7 @@
              </div>
            </div>
            <div class="book-info-right-container">
-             <span class="book-price">${{ listing.price }}</span>
+             <span class="book-price">${{ listing.price|floatformat:2 }}</span>
              <form action="/active_listings/" method="POST">
                {% csrf_token %}
                <input type="hidden" value="{{ listing }}" name="listing_to_mark">

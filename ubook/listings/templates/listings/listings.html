@@ -135,7 +135,7 @@
                 </div>
               </div>
               <div class="book-info-right-container">
-                <span class="book-price">${{ listing.price }}</span>
+                <span class="book-price">${{ listing.price|floatformat:2 }}</span>
 
                 <span style="display:none" class="seller-email">{{ listing.owner.email }}</span>
                 <span style="display:none" class="seller-phone">{{ listing.owner.phone }}</span>
@@ -149,7 +149,7 @@
                       <!-- header, containing title, price, and close button -->
                       <div class="modal-top-container">
                         <span id="bundle-title" class="bold">{{listing.title}}</span>
-                        <span id="bundle-price">${{listing.price}}</span>
+                        <span id="bundle-price">${{listing.price|floatformat:2}}</span>
                         <span class="bundle-close close">&times;</span>
                       </div>
                       <!-- list of all textbooks within the bundle, in the same format
@@ -210,7 +210,7 @@
               </div>
             </div>
             <div class="book-info-right-container">
-              <span class="book-price">${{ listing.price }}</span>
+              <span class="book-price">${{ listing.price|floatformat:2 }}</span>
               <span style="display:none" class="seller-email">{{ listing.owner.email }}</span>
               <span style="display:none" class="seller-phone">{{ listing.owner.profile.phone }}</span>
               <button class="contact-seller button"> Contact seller </button>
