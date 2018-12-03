@@ -99,7 +99,7 @@ function edit_listings(e){
 			editlisting.getElementsByClassName("edit-condition-input")[0].value
 			= bundleModal.getElementsByClassName("book-info-container")[0].getElementsByClassName("book-condition")[0].textContent.substr(12)
 			editlisting.getElementsByClassName("edit-description-input")[0].value
-			= bundleModal.getElementsByClassName("book-info-container")[0].getElementsByClassName("book-description")[0].textContent.trim().substr(14)
+			= bundleModal.getElementsByClassName("book-info-container")[0].getElementsByClassName("book-description")[0].textContent.trim().substr(13)
             editlisting.getElementsByClassName("edit-image-input")[0].value
 			= bundleModal.getElementsByClassName("image-container")[0].getElementsByClassName("book-image")[0].src
 
@@ -314,7 +314,7 @@ function edit_listings(e){
 			editlisting.getElementsByClassName("edit-condition-input")[i].value
 			= bundleModal.getElementsByClassName("book-info-container")[i].getElementsByClassName("book-condition")[0].textContent.substr(12)
 			editlisting.getElementsByClassName("edit-description-input")[i].value
-			= bundleModal.getElementsByClassName("book-info-container")[i].getElementsByClassName("book-description")[0].textContent.trim().substr(14)
+			= bundleModal.getElementsByClassName("book-info-container")[i].getElementsByClassName("book-description")[0].textContent.trim().substr(13)
 
 			editlisting.getElementsByClassName("edit-image-input")[i].value
 			= bundleModal.getElementsByClassName("image-container")[i].getElementsByClassName("book-image")[0].src
