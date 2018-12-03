@@ -97,7 +97,7 @@
                       <!-- header, containing title, price, and close button -->
                       <div class="modal-top-container">
                         <span id="bundle-title" class="bold">{{listing.title}}</span>
-                        <span id="bundle-price">${{listing.price}}</span>
+                        <span id="bundle-price" class="bundle-price">${{listing.price}}</span>
                         <span class="bundle-close close">&times;</span>
                       </div>
                       <!-- list of all textbooks within the bundle, in the same format
@@ -106,7 +106,7 @@
                         {% for textbook in listing.textbooks.all %}
                         <div class="result-container">
                           <div class="image-container">
-                            <img src="{{textbook.photo}}">
+                            <img class="book-image" src="{{textbook.photo}}">
                           </div>
                           <div class="book-info-container">
                             <h5 class="book-title"> {{textbook.name}}</h5>

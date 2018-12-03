@@ -36,7 +36,6 @@ for (let i = 0 ; i < editCloseButtons.length;i++){
 }
 
 function edit_listings(e){
-    console.log(e.target)
 	e.preventDefault()
 	initialeditModal = editModalBody.cloneNode(true)
 	if (e.target.classList.contains('edit-listing')) {
@@ -91,18 +90,18 @@ function edit_listings(e){
                   bundleinfo.appendChild(bundeldescrinput)
 
                   editModalBody.getElementsByClassName("modal-top-container")[0].appendChild(bundleinfo)
-
  			editlisting.getElementsByClassName("edit-title-input")[0].value
-			= bundleModal.getElementsByClassName("book-info-container")[0].getElementsByClassName("book-title")[0].textContent
+			= bundleModal.getElementsByClassName("book-info-container")[0].getElementsByClassName("book-title")[0].textContent.substr(1)
 			editlisting.getElementsByClassName("edit-author-input")[0].value
-			= bundleModal.getElementsByClassName("book-info-container")[0].getElementsByClassName("book-authors")[0].textContent
+			= bundleModal.getElementsByClassName("book-info-container")[0].getElementsByClassName("book-authors")[0].textContent.substr(4)
 			editlisting.getElementsByClassName("edit-course-input")[0].value
-			= bundleModal.getElementsByClassName("book-info-container")[0].getElementsByClassName("book-courses")[0].textContent
+			= bundleModal.getElementsByClassName("book-info-container")[0].getElementsByClassName("book-courses")[0].textContent.substr(10)
 			editlisting.getElementsByClassName("edit-condition-input")[0].value
-			= bundleModal.getElementsByClassName("book-info-container")[0].getElementsByClassName("book-condition")[0].textContent
+			= bundleModal.getElementsByClassName("book-info-container")[0].getElementsByClassName("book-condition")[0].textContent.substr(12)
 			editlisting.getElementsByClassName("edit-description-input")[0].value
-			= bundleModal.getElementsByClassName("book-info-container")[0].getElementsByClassName("book-description")[0].textContent.trim()
-
+			= bundleModal.getElementsByClassName("book-info-container")[0].getElementsByClassName("book-description")[0].textContent.trim().substr(14)
+            editlisting.getElementsByClassName("edit-image-input")[0].value
+			= bundleModal.getElementsByClassName("image-container")[0].getElementsByClassName("book-image")[0].src
 
             // Textbook titles
             const formFirstTextbookTitle = document.createElement("input")
@@ -304,16 +303,21 @@ function edit_listings(e){
 
 	              editModalBody.appendChild(edit)
 	              editlisting = document.querySelector('#edit-backdrop');
+
 	              editlisting.getElementsByClassName("edit-title-input")[i].value
-			= bundleModal.getElementsByClassName("book-info-container")[i].getElementsByClassName("book-title")[0].textContent
+			= bundleModal.getElementsByClassName("book-info-container")[i].getElementsByClassName("book-title")[0].textContent.substr(1)
+
 			editlisting.getElementsByClassName("edit-author-input")[i].value
-			= bundleModal.getElementsByClassName("book-info-container")[i].getElementsByClassName("book-authors")[0].textContent
+			= bundleModal.getElementsByClassName("book-info-container")[i].getElementsByClassName("book-authors")[0].textContent.substr(4)
 			editlisting.getElementsByClassName("edit-course-input")[i].value
-			= bundleModal.getElementsByClassName("book-info-container")[i].getElementsByClassName("book-courses")[0].textContent
+			= bundleModal.getElementsByClassName("book-info-container")[i].getElementsByClassName("book-courses")[0].textContent.substr(10)
 			editlisting.getElementsByClassName("edit-condition-input")[i].value
-			= bundleModal.getElementsByClassName("book-info-container")[i].getElementsByClassName("book-condition")[0].textContent
+			= bundleModal.getElementsByClassName("book-info-container")[i].getElementsByClassName("book-condition")[0].textContent.substr(12)
 			editlisting.getElementsByClassName("edit-description-input")[i].value
-			= bundleModal.getElementsByClassName("book-info-container")[i].getElementsByClassName("book-description")[0].textContent.trim()
+			= bundleModal.getElementsByClassName("book-info-container")[i].getElementsByClassName("book-description")[0].textContent.trim().substr(14)
+
+			editlisting.getElementsByClassName("edit-image-input")[i].value
+			= bundleModal.getElementsByClassName("image-container")[i].getElementsByClassName("book-image")[0].src
 
                }
             const price = document.createElement('div')
@@ -327,6 +331,7 @@ function edit_listings(e){
 	              priceinput.setAttribute("name", "price")
 	              priceinput.setAttribute("type", "text")
 	              priceinput.classList.add('input')
+	        priceinput.value = bundleModal.getElementsByClassName("bundle-price")[0].textContent.substr(1)
 	        price.appendChild(priceSpan)
 	        price.appendChild(priceinput)
 
