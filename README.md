@@ -10,8 +10,8 @@ https://ubook-csc301.herokuapp.com/
 
 ## Run Locally
 ```
-$ git clone https://github.com/csc301-fall-2018/project-team-23.git
-$ cd project-team-23/ubook
+$ git clone https://github.com/raymondtruong/ubook.git
+$ cd ubook/ubook
 $ python3 manage.py migrate
 $ python3 manage.py runserver
 ```
